@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Response;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,4 +15,43 @@
 
 $app->get('/', function () use ($app) {
     return $app->version();
+});
+
+
+$app->get('/key', function() {
+    return str_random(32);
+});
+$app->get('/tes', 'Controller@show');
+
+$app->get('foo', function () {
+    return 'Hello World';
+});
+
+$app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], function($app)
+{
+
+    $app->get('login','HomeController@login');
+
+
+    $app->get('user','UserController@index');
+
+    $app->get('user/{id}','UserController@getUser');
+
+    $app->post('user','UserController@createUser');
+
+    $app->put('user/{id}','UserController@updateUser');
+
+    $app->delete('user/{id}','UserController@deleteUser');
+
+
+    $app->get('region','RegionController@index');
+
+    $app->get('region/{id}','RegionController@getRegion');
+
+    $app->post('region','RegionController@createRegion');
+
+    $app->put('region/{id}','RegionController@updateRegion');
+
+    $app->delete('region/{id}','RegionController@deleteRegion');
+
 });
