@@ -2199,6 +2199,18 @@ footer.page-footer {
     color: rgba(255, 255, 255, 0.8);
     background-color: rgba(51, 51, 51, 0.08); }
 
+/*custom tree*/
+.tree{}
+.tree.hoverable {
+    -webkit-transition: background-color 0.25s ease;
+    -moz-transition: background-color 0.25s ease;
+    -o-transition: background-color 0.25s ease;
+    -ms-transition: background-color 0.25s ease;
+    transition: background-color 0.25s ease; }
+    .tree.hoverable > li:hover {
+      background-color: #f2f2f2; }
+  
+
 table, th, td {
   border: none; }
 
@@ -2367,7 +2379,7 @@ span.badge {
     background-color: #ff4081;
     border-radius: 2px; }
   span.badge.new:after {
-    content: " new"; }
+    content: ""; }
 
 .video-container {
   position: relative;

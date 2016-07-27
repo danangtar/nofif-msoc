@@ -27,19 +27,19 @@
     <!-- For Windows Phone -->
 
     
-    <!-- CORE CSS-->
+   <!-- CORE CSS-->
     <link href="{{asset("materialize/css/materialize.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="{{asset("materialize/css/style.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
 
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->    
     <link href="{{asset("materialize/css/prism.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{{asset("materialize/js/plugins/data-tables/css/jquery.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{{asset("materialize/js/plugins/jvectormap/jquery-jvectormap.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="{{asset("materialize/js/plugins/chartist-js/chartist.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-     
+    <link href="{{asset("materialize/js/plugins/data-tables/css/jquery.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="{{asset("materialize/js/plugins/jvectormap/jquery-jvectormap.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
+  
+
 </head>
 
 <body>
@@ -314,13 +314,10 @@
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
     <!--scrollbar-->
     <script type="text/javascript" src="materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    
-    <!-- chartist -->
-    <script type="text/javascript" src="materialize/js/plugins/chartist-js/chartist.min.js"></script>   
 
-    <!-- chartjs -->
-    <script type="text/javascript" src="materialize/js/plugins/chartjs/chart.min.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/chartjs/chart-script.js"></script>
+    <!-- data-tables -->
+    <script type="text/javascript" src="materialize/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="materialize/js/plugins/data-tables/data-tables-script.js"></script>
 
     <!-- sparkline -->
     <script type="text/javascript" src="materialize/js/plugins/sparkline/jquery.sparkline.min.js"></script>
@@ -331,12 +328,8 @@
     <script type="text/javascript" src="materialize/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script type="text/javascript" src="materialize/js/plugins/jvectormap/vectormap-script.js"></script>
     
-    
-    <!-- data-tables -->
-    <script type="text/javascript" src="materialize/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/data-tables/data-tables-script.js"></script>
-    
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+   
+        <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="materialize/js/plugins.js"></script>
         </body>
 
