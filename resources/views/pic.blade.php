@@ -1,13 +1,17 @@
 @extends('layouts.home')
 
 @section('content')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt-1.10.12/jqc-1.11.3,dt-1.10.12,b-1.2.1,se-1.2.0/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="Editor-1.5.6/css/editor.dataTables.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/r/dt-1.10.12/jqc-1.11.3,dt-1.10.12,b-1.2.1,se-1.2.0/datatables.min.js"></script>
+    <script type="text/javascript" src="Editor-1.5.6/js/dataTables.editor.js"></script>
 <script>
 
 var editor; // use a global for the submit and return data rendering in the examples
  
 $(document).ready(function() {
     editor = new $.fn.dataTable.Editor( {
-//        "ajax": "../php/staff.php",
+        "ajax": "../php/staff.php",
         "table": "#example",
         "fields": [ {
                 "label": "First name:",
@@ -67,7 +71,7 @@ $(document).ready(function() {
     } );
  
     $('#example').DataTable( {
-//        ajax: "../php/staff.php",
+        ajax: "../php/staff.php",
         columns: [
             { data: null, render: function ( data, type, row ) {
                 // Combine the first and last names into a single table field
@@ -152,6 +156,7 @@ $(document).ready(function() {
                             <td>66</td>
                             <td>2009/01/12</td>
                             <td>$86,000</td>
+                            <td><a href="" class="editor_edit">Edit</a> / <a href="" class="editor_delete ">Delete</a></td>
                         </tr>
                       </tbody>
                     </table>

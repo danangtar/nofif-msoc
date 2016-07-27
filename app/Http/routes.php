@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {return view('dashboard');});
-Route::get('/dashboard', function () {return view('dashboard');});
+Route::get('/dashboard', 'HomeController@index');
 Route::get('/report', function () {return view('report');});
 Route::get('/statistic', function () {return view('statistic');});
 Route::get('/history', function () {return view('history');});
