@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {return view('dashboard');});
+Route::get('/', 'HomeController@index');
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/report', function () {return view('report');});
 Route::get('/statistic', function () {return view('statistic');});

@@ -5785,7 +5785,7 @@ small {
   transform-origin: 50% 10%;
   will-change: transform, opacity; }
 
-.btn, .btn-large, .btn-flat {
+.btn, .btn-large, .btn-small, .btn-flat {
   border: none;
   border-radius: 2px;
   display: inline-block;
@@ -5797,7 +5797,7 @@ small {
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent; }
 
-.btn.disabled, .disabled.btn-large, .btn-floating.disabled, .btn-large.disabled, .btn:disabled, .btn-large:disabled, .btn-large:disabled, .btn-floating:disabled {
+.btn.disabled, .disabled.btn-large, .disabled.btn-small, .btn-floating.disabled, .btn-large.disabled, .btn-small.disabled, .btn:disabled, .btn-large:disabled, .btn-large:disabled, .btn-small:disabled, .btn-floating:disabled {
   background-color: #DFDFDF;
   box-shadow: none;
   color: #9F9F9F;
@@ -5826,6 +5826,12 @@ small {
   cursor: pointer; }
   .btn:hover, .btn-large:hover {
     background-color: #ff5a92; }
+
+.btn, .btn-small {
+  height: 20px;
+  text-align: center;
+  letter-spacing: .5px;
+}
 
 .btn-floating {
   display: inline-block;

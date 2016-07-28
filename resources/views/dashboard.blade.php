@@ -9,7 +9,7 @@
     <div id="card-widgets">
         <div class="row">
 
-            <div class="col s12 m6 l6">
+            <div class="col s12 m6 l5">
                 <ul id="task-card" class="collection with-header">
                     <li class="collection-header cyan">
                         <h4 class="task-card-title">34 Kantor PROVINSI</h4>
@@ -24,7 +24,12 @@
                                         if($list->status == 1) echo "Small-Down.gif";
                                         else echo "Small-up-unknown-noblink.gif";
                                             
-                                    ?>"alt="materialize logo"><span class="folder"> {{$list->id .' '. $list->name}}</span><span class="new badge red"> alert </span></li>
+                                    ?>"alt="materialize logo"><span class="folder"> {{$list->id .' '. $list->name}}<span <?php if($list->response==1) {?>
+                                                        class="btn btn-small waves-effect waves-light green new badge green"> confirmed
+                                                <?php }else {?>
+                                                        class="btn btn-small waves-effect waves-light red new badge red"> alert
+                                                <?php }?>
+                                    </span></li>
                                 @endforeach
 <!--
                                 <li><img src="materialize/images/Small-Down.gif"alt="materialize logo"><span class="folder"> Clientes</span></li>
@@ -59,7 +64,13 @@
                                             <li><img src="materialize/images/<?php 
                                                 if($rows->status == 1) echo "Small-Down.gif";
                                                 else echo "Small-Up.gif";
-                                            ?>"alt="materialize logo">{{$rows->id.' '.$rows->name }} <span class="new badge green"> confirmed </span></li>
+                                            ?>"alt="materialize logo">{{$rows->id.' '.$rows->name }} <span<?php if($rows->response==1) {?>
+                                                        class="btn btn-small waves-effect waves-light green new badge green"> confirmed
+                                                <?php }else {?>
+                                                        class="btn btn-small waves-effect waves-light red new badge red"> alert
+                                                <?php }?>
+                                            </span>
+                                            </li>
                                                          
                                         @endforeach
                                     </ul><?php }?>

@@ -52,6 +52,7 @@ class HomeController extends Controller
         $data['kabstat']= $statreal;
         $data['provinsi']= $provinsi;
         $data['kabupaten']= $kabupaten;
+        
         return view('dashboard',$data);
     }
 
