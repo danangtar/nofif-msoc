@@ -49,3 +49,9 @@ Route::group(['prefix' => 'api/v1'], function()
     Route::delete('region/{id}','RegionController@deleteRegion');
 
 });
+
+    Route::post('register', 'APIController@register');
+    Route::post('login', 'APIController@login');
+    Route::group(['middleware' => 'jwt-auth'], function () {
+        Route::post('get_user_details', 'APIController@get_user_details');
+    });

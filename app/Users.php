@@ -10,7 +10,7 @@ class Users extends Model
     protected $table = 'users';
 
     protected $fillable = [
-        'username', 'previledge' ,'number','email','path_photo'
+        'username', 'previledge' ,'number','email','path_photo','password'
     ];
 
     /**
@@ -20,8 +20,7 @@ class Users extends Model
      */
 
     protected $hidden = [
-        'password',
-        'remember_token'
+        'remember_token',
     ];
 
 }
