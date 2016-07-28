@@ -25,6 +25,17 @@ Route::get('/tes', 'Controller@show');
 
 Route::group(['prefix' => 'api/v1'], function()
 {
+    //AUTH
+
+    Route::post('login', 'APIController@login');
+    Route::group(['middleware' => 'jwt-auth'], function () {
+        Route::post('send_token', 'APIController@send_token');
+        Route::post('get_user', 'APIController@get_user');
+        Route::post('update_user', 'APIController@update_user');
+
+        Route::post('get_user_details', 'APIController@get_user_details');
+    });
+
 
 
     Route::get('user','UserController@index');
@@ -51,7 +62,5 @@ Route::group(['prefix' => 'api/v1'], function()
 });
 
     Route::post('register', 'APIController@register');
-    Route::post('login', 'APIController@login');
-    Route::group(['middleware' => 'jwt-auth'], function () {
-        Route::post('get_user_details', 'APIController@get_user_details');
-    });
+
+    Route::get('klik/{id}', 'ProcessController@alertRegion');

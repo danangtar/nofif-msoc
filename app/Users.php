@@ -10,7 +10,7 @@ class Users extends Model
     protected $table = 'users';
 
     protected $fillable = [
-        'username', 'previledge' ,'number','email','path_photo','password'
+        'username', 'previledge' ,'number','email','path_photo','password', 'fullname'
     ];
 
     /**
