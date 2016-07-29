@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Hash;
 
 use App\Region;
 use App\Users;
@@ -128,13 +129,35 @@ class HomeController extends Controller
         $User  = Users::find($id);
         var_dump($input);
         if($input['password']!="")
-        $User->password = $input['password'];
+        $input['password'] = Hash::make($input['password']);
 
         $User->fullname = $input['fullname'];
         $User->email =$input['email'];
         $User->number = $input['number'];
 
-        $User->save();
+//        $User->save();
+//
+//        return redirect('pic');
+    }
+
+    public function create_user (Request $request)
+    {
+        $input = $request->all();
+        if($input['id_region']=="")
+            $input['id_region']=11;
+        $input['password'] = Hash::make($input['password']);
+
+        Users::create($input);
+        return redirect('pic');
+    }
+
+    public function delete_user ($id)
+    {
+        $input = Users::find($id);
+
+        $input->delete();
+
+        return redirect('pic');
     }
 
     /**

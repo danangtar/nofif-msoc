@@ -35,52 +35,62 @@
                     <div class="card-panel">
                       <h4 class="header2" style="text-align:center">Add PIC Form</h4>
                       <div class="row">
-                        <form class="col s12">
+                          <form class="col s12" action="{{url('create_user')}}" method="post">
                           <div class="row">
                             <div class="input-field col s12">
                               <i class="mdi-action-account-circle prefix"></i>
-                              <input id="name4" type="text" class="validate">
+                              <input name="username" id="name4" type="text" class="validate">
                               <label for="username">Username</label>
                             </div>
                           </div>
                           <div class="row">
                             <div class="input-field col s12">
                               <i class="mdi-action-accessibility prefix"></i>
-                              <input id="name" type="text" class="validate">
+                              <input name="fullname" id="name" type="text" class="validate">
                               <label for="full_name">Full Name</label>
                             </div>
                           </div>
                           <div class="row">
                             <div class="input-field col s12">
                               <i class="mdi-action-lock-outline prefix"></i>
-                              <input id="password5" type="password" class="validate">
+                              <input name="password" id="password5" type="password" class="validate">
                               <label for="password">Password</label>
                             </div>
                           </div>
                           <div class="row">
                             <div class="input-field col s12">
                               <i class="mdi-communication-phone  prefix"></i>
-                              <input id="name4" type="text" class="validate">
+                              <input name="number" id="name4" type="text" class="validate">
                               <label for="first_name">Phone</label>
                             </div>
                           </div>
                           <div class="row">
                             <div class="input-field col s12">
                               <i class="mdi-communication-email prefix"></i>
-                              <input id="email4" type="email" class="validate">
+                              <input name="email" id="email4" type="email" class="validate">
                               <label for="email">Email</label>
                             </div>
                           </div>
-                          <div class="row">
+                              <div class="row">
+                                  <div class="input-field col s12">
+                                      <select name="id_region">
+                                          @foreach ($region as $row)
+                                              <option value="{{$row->id}}"?>{{$row->name}}</option>
+                                          @endforeach
+                                      </select>
+                                      <label>Region</label>
+                                  </div>
+                                </div>
+                                  <div class="row">
                             <div class="input-field col s12">
                               <i class="mdi-maps-place  prefix"></i>
                                 <input disabled id="disabled" type="text" class="validate">
                                 <label for="disabled">PIC tingkat</label>
-                                <br><input class="with-gap" name="group3" type="radio" id="test1" />
+                                <br><input class="with-gap" name="previledge" value="0" type="radio" id="test1" />
                                 <label for="test1">Pusat</label>
-                                <input class="with-gap" name="group3" type="radio" id="test2" />
+                                <input class="with-gap" name="previledge" value="1" type="radio" id="test2" />
                                 <label for="test2">Provinsi</label>
-                                <input class="with-gap" name="group3" type="radio" id="test3" />
+                                <input class="with-gap" name="previledge" value="2" type="radio" id="test3" />
                                 <label for="test3">Kabupaten</label>
                             </div>
                           </div>
@@ -131,7 +141,14 @@
                             <td>{{$list->fullname}}</td>
                             <td>{{$list->number}}</td>
                             <td>{{$list->email}}</td>
-                            <td>{{$list->name}}</td>
+                            <td>
+                                     <select name="id_region">
+                                         @foreach ($region as $row)
+                                             <option value="{{$row->id}}" <?php if($list->id_region==$row->id) echo "selected";?>>{{$row->name}}</option>
+                                         @endforeach
+                                     </select>
+                            </td>
+                            {{--<td>{{$list->name}}</td>--}}
                              <td>
                                 <div>
                                     <a class="btn-floating2 btn-small medium material-icons modal-trigger edit" href="#edit{{$list->id}}">
@@ -178,18 +195,10 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s12">
-                                                            <select name="region">
-                                                                @foreach ($region as $row)
-                                                                    <option value="{{$row->id}}" <?php if($list->id_region==$row->id) echo "selected";?>>{{$row->name}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <label>Region</label>
+                                                            <i class="mdi-communication-email  prefix"></i>
+                                                            <input name="email" id="name4" type="email" class="validate" value="{{$list->email}}">
+                                                            <label for="first_name">Email</label>
                                                         </div>
-                                                        {{--<div class="input-field col s12">--}}
-                                                            {{--<i class="mdi-maps-place  prefix"></i>--}}
-                                                            {{--<input id="name4" type="text" class="validate" value="{{$list->name}}">--}}
-                                                            {{--<label for="first_name">Region</label>--}}
-                                                        {{--</div>--}}
                                                     </div>
                                                     <div>
                                                         <div class="input-field col s12">
@@ -212,12 +221,11 @@
                         <!-- Modal Delete -->
                         <div id="delete{{$list->id}}" class="modal">
                             <div class="modal-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                                <p>Are you sure to delete <b>{{$list->fullname}}</b> account?</p>
                             </div>
                             <div class="modal-footer">
                                 <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>
-                                <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
+                                <a href="{{url("delete_user/$list->id")}}" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
                             </div>
                         </div>
 
