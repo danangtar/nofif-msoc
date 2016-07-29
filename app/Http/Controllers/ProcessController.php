@@ -66,13 +66,13 @@ class ProcessController extends Controller{
                     "time": "15:10"
                 },
                 "notification": {
-                  "title": "Hey you got a message",
-                  "body": "Your mother stil loves you",
+                  "title": "HEY DANANG",
+                  "body": "LOVE YOU",
                   "sound": "default",
                   "click_action": "FCM_PLUGIN_ACTIVITY",
                   "icon": "icon_name"
                 },
-                "to": "cfCLZN2jHzA:APA91bEPj5QY8say5xe1dXpbaIaYPORnUKNIu2mkPm7y9-RIrDFu1bTzODpBu2VfaRRV4DS_bfR-MSkWRCw8-McydLp6VljkZfXL8FYIutT3fxpPI5Aa7pvPuiWxsPgwU5XwakWh02aO",
+                "to": "dXlIY-357zQ:APA91bHTQ73TkcI_qEN8tHvG0_TpsAgkPBW-hk8VlK0-LRp9KQv3Ss_Vw0MqrVfGRlyIv7Yyfs9DRq_Zjdp-TGR4rgwg-9pMjCIxkpJtjS_aOKoY21EWApQwQyJCNIe6Lt0CtM00df0I",
                 "priority": "high"
               }';
 

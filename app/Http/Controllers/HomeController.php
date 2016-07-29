@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Region;
+use App\Users;
 
 class HomeController extends Controller
 {
@@ -61,9 +62,39 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function pic()
     {
+        $regions  = Region::select('region.id','region.name')->get();
+
+//        $User = Users::all();
+        $result = Users
+            ::join('region', 'users.id_region', '=', 'region.id')
+            ->select('users.id','users.id_region','users.fullname','users.number', 'users.email','region.name')
+            ->get();
+        $data['result']= $result;
+//        $data['region']= json_encode($regions, true);
+        $data['region']= $regions;
+
+//        var_dump($data['region']);
+//        return response()->json($result);
+        return view('pic',$data);
         //
+    }
+
+    public function update_user(Request $request){
+        $input = $request->all();
+
+        $id = $input['id'];
+        $User  = Users::find($id);
+        var_dump($input);
+        if($input['password']!="")
+        $User->password = $input['password'];
+
+        $User->fullname = $input['fullname'];
+        $User->email =$input['email'];
+        $User->number = $input['number'];
+
+        $User->save();
     }
 
     /**

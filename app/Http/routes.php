@@ -16,7 +16,9 @@ Route::get('/dashboard', 'HomeController@index');
 Route::get('/report', function () {return view('report');});
 Route::get('/statistic', function () {return view('statistic');});
 Route::get('/history', function () {return view('history');});
-Route::get('/pic', function () {return view('pic');});
+Route::get('/pic', 'HomeController@pic');
+
+Route::post('/update_user', 'HomeController@update_user');
 
 Route::get('/key', function() {
     return str_random(32);
