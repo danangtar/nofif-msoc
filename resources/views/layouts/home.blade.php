@@ -303,9 +303,11 @@
     </footer>
     <!-- END FOOTER -->
 
- <script type="text/javascript" src="materialize/js/plugins.js"></script>
+    <script type="text/javascript" src="materialize/js/plugins.js"></script>
+    <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>   
+    <script type="text/javascript" src="materialize/js/scripts.js"></script>
     <!-- ================================================
-    Scripts
+        Scripts
     ================================================ -->
     
     <!-- jQuery Library -->

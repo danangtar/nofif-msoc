@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/dashboard', 'HomeController@index');
+Route::get('/picdashboard', 'HomeController@indexpic');
 Route::get('/report', function () {return view('report');});
 Route::get('/statistic', function () {return view('statistic');});
 Route::get('/history', function () {return view('history');});
