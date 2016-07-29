@@ -132,7 +132,42 @@ $(document).ready(function() {
                 <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
               </div>
             </div>
-                  
+            
+            <!-- Modal Edit -->
+            <div id="modal3" class="modal">
+               <div class="model-email-content">
+                <div class="row">
+              <!-- Form with validation -->
+                  <div class="col s12 m12 l12">
+                    <div class="card-panel">
+                      <h4 class="header2" style="text-align:center">Detail Edit Form</h4>
+                      <div class="row">
+                        <form class="col s12">
+                          <div class="row">
+                             <div class="input-field col s12">
+                                <i class="mdi-action-question-answer prefix"></i>
+                                <textarea id="message4" class="materialize-textarea validate" length="120"></textarea>
+                                <label for="message">Message</label>
+                             </div>
+                           </div>
+                           <div>
+                              <div class="input-field col s12">
+                                <div class="modal-footer">
+                                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right">Cancel</a>
+                                    <button class="btn cyan waves-effect waves-light right" type="submit" name="action">OK
+                                      <i class="mdi-content-send right"></i>
+                                    </button>
+                                </div>
+                              </div>
+                            </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>      
+
                 <div class="col s12 m8 l9">                    
                    <table id="data-table-simple" class="responsive-table display" cellspacing="0"  width="100%">
                     <thead>
@@ -142,7 +177,7 @@ $(document).ready(function() {
                             <th>Response</th>
                             <th>Alert Time</th>
                             <th>Detail</th>
-                            <th style="width:70px">Delete</th>
+                            <th>Delete</th>
                             <th>Status Response</th>
                         </tr>
                     </thead>
@@ -154,7 +189,7 @@ $(document).ready(function() {
                             <th>Response</th>
                             <th>Alert Time</th>
                             <th>Detail</th>
-                            <th style="width:70px">Delete</th>
+                            <th>Delete</th>
                             <th>Status Response</th>
                         </tr>
                     </tfoot>
@@ -164,14 +199,14 @@ $(document).ready(function() {
                             <td>Tiger Nixon</td>
                             <td>Bengkulu</td>
                             <td style="white-space: nowrap;">Mati lampu
-                                <a class="btn-floating2 btn-small  waves-light blue lighten-2 medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="view detail" href="#modal1">
+                                <a class="btn-floating2 btn-small waves-effect waves-light blue lighten-2 medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="view detail" href="#modal1">
                                     <i class="mdi-action-visibility"></i>
                                 </a>  
                             </td>
                             <td>6 hour</td>
                             <td style="white-space: nowrap;">Lorem ipsum dolor...
-                                <a class="btn-floating2 btn-small  waves-light blue lighten-2 medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="view detail" href="#modal1">
-                                    <i class="mdi-action-visibility"></i>
+                                <a class="btn-floating2 btn-small waves-effect waves-light teal accent-3 medium material-icons modal-trigger tooltipped valign" data-position="top" data-delay="10" data-tooltip="edit detail" href="#modal3">
+                                    <i class="mdi-editor-mode-edit"></i>
                                 </a>                            
                             </td>
                              <td>
@@ -201,14 +236,14 @@ $(document).ready(function() {
                             <td>Tiger Nixon</td>
                             <td>Bengkulu</td>
                             <td style="white-space: nowrap;">Mati lampu
-                                <a class="btn-floating2 btn-small  waves-light blue lighten-2 medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="view detail" href="#modal1">
+                                <a class="btn-floating2 btn-small waves-effect waves-light blue lighten-2 medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="view detail" href="#modal1">
                                     <i class="mdi-action-visibility"></i>
                                 </a>  
                             </td>
                             <td>6 hour</td>
                             <td style="white-space: nowrap;">Lorem ipsum dolor...
-                                <a class="btn-floating2 btn-small  waves-light blue lighten-2 medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="view detail" href="#modal1">
-                                    <i class="mdi-action-visibility"></i>
+                                <a class="btn-floating2 btn-small waves-effect waves-light teal accent-3 medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="edit detail" href="#modal1">
+                                      <i class="mdi-editor-mode-edit"></i>
                                 </a>                            
                             </td>
                              <td>
@@ -244,8 +279,8 @@ $(document).ready(function() {
                             </td>
                             <td>6 hour</td>
                             <td style="white-space: nowrap;">Lorem ipsum dolor...
-                                <a class="btn-floating2 btn-small  waves-light blue lighten-2 medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="view detail" href="#modal1">
-                                    <i class="mdi-action-visibility"></i>
+                                <a class="btn-floating2 btn-small  waves-light teal accent-3 medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="edit detail" href="#modal1">
+                                      <i class="mdi-editor-mode-edit"></i>
                                 </a>                            
                             </td>
                              <td>
