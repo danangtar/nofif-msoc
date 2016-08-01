@@ -14,14 +14,26 @@
 Route::get('/', 'HomeController@index');
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/picdashboard', 'HomeController@indexpic');
-Route::get('/report', function () {return view('report');});
-Route::get('/statistic', function () {return view('statistic');});
-Route::get('/history', function () {return view('history');});
+
+//PIC
 Route::get('/pic', 'HomeController@pic');
 
 Route::get('/delete_user/{id}', 'HomeController@delete_user');
 Route::post('/update_user', 'HomeController@update_user');
 Route::post('/create_user', 'HomeController@create_user');
+
+//REPORT
+Route::get('/report', 'HomeController@reports');
+Route::get('/delete_report/{id}', 'HomeController@delete_reports');
+Route::post('/update_report', 'HomeController@update_reports');
+Route::get('/confirm_report/{id}', 'HomeController@confirm_reports');
+
+//HISTORY
+Route::get('/history', 'HomeController@history');
+
+//STATISTIC
+Route::get('/statistic', 'HomeController@statistic');
+
 
 Route::get('/key', function() {
     return str_random(32);

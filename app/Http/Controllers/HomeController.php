@@ -9,6 +9,8 @@ use Hash;
 
 use App\Region;
 use App\Users;
+use App\Answers;
+use App\Reports;
 
 class HomeController extends Controller
 {
@@ -105,7 +107,7 @@ class HomeController extends Controller
      */
     public function pic()
     {
-        $regions  = Region::select('region.id','region.name')->get();
+        $regions  = Region::select('region.id','region.name')->orderBy('id', 'ASC')->get();
 
 //        $User = Users::all();
         $result = Users
@@ -135,9 +137,9 @@ class HomeController extends Controller
         $User->email =$input['email'];
         $User->number = $input['number'];
 
-//        $User->save();
+        $User->save();
 //
-//        return redirect('pic');
+        return redirect('pic');
     }
 
     public function create_user (Request $request)
@@ -160,7 +162,68 @@ class HomeController extends Controller
         return redirect('pic');
     }
 
-    /**
+    public function reports()
+    {
+
+//        $User = Users::all();
+        $result = Reports
+            ::join('answers', 'reports.id_answer', '=', 'answers.id')
+            ->join('users', 'reports.id_user', '=', 'users.id')
+            ->join('region', 'users.id_region', '=', 'region.id')
+            ->select('reports.id','reports.id_user','reports.verifikasi','users.id_region','reports.id_answer','reports.detail','reports.response','answers.description','users.fullname','region.name')
+            ->get();
+        $data['result']= $result;
+//        $data['region']= json_encode($regions, true);
+
+//        var_dump($data['region']);
+//        return response()->json($result);
+        return view('report',$data);
+        //
+    }
+
+
+    public function delete_reports($id)
+    {
+        $input = Reports::find($id);
+
+        $input->delete();
+
+        return redirect('report');
+    }
+
+    public function confirm_reports ($id)
+    {
+        $Reports  = Reports::find($id);
+        $Reports->verifikasi=1;
+
+        $Reports->save();
+
+        return redirect('report');
+    }
+
+    public function update_reports(Request $request){
+        $input = $request->all();
+
+        $id = $input['id'];
+        $Reports  = Reports::find($id);
+        $Reports->detail =$input['detail'];
+
+        $Reports->save();
+
+        return redirect('report');
+    }
+
+    public function statistic()
+    {
+        return view('statistic');
+    }
+
+    public function history()
+    {
+        return view('history');
+    }
+
+        /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
