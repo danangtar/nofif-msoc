@@ -29,7 +29,7 @@ Route::post('/update_report', 'HomeController@update_reports');
 Route::get('/confirm_report/{id}', 'HomeController@confirm_reports');
 
 //HISTORY
-Route::get('/history', 'HomeController@history');
+Route::get('/history/{id}', 'HomeController@history');
 
 //STATISTIC
 Route::get('/statistic', 'HomeController@statistic');
