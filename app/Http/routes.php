@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index');
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/picdashboard', 'HomeController@indexpic');
+Route::get('/login', 'HomeController@login');
 
 //PIC
 Route::get('/pic', 'HomeController@pic');

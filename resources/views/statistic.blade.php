@@ -1,13 +1,65 @@
 @extends('layouts.home')
 
 @section('content')
+    <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="materialize/js/plugins/material-datetime-picker-master/dist/datepicker.js"></script>    
+   
+    <script type="text/javascript">
+    $( document ).ready(function() {
+        $('select').material_select();
+        $('.datepicker').pickadate({
+            beforeShowDay: $.datepicker.noWeekends
+selectDays: false, // Creates a dropdown to control month
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 5 // Creates a dropdown of 15 years to control year
+        });
+    });   
+    </script>
+
  <!-- START CONTENT -->
             <section id="content">
-
+    
                 <!--start container-->
                 <div class="container">
-
-                    <!--chart dashboard start-->
+            
+    
+                <div class="col s12 m6 l5">
+                    <ul id="task-card" class="collection with-header">
+                        <li class="collection-header cyan">
+                            <h4 class="task-card-title">Select Statistics View</h4>
+                            <p class="task-card-date">Time select</p>
+                        </li>
+                     <!-- Form with validation -->
+                  <div class="col s12 m12 l12">
+                    <div class="card-panel">
+                      <div class="row">
+                               <form class="col s12" action="{{url('create_user')}}" method="post">
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <i class="mdi-maps-place  prefix"></i>
+                                   <input disabled id="disabled" type="text" class="validate">
+                                    <label for="disabled">PIC tingkat</label>
+                                    <br>
+                                <div> 
+                                    <input class="with-gap" name="previledge" value="Day" type="radio" id="test1" />
+                                    <label  style=" display: inline-block;"for="test1">Day</label>
+                                    <input class="with-gap" name="previledge" value="Month" type="radio" id="test2" />
+                                    <label  style=" display: inline-block;" for="test2">Month</label>
+                                    <input class="with-gap" name="previledge" value="Year" type="radio" id="test3" />
+                                    <label  style=" display: inline-block;" for="test3">Year</label>
+                                </div><br>                                
+                                
+                                <input type="date" class="datepicker">
+                                                      
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                     </ul>
+                </div>
+                                <!--chart dashboard start-->
                     <div id="chart-dashboard">
                         <div class="row">
                             <div class="col s12 m8 l8">
