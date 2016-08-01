@@ -59,7 +59,7 @@
         <div class="navbar-fixed">
             <nav class="cyan">
                 <div class="nav-wrapper">
-                    <h1 class="logo-wrapper"><a href="{{ url('/dashboard') }}"  class="brand-logo darken-1"><img src="materialize/images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1>
+                    <h1 class="logo-wrapper"><a href="{{ url('/dashboard') }}"  class="brand-logo darken-1"><img src="{{asset("materialize/images/materialize-logo.png")}}" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1>
                     <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">
@@ -95,7 +95,7 @@
                     <li class="user-details cyan darken-2">
                         <div class="row">
                             <div class="col col s4 m4 l4">
-                                <img src="materialize/images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                                <img src="{{asset("materialize/images/avatar.jpg")}}" alt="" class="circle responsive-img valign profile-image">
                             </div>
                             <div class="col col s8 m8 l8">
                                 <ul id="profile-dropdown" class="dropdown-content">
@@ -235,7 +235,7 @@
                             <div class="collapsible-header red white-text"><i class="mdi-action-stars"></i>Favorite Associates</div>
                             <div class="collapsible-body favorite-associates">
                                 <div class="favorite-associate-list chat-out-list row">
-                                    <div class="col s4"><img src="materialize/images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                                    <div class="col s4"><img src="{{asset("materialize/images/avatar.jpg")}}" alt="" class="circle responsive-img online-user valign profile-image">
                                     </div>
                                     <div class="col s8">
                                         <p>Eileen Sideways</p>
@@ -243,7 +243,7 @@
                                     </div>
                                 </div>
                                 <div class="favorite-associate-list chat-out-list row">
-                                    <div class="col s4"><img src="materialize/images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                                    <div class="col s4"><img src="{{asset("materialize/images/avatar.jpg")}}" alt="" class="circle responsive-img online-user valign profile-image">
                                     </div>
                                     <div class="col s8">
                                         <p>Zaham Sindil</p>
@@ -251,7 +251,7 @@
                                     </div>
                                 </div>
                                 <div class="favorite-associate-list chat-out-list row">
-                                    <div class="col s4"><img src="materialize/images/avatar.jpg" alt="" class="circle responsive-img offline-user valign profile-image">
+                                    <div class="col s4"><img src="{{asset("materialize/images/avatar.jpg")}}" alt="" class="circle responsive-img offline-user valign profile-image">
                                     </div>
                                     <div class="col s8">
                                         <p>Renov Leongal</p>
@@ -259,7 +259,7 @@
                                     </div>
                                 </div>
                                 <div class="favorite-associate-list chat-out-list row">
-                                    <div class="col s4"><img src="materialize/images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                                    <div class="col s4"><img src="{{asset("materialize/images/avatar.jpg")}}" alt="" class="circle responsive-img online-user valign profile-image">
                                     </div>
                                     <div class="col s8">
                                         <p>Weno Carasbong</p>
@@ -267,7 +267,7 @@
                                     </div>
                                 </div>
                                 <div class="favorite-associate-list chat-out-list row">
-                                    <div class="col s4"><img src="materialize/images/avatar.jpg" alt="" class="circle responsive-img offline-user valign profile-image">
+                                    <div class="col s4"><img src="{{asset("materialize/images/avatar.jpg")}}" alt="" class="circle responsive-img offline-user valign profile-image">
                                     </div>
                                     <div class="col s8">
                                         <p>Nusja Nawancali</p>
@@ -303,36 +303,35 @@
     </footer>
     <!-- END FOOTER -->
 
-    <script type="text/javascript" src="materialize/js/plugins.js"></script>
-    <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>   
-    <script type="text/javascript" src="materialize/js/scripts.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <!-- ================================================
         Scripts
     ================================================ -->
     
     <!-- jQuery Library -->
-    <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <!--materialize js-->
-    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/materialize.min.js")}}"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}}"></script>
 
     <!-- data-tables -->
-    <script type="text/javascript" src="materialize/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/data-tables/data-tables-script.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
 
     <!-- sparkline -->
-    <script type="text/javascript" src="materialize/js/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/sparkline/sparkline-script.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/sparkline/jquery.sparkline.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/sparkline/sparkline-script.js")}}"></script>
     
     <!--jvectormap-->
-    <script type="text/javascript" src="materialize/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/jvectormap/vectormap-script.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/jvectormap/vectormap-script.js")}}"></script>
     
    
         <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="materialize/js/plugins.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
         </body>
 
 </html>

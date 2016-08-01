@@ -23,8 +23,7 @@
                                 <li><img src="materialize/images/<?php 
                                         if($list->status == 1) echo "Small-Down.gif";
                                         else echo "Small-up-unknown-noblink.gif";
-                                            
-                                    ?>"alt="materialize logo"><span class="folder"> {{$list->id .' '. $list->name}}<span <?php if($list->response==1) {?>
+                                    ?>"alt="materialize logo"><span class="folder"> {{$list->id}} <a href="{{url("history/".$list->id)}}">{{$list->name}}</a><span <?php if($list->response==1) {?>
                                                         class="btn btn-small waves-effect waves-light green new badge green"> confirmed
                                                 <?php }else {?>
                                                         class="btn btn-small waves-effect waves-light red new badge red"> alert
@@ -64,7 +63,7 @@
                                             <li><img src="materialize/images/<?php 
                                                 if($rows->status == 1) echo "Small-Down.gif";
                                                 else echo "Small-Up.gif";
-                                            ?>"alt="materialize logo">{{$rows->id.' '.$rows->name }} <span<?php if($rows->response==1) {?>
+                                            ?>"alt="materialize logo">{{$rows->id}} <a href="{{url("history/".$rows->id)}}">{{$rows->name}}</a> <span<?php if($rows->response==1) {?>
                                                         class="btn btn-small waves-effect waves-light green new badge green"> confirmed
                                                 <?php }else {?>
                                                         class="btn btn-small waves-effect waves-light red new badge red"> alert

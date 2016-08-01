@@ -1,6 +1,12 @@
 @extends('layouts.home')
 
 @section('content')
+    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('select').material_select();
+        });
+    </script>
 
       <!-- START CONTENT -->
       <section id="content">
@@ -16,7 +22,7 @@
                   </li>
                   <li><a href="">History</a>
                   </li>
-                  <li class="active">Kota Padang</li>
+                  <li class="active">{{$region}}</li>
                 </ol>
               </div>
             </div>
@@ -31,61 +37,41 @@
                         <li class="collection-item avatar">
                             <i class="mdi-action-history circle red darken-2"></i>
                             <span class="collection-header">Last 25 Events</span>
-                            <p>Kota Padang</p>
+                            <p>{{$region}}</p>
                             <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
                         </li>
+                        @foreach ($result->slice(0, 25)  as $list)
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s2">
-                                    <p class="collections-title"> 7/24/2016 4:46 AM</p>
+                                    <p class="collections-title"> {{ $list->created_at}}</p>
                                 </div>
                                 <div class="col s1">
-                                    <span> <img src="materialize/images/Small-Up.gif"></span>
+                                    <span> <img
+                                                <?php if($list->id_reports!=NULL){ ?>
+                                                src="{{asset("materialize/images/Event-5001.gif")}}"
+                                                <?php }elseif($list["on/off"]==1){?>
+                                                src="{{asset("materialize/images/Small-Up.gif")}}"
+                                                <?php }else {?>
+                                                src="{{asset("materialize/images/Small-Down.gif")}}"
+                                                <?php } ?>
+                                        ></span>
                                 </div>
                                 <div class="col s7">
-                                    <p class="collections-content"> 1371 Kota Padang is responding again. Response time is 23 milliseconds. </p>
+                                    <p class="collections-content">
+                                        <?php if($list->id_reports!=NULL){?>
+                                            {{$list->id_region}} {{$list->name}} report is "{{$reports[$list->id_reports]}}"
+                                        <?php }elseif($list["on/off"]==1){?>
+                                            {{$list->id_region}} {{$list->name}} is responding again.
+                                        <?php }else {?>
+                                            {{$list->id_region}} {{$list->name}} has stopped responding.
+                                        <?php } ?>
+                                    </p>
                                </div>
                             </div>
                         </li>
-                        <li class="collection-item">
-                            <div class="row">
-                                <div class="col s2">
-                                    <p class="collections-title"> 7/24/2016 4:46 AM</p>
-                                </div>
-                                <div class="col s1">
-                                    <span> <img src="materialize/images/Small-Down.gif"></span>
-                                </div>
-                                <div class="col s7">
-                                    <p class="collections-content">  1371 Kota Padang has stopped responding (Request Timed Out) </p>
-                               </div>
-                            </div>
-                        </li>
-                        <li class="collection-item">
-                            <div class="row">
-                                <div class="col s2">
-                                    <p class="collections-title"> 7/22/2016 6:40 AM</p>
-                                </div>
-                                <div class="col s1">
-                                    <span> <img src="materialize/images/Event-5001.gif"></span>
-                                </div>
-                                <div class="col s9  ">
-                                    <p class="collections-content"> Node 1371 Kota Padang's packet loss has dropped from above 40% to below 5% and is currently 0 %. </p>
-                               </div>
-                            </div>
-                        </li>
-                        <li class="collection-item">
-                            <div class="row">
-                                <div class="col s2">
-                                    <p class="collections-title"> 7/24/2016 4:46 AM</p>
-                                </div>
-                                <div class="col s1">
-                                    <span> <img src="materialize/images/Event-5000.gif"></span>
-                                </div>
-                                <div class="col s7">
-                                    <p class="collections-content"> Node 1371 Kota Padang has rebooted at Wednesday, July 20, 2016 2:49 PM. </p>
-                               </div>
-                            </div>
-                        </li>
+                        @endforeach
+
                     </ul>
                 </div>
             </div>
@@ -99,16 +85,16 @@
                         <li class="collection-item avatar">
                             <i class="mdi-action-history circle red darken-2"></i>
                             <span class="collection-header">Event Summary</span>
-                            <p>Kota Padang Last 12 MONTHS</p>
+                            <p>{{$region}} Last 12 MONTHS</p>
                             <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
                         </li>
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s1">
-                                    <span> <img src="materialize/images/Small-Up.gif"></span>
+                                    <span> <img src="{{asset("materialize/images/Small-Up.gif")}}"></span>
                                 </div>
                                 <div class="col s1">
-                                    <p class="collections-title"> 72</p>
+                                    <p class="collections-title"> {{$count[1]}}</p>
                                 </div>
                                 <div class="col s5">
                                     <p class="collections-content">Node Up </p>
@@ -118,39 +104,26 @@
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s1">
-                                    <span> <img src="materialize/images/Small-Down.gif"></span>
+                                    <span> <img src="{{asset("materialize/images/Small-Down.gif")}}"></span>
                                 </div>
                                 <div class="col s1">
-                                    <p class="collections-title"> 72</p>
+                                    <p class="collections-title"> {{$count[0]}}</p>
                                 </div>
                                 <div class="col s5">
-                                    <p class="collections-content">Alert Triggered </p>
+                                    <p class="collections-content">Node Down </p>
                                </div>
                             </div>
                         </li>
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s1">
-                                    <span> <img src="materialize/images/Event-5000.gif"></span>
+                                    <span> <img src="{{asset("materialize/images/Event-5001.gif")}}"></span>
                                 </div>
                                 <div class="col s1">
-                                    <p class="collections-title"> 72</p>
+                                    <p class="collections-title"> {{$count[2]}}</p>
                                 </div>
                                 <div class="col s5">
-                                    <p class="collections-content">Node Up </p>
-                               </div>
-                            </div>
-                        </li>
-                        <li class="collection-item">
-                            <div class="row">
-                                <div class="col s1">
-                                    <span> <img src="materialize/images/Event-5001.gif"></span>
-                                </div>
-                                <div class="col s1">
-                                    <p class="collections-title"> 72</p>
-                                </div>
-                                <div class="col s5">
-                                    <p class="collections-content">Alert Reset </p>
+                                    <p class="collections-content">Alert Report</p>
                                </div>
                             </div>
                         </li>
@@ -273,23 +246,23 @@
     <!-- ================================================
     Scripts
     ================================================ -->
-    
+
     <!-- jQuery Library -->
-    <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <!--materialize js-->
-    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/materialize.min.js")}}"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}}"></script>
+
     <!-- chartist -->
-    <script type="text/javascript" src="materialize/js/plugins/chartist-js/chartist.min.js"></script>   
-    
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartist-js/chartist.min.js")}}"></script>
+
     <!-- chartjs -->
-    <script type="text/javascript" src="materialize/js/plugins/chartjs/chart.min.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/chartjs/chartjs-sample-chart.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chart.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chartjs-sample-chart.js")}}"></script>
 
 
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="materialize/js/plugins.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}")}}"></script>
 
 @endsection
