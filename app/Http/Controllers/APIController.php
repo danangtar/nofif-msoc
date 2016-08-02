@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Users;
+
 use Hash;
 use JWTAuth;
 class APIController extends Controller
