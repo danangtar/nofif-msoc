@@ -11,10 +11,15 @@
 |
 */
 
+//Login
+Route::get('/login', 'Controller@login');
+Route::post('/login_process', 'Controller@login_process');
+Route::get('/logout', 'Controller@logout');
+
+
 Route::get('/', 'HomeController@index');
 Route::get('/dashboard', 'HomeController@index');
-Route::get('/picdashboard', 'HomeController@indexpic');
-Route::get('/login', 'HomeController@login');
+
 
 //PIC
 Route::get('/pic', 'HomeController@pic');
@@ -40,6 +45,9 @@ Route::get('/key', function() {
     return str_random(32);
 });
 Route::get('/tes', 'Controller@show');
+
+
+Route::get('/picdashboard', 'ProcessController@indexpic');
 
 Route::group(['prefix' => 'api/v1'], function()
 {
