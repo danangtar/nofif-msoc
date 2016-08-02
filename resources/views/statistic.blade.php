@@ -1,18 +1,31 @@
 @extends('layouts.home')
 
 @section('content')
-    <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>    
-    <script type="text/javascript" src="materialize/js/plugins/material-datetime-picker-master/dist/datepicker.js"></script>    
    
-    <script type="text/javascript">
+    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/material-datetime-picker-master/dist/js/datepicker.js")}}"></script>    
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/pickadate.js-3.5.6/lib/picker.date.js")}}"></script>    
+<script type="text/javascript">
     $( document ).ready(function() {
         $('select').material_select();
+ 
         $('.datepicker').pickadate({
-            beforeShowDay: $.datepicker.noWeekends
-selectDays: false, // Creates a dropdown to control month
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 5 // Creates a dropdown of 15 years to control year
-        });
+ 
+            labelMonthNext: 'Go to the next month',
+            labelMonthPrev: 'Go to the previous month',
+            labelMonthSelect: 'Pick a month from the dropdown',
+            labelYearSelect: 'Pick a year from the dropdown',
+            selectYears: true,
+            selectMonths: false,
+            //DISABLE MONTH
+    
+            //DISABLE DAY            
+            disable: [
+                1,2,3,4,5,6
+            ]
+})
+        $('#datepicker').find('.ui-picker__nav--prev').remove();
+
     });   
     </script>
 
@@ -36,9 +49,9 @@ selectDays: false, // Creates a dropdown to control month
                                <form class="col s12" action="{{url('create_user')}}" method="post">
                           <div class="row">
                             <div class="input-field col s12">
-                              <i class="mdi-maps-place  prefix"></i>
+                              <i class="mdi-image-timer  prefix"></i>
                                    <input disabled id="disabled" type="text" class="validate">
-                                    <label for="disabled">PIC tingkat</label>
+                                    <label for="disabled">Select time statistic preview</label>
                                     <br>
                                 <div> 
                                     <input class="with-gap" name="previledge" value="Day" type="radio" id="test1" />

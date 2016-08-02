@@ -3,7 +3,7 @@
 @section('content')
 <!-- jQuery Library -->
 <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>   
-<!--<script type="text/javascript" src="materialize/js/scripts.js"></script>-->
+<script type="text/javascript" src="materialize/js/scripts.js"></script>
 <div>
     <!--card widgets start-->
     <div id="card-widgets">
@@ -28,7 +28,7 @@
                                                 <?php }else {?>
                                                         class="btn btn-small waves-effect waves-light red new badge red"> alert
                                                 <?php }?>
-                                    </span></li>
+                                    </span></span></li>
                                 @endforeach
 <!--
                                 <li><img src="materialize/images/Small-Down.gif"alt="materialize logo"><span class="folder"> Clientes</span></li>
@@ -63,12 +63,12 @@
                                             <li><img src="materialize/images/<?php 
                                                 if($rows->status == 1) echo "Small-Down.gif";
                                                 else echo "Small-Up.gif";
-                                            ?>"alt="materialize logo">{{$rows->id}} <a href="{{url("history/".$rows->id)}}">{{$rows->name}}</a> <span<?php if($rows->response==1) {?>
+                                            ?>"alt="materialize logo"><span class="folder"> {{$rows->id}} <a href="{{url("history/".$rows->id)}}">{{$rows->name}}</a> <span<?php if($rows->response==1) {?>
                                                         class="btn btn-small waves-effect waves-light green new badge green"> confirmed
                                                 <?php }else {?>
                                                         class="btn btn-small waves-effect waves-light red new badge red"> alert
                                                 <?php }?>
-                                            </span>
+                                            </span></span>
                                             </li>
                                                          
                                         @endforeach
