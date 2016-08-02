@@ -22,8 +22,12 @@ class APIController extends Controller
         $input = $request->all();
         if (!$token = JWTAuth::attempt($input)) {
         return response()->json(['status' => '404']);
+        }else{
+            $User = Users::where('username','=',$input['username'])
+                ->select('id')
+                ->get();
+            return response()->json(['status' => '200', 'id_user' => $User[0]['id'],'result' => $token]);
         }
-        return response()->json(['status' => '200','result' => $token]);
     }
 
     public function get_user_details(Request $request)

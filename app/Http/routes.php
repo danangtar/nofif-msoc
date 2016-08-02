@@ -12,9 +12,9 @@
 */
 
 //Login
-Route::get('/login', 'Controller@login');
-Route::post('/login_process', 'Controller@login_process');
-Route::get('/logout', 'Controller@logout');
+Route::get('/login', 'FrontController@login');
+Route::post('/login_process', 'FrontController@login_process');
+Route::get('/logout', 'FrontController@logout');
 
 
 Route::get('/', 'HomeController@index');
