@@ -98,12 +98,6 @@ var PolarChartSampleData = [
         color: "#949FB1",
         highlight: "#A8B3C5",
         label: "Grey"
-    },
-    {
-        value: 120,
-        color: "#4D5360",
-        highlight: "#616774",
-        label: "Dark Grey"
     }
 
 ];
@@ -112,21 +106,21 @@ var PolarChartSampleData = [
 var PieDoughnutChartSampleData = [
     {
         value: 300,
-        color:"#F7464A",
+        color:"#ff3d00 ",
         highlight: "#FF5A5E",
-        label: "Red"
+        label: "Node Down"
     },
     {
         value: 50,
-        color: "#46BFBD",
-        highlight: "#5AD3D1",
-        label: "Green"
+        color: "#1de9b6  ",
+        highlight: "#1de9b6",
+        label: "Node Up"
     },
     {
         value: 100,
-        color: "#FDB45C",
-        highlight: "#FFC870",
-        label: "Yellow"
+        color: "#ffea00  ",
+        highlight: "#ffff00 ",
+        label: "Alert Report"
     }
 ]
 
