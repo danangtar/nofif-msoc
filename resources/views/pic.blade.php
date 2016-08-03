@@ -5,6 +5,7 @@
     <script type="text/javascript">
         $( document ).ready(function() {
             $('select').material_select();
+
         });
     </script>
 
@@ -139,11 +140,15 @@
                             <td>{{$list->number}}</td>
                             <td>{{$list->email}}</td>
                             <td>
-                                     <select name="id_region">
+                                <form action="{{url('update_region')}}" method="POST">
+                                    <input name="id" type="hidden" value="{{$list->id}} ">
+
+                                    <select name="id_region" id="select{{$list->id}}" onchange="this.form.submit()">
                                          @foreach ($region as $row)
                                              <option value="{{$row->id}}" <?php if($list->id_region==$row->id) echo "selected";?>>{{$row->name}}</option>
                                          @endforeach
                                      </select>
+                                </form>
                             </td>
                             {{--<td>{{$list->name}}</td>--}}
                              <td>
@@ -225,6 +230,13 @@
                                 <a href="{{url("delete_user/$list->id")}}" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
                             </div>
                         </div>
+                             <script type="text/javascript">
+                                 $( document ).ready(function() {
+                                     $('#select{{$list->id}}').on('change', function() {
+                                         console.log( this.value); // or $(this).val()
+                                     });
+                                 });
+                             </script>
 
                             @endforeach
                     </tbody>

@@ -92,6 +92,18 @@ class HomeController extends Controller
         //
     }
 
+    public function update_region(Request $request){
+        $input = $request->all();
+
+        $id = $input['id'];
+        $User  = Users::find($id);
+        $User->id_region = $input['id_region'];
+        var_dump($input);
+        $User->save();
+
+        return redirect('pic');
+    }
+
     public function update_user(Request $request){
         $input = $request->all();
 
