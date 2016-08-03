@@ -72,4 +72,16 @@ class APIController extends Controller
         return response()->json(['status' => '200']);
     }
 
+    public function send_report(Request $request)
+    {
+        $input = $request->all();
+        $inputyes['id_answer']=$input['id_answer'];
+        $inputyes['id_user']=$input['id_user'];
+        $inputyes['response']=$input['response'];
+        $inputyes['detail']=$input['detail'];
+        Reports::create($inputyes);
+
+        return response()->json(['status' => '200']);
+    }
+
 }

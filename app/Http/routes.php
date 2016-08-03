@@ -19,6 +19,7 @@ Route::get('/logout', 'FrontController@logout');
 
 Route::get('/', 'HomeController@index');
 Route::get('/dashboard', 'HomeController@index');
+Route::get('alert/{id}', 'HomeController@alertRegion');
 
 
 //PIC
@@ -58,6 +59,7 @@ Route::group(['prefix' => 'api/v1'], function()
         Route::post('send_token', 'APIController@send_token');
         Route::post('get_user', 'APIController@get_user');
         Route::post('update_user', 'APIController@update_user');
+        Route::post('send_report', 'APIController@send_report');
 
         Route::post('get_user_details', 'APIController@get_user_details');
     });

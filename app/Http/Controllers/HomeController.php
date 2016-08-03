@@ -238,6 +238,58 @@ class HomeController extends Controller
         return view('statistic');
     }
 
+    public function alertRegion($id){
+        $User  = Users::where('id_region','=',$id)
+            ->select('remember_token')
+            ->get();
+
+        $Region  = Region::where('id','=',$id)
+            ->select('name')
+            ->get();
+
+        $token=$User[0]['remember_token'];
+        $region = $Region[0]['name'];
+        $data = array
+        (
+            'id_user' 	=> $id,
+            'region' 	=> $region,
+        );
+
+        $notification= array
+        (
+            'title' 	=> 'ALERT!!! Server Down',
+            'body' 	=> 'Check & Replay',
+            'sound' 	=> 'default',
+            'click_action' 	=> 'FCM_PLUGIN_ACTIVITY',
+            'icon' 	=> 'icon_name'
+        );
+
+        $json=array(
+            'data' 	=> $data,
+            'notification' 	=> $notification,
+            'to' 	=> $token,
+            'priority' => 'high'
+        );
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Content-Length: '.strlen(json_encode($json)),
+            'Authorization:key=AIzaSyB8A-zll_nZ6eq4HIl0U0RxFqMCgRYVUwI'
+        ));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json));
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $output = curl_exec($ch);
+        curl_close($ch);
+        echo $output;
+
+        return redirect('dashboard');
+
+    }
 
         /**
      * Store a newly created resource in storage.
