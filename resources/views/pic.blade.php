@@ -17,15 +17,9 @@
             
             <!--DataTables example-->
             <div id="table-datatables">
-              <h4 class="header">PIC Regions</h4>
               <div class="row">
-                <div class="col s12 m4 l3">
-                  <p>DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function.</p>
-
-                  <p>Searching, ordering, paging etc goodness will be immediately added to the table, as shown in this example.</p>
-                </div>
-         <!-- Modal Trigger -->
-          <a class="modal-trigger waves-effect waves-light btn" href="#modal3">Add new pic</a>
+                <!-- Modal Trigger -->
+                  <a class="modal-trigger waves-effect waves-light btn" href="#modal3">Add new pic</a>
 
           <!-- Modal Structure -->
           <div id="modal3" class="modal">
@@ -113,10 +107,11 @@
                 
 
                   
-                <div class="col s12 m8 l9">
+                <div class="col s12 m8 l12">
                    <table id="data-table-simple" class="responsive-table display" cellspacing="0"  width="100%">
                     <thead>
                         <tr>
+                            <th>Username</th>
                             <th>Name</th>
                             <th>Phone Number</th>
                             <th>Email</th>
@@ -127,6 +122,7 @@
                  
                     <tfoot>
                         <tr>
+                            <th>Username</th>
                             <th>Name</th>
                             <th>Phone Number</th>
                             <th>Email</th>
@@ -138,6 +134,7 @@
                     <tbody>
                          @foreach ($result as $list)
                              <tr>
+                            <td>{{$list->username}}</td>
                             <td>{{$list->fullname}}</td>
                             <td>{{$list->number}}</td>
                             <td>{{$list->email}}</td>

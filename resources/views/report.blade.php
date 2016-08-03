@@ -183,8 +183,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
-    <!--end container-->
+ <!--end container-->
 
 @endsection

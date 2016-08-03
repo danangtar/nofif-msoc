@@ -80,7 +80,7 @@ class HomeController extends Controller
 //        $User = Users::all();
         $result = Users
             ::join('region', 'users.id_region', '=', 'region.id')
-            ->select('users.id','users.id_region','users.fullname','users.number', 'users.email','region.name')
+            ->select('users.id','users.id_region','users.username','users.fullname','users.number', 'users.email','region.name')
             ->get();
         $data['result']= $result;
 //        $data['region']= json_encode($regions, true);
