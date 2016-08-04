@@ -232,6 +232,87 @@ class HomeController extends Controller
         return view('history',$data);
 
     }
+    //home_history
+    public function history_home()
+    {
+        $id =11;
+        $Regions  = Region::all();
+        $provinsi=array();
+        $kabupaten=array();
+        $statreal= array_fill(0, 100, 0);
+        $sum = array_fill(0, 100, 0);
+        $kabstat = array_fill(0, 100, 0);
+        foreach($Regions as $row){
+            if($row->id<99){
+                $provinsi[]= $row;
+                
+            }
+            else {
+                $kabupaten[floor($row->id/100)][]=$row;
+                    $sum[floor($row->id/100)]++;             
+                if($row->status == 1)
+                    $kabstat[floor($row->id/100)]++;             
+            }
+        }
+        
+        for($i=0;$i<100;$i++){
+            if($sum[$i]!=0){
+                $cek =$sum[$i]- $kabstat[$i];
+                if($cek==$sum[$i])
+                    $statreal[$i]=1;//nyala
+                else if ($cek==0)
+                    $statreal[$i]=2;//mati
+                else
+                    $statreal[$i]=3;//bimbang          
+            }
+        }
+        
+        $count = array_fill(0, 3, 0);
+
+        $dt = Carbon::now();
+        $newtime=$dt->subYear();
+
+        $tes = Region::where('id','=',$id)
+            ->select('name')
+            ->get();
+        $data['region']=$tes[0]["name"];
+
+        $result = Log
+            ::join('region', 'log.id_region', '=', 'region.id')
+            ->where('log.id_region','=',$id)
+            ->whereDate('log.created_at', '>', $newtime->toDateString())
+            ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
+            ->get();
+        $data['result']= $result;
+
+        $reports=array();
+        foreach($result as $row){
+            if($row->id_reports!=NULL){
+                $count[2]++;
+                $id_report= $row->id_reports;
+                $report = Reports
+                    ::join('answers', 'reports.id_answer', '=', 'answers.id')
+                    ->where('reports.id','=',$id_report)
+                    ->select('answers.description')
+                    ->get();
+                $reports[$id_report]= $report[0]["description"];
+            }elseif ($row["on/off"]==1){
+                $count[1]++;
+            }else{
+                $count[0]++;
+            }
+        }
+
+        $data['count']= $count;
+        $data['result']= $result;
+        $data['reports']= $reports;
+        
+        $data['kabstat']= $statreal;
+        $data['provinsi']= $provinsi;
+        $data['kabupaten']= $kabupaten;
+        
+        return view('history_home',$data);
+    }
 
     public function statistic()
     {
