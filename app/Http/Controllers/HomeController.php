@@ -210,6 +210,7 @@ class HomeController extends Controller
             ::join('region', 'log.id_region', '=', 'region.id')
             ->where('log.id_region','=',$id)
             ->whereDate('log.created_at', '>', $newtime->toDateString())
+            ->orderBy('log.created_at','DESC')
             ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
             ->get();
         $data['result']= $result;
@@ -278,28 +279,18 @@ class HomeController extends Controller
             }
         }
         
-        $count = array_fill(0, 3, 0);
-
-        $dt = Carbon::now();
-        $newtime=$dt->subYear();
-
-        $tes = Region::where('id','=',$id)
-            ->select('name')
-            ->get();
-        $data['region']=$tes[0]["name"];
 
         $result = Log
             ::join('region', 'log.id_region', '=', 'region.id')
-            ->where('log.id_region','=',$id)
-            ->whereDate('log.created_at', '>', $newtime->toDateString())
             ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
+            ->orderBy('log.created_at','DESC')
+            ->take('25')
             ->get();
         $data['result']= $result;
 
         $reports=array();
         foreach($result as $row){
             if($row->id_reports!=NULL){
-                $count[2]++;
                 $id_report= $row->id_reports;
                 $report = Reports
                     ::join('answers', 'reports.id_answer', '=', 'answers.id')
@@ -307,14 +298,8 @@ class HomeController extends Controller
                     ->select('answers.description')
                     ->get();
                 $reports[$id_report]= $report[0]["description"];
-            }elseif ($row["on/off"]==1){
-                $count[1]++;
-            }else{
-                $count[0]++;
-            }
-        }
+            }       }
 
-        $data['count']= $count;
         $data['result']= $result;
         $data['reports']= $reports;
         

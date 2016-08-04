@@ -5,33 +5,7 @@
     <script type="text/javascript" src="{{asset("materialize/js/scripts.js")}}"></script><script type="text/javascript">
         $( document ).ready(function() {
         $('select').material_select();
-        //Pie Doughnut Chart
-        var PieDoughnutChartSampleData = [
-            {
-                value: {{$count[0]}},
-                color:"#ff3d00 ",
-                highlight: "#FF5A5E",
-                label: "Node Down"
-            },
-            {
-                value: {{$count[1]}},
-                color: "#1de9b6  ",
-                highlight: "#1de9b6",
-                label: "Node Up"
-            },
-            {
-                value: {{$count[2]}},
-                color: "#ffea00  ",
-                highlight: "#ffff00 ",
-                label: "Alert Report"
-            }
-        ]
 
-         window.onload = function() {
-            window.PieChartSample = new Chart(document.getElementById("pie-chart-sample").getContext("2d")).Pie(PieDoughnutChartSampleData,{
-               responsive:true
-            });
-         };
     });
     </script>
 
@@ -93,13 +67,17 @@
                         <li class="collection-item avatar">
                             <i class="mdi-action-history circle red darken-2"></i>
                             <span class="collection-header">Last 25 Events</span>
-                            <p>{{$region}}</p>
+                            <p>All</p>
                             <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
                         </li>
-                        @foreach ($result->slice(0, 25)  as $list)
+                        @foreach ($result  as $list)
                         <li class="collection-item">
                             <div class="row">
+<<<<<<< HEAD
                                 <div class="col s4">
+=======
+                                <div class="col s3">
+>>>>>>> b528b12f38a40456b90782d85033d7165dea4918
                                     <p class="collections-title"> {{ $list->created_at}}</p>
                                 </div>
                                 <div class="col s1">
@@ -113,7 +91,7 @@
                                                 <?php } ?>
                                         ></span>
                                 </div>
-                                <div class="col s7">
+                                <div class="col s8">
                                     <p class="collections-content">
                                         <?php if($list->id_reports!=NULL){?>
                                             {{$list->id_region}} {{$list->name}} report is "{{$reports[$list->id_reports]}}"

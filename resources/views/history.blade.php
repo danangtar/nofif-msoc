@@ -18,12 +18,6 @@
                 color: "#1de9b6  ",
                 highlight: "#1de9b6",
                 label: "Node Up"
-            },
-            {
-                value: {{$count[2]}},
-                color: "#ffea00  ",
-                highlight: "#ffff00 ",
-                label: "Alert Report"
             }
         ]
 
