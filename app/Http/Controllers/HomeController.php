@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Hash;
 use Carbon\Carbon;
-
+use DB;
 use App\Region;
 use App\Users;
 use App\Answers;
@@ -109,7 +109,6 @@ class HomeController extends Controller
 
         $id = $input['id'];
         $User  = Users::find($id);
-        var_dump($input);
         if($input['password']!="")
         $input['password'] = Hash::make($input['password']);
 
@@ -328,20 +327,58 @@ class HomeController extends Controller
 
     public function statistic()
     {
-        return view('statistic');
+
+        $data['result']=NULL;
+        $data['title']= "";
+//        var_dump($data['result']);
+        return view('statistic',$data);
     }
 
     public function search_statistic(Request $request){
         $input = $request->all();
 
-        var_dump($input);
-//        $id = $input['id'];
-//        $Reports  = Reports::find($id);
-//        $Reports->detail =$input['detail'];
-//
-//        $Reports->save();
-//
-//        return redirect('report');
+        $dayselect = $input['dayselect'];
+        if($dayselect==2){
+            $result = Log
+                ::join('reports', 'log.id_reports', '=', 'reports.id')
+                ->join('answers', 'reports.id_answer' ,'=','answers.id')
+                ->whereYear('log.created_at', '=',$input['year2'])
+                ->select('reports.id_answer','answers.description',DB::raw('count(*) as total'))
+                ->groupBy('reports.id_answer')
+                ->get();
+
+            $title = $input['year2'];
+        }elseif($dayselect==1){
+            $result = Log
+                ::join('reports', 'log.id_reports', '=', 'reports.id')
+                ->join('answers', 'reports.id_answer' ,'=','answers.id')
+                ->whereYear('log.created_at', '=',$input['year1'])
+                ->whereMonth('log.created_at', '=',$input['month1'])
+                ->select('reports.id_answer','answers.description',DB::raw('count(*) as total'))
+                ->groupBy('reports.id_answer')
+                ->get();
+            $title = $input['month1']."/".$input['year1'];
+        }elseif($dayselect==0){
+            $date = Carbon::createFromFormat('d/m/Y', $input['date0']);
+
+            $result = Log
+                ::join('reports', 'log.id_reports', '=', 'reports.id')
+                ->join('answers', 'reports.id_answer' ,'=','answers.id')
+                ->whereDate('log.created_at', '=', $date->toDateString())
+                ->select('reports.id_answer','answers.description',DB::raw('count(*) as total'))
+                ->groupBy('reports.id_answer')
+                ->get();
+            $title =$input['date0'];
+        }else{
+            $result=NULL;
+            $title="";
+        }
+//        return response()->json($result);
+        $data['result']= $result;
+        $data['title']= $title;
+
+//        var_dump($result);
+        return view('statistic',$data);
     }
 
     public function alertRegion($id){
