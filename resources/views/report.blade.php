@@ -109,7 +109,7 @@
                                         <i class=" mdi-toggle-check-box"></i>
                                     </a>
                                     <?php }else{ ?>
-                                    <a class="btn-floating2 btn-small  waves-effect waves-light waves-light  yellow accent-3 medium material-icons tooltipped modal-trigger" data-position="top" data-delay="10" data-tooltip="send alert" href="#confirm{{$list->id}}">
+                                    <a class="btn-floating2 btn-small  waves-effect waves-light waves-light  yellow accent-3 medium material-icons tooltipped modal-trigger" data-position="top" data-delay="10" data-tooltip="confirm report?" href="#confirm{{$list->id}}">
                                         <i class=" mdi-av-timer"></i>
                                     </a>
                                     <?php } ?>

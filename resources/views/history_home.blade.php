@@ -99,7 +99,7 @@
                         @foreach ($result->slice(0, 25)  as $list)
                         <li class="collection-item">
                             <div class="row">
-                                <div class="col s2">
+                                <div class="col s4">
                                     <p class="collections-title"> {{ $list->created_at}}</p>
                                 </div>
                                 <div class="col s1">

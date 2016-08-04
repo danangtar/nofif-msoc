@@ -58,7 +58,7 @@
         <div class="navbar-fixed">
             <nav class="cyan">
                 <div class="nav-wrapper">
-                    <h1 class="logo-wrapper"><a href="{{ url('/dashboard') }}"  class="brand-logo darken-1"><img src="{{asset("materialize/images/materialize-logo.png")}}" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1>
+                    <h1 class="logo-wrapper"><a href="{{ url('/dashboard') }}"  class="brand-logo darken-1"><img src="{{asset("materialize/images/Untitled-2.png")}}" alt="materialize logo" style="height:34px; width:auto"></a> <span class="logo-text">Materialize</span></h1>
                     <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">
@@ -68,8 +68,10 @@
                         <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light"><i class="mdi-social-notifications"></i></a>
                         </li>
                         <!-- Dropdown Trigger -->                        
+<!--
                         <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
                         </li>
+-->
                     </ul>
                 </div>
             </nav>

@@ -18,7 +18,7 @@
             
             <!--DataTables example-->
             <div id="table-datatables">
-              <div class="row">
+              <div class="row"><br>
                 <!-- Modal Trigger -->
                   <a class="modal-trigger waves-effect waves-light btn" href="#modal3">Add new pic</a>
 
@@ -153,10 +153,10 @@
                             {{--<td>{{$list->name}}</td>--}}
                              <td>
                                 <div>
-                                    <a class="btn-floating2 btn-small medium material-icons modal-trigger edit" href="#edit{{$list->id}}">
+                                    <a class="btn-floating2 btn-small waves-effect waves-light teal accent-3 medium material-icons modal-trigger tooltipped edit" data-position="top" data-delay="10" data-tooltip="edit PIC"  href="#edit{{$list->id}}">
                                         <i class="large mdi-editor-mode-edit"></i>
                                     </a>
-                                    <a class="btn-floating2 btn-small medium material-icons modal-trigger" href="#delete{{$list->id}}">
+                                    <a class="btn-floating2 btn-small waves-effect waves-light medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="delete PIC"  href="#delete{{$list->id}}">
                                         <i class="mdi-action-delete"></i>
                                     </a>
                                 </div>

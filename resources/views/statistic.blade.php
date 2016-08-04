@@ -2,8 +2,8 @@
 
 @section('content')
     <?php
-    $color_ = array('#ffcdd2', '#ff1744', '#d81b60 ', '#880e4f ', '#e1bee7',   '#6a1b9a', '#aa00ff', '#651fff', '#9575cd', '#ede7f6',  '#8c9eff ','#1565c0', '#29b6f6' , '#80d8ff ', '#00acc1',   '#84ffff', '#b2dfdb', '#009688', '#64ffda', '#c8e6c9',  '#00e676', '#76ff03', '#dce775 ', '#f4ff81 ', '#ffeb3b',   '#f57f17', '#ffecb3', '#ffa000', '#e65100', '#fbe9e7', '#ff6e40', '#d7ccc8', '#8d6e63 ', '#4e342e ', '#f5f5f5',   '#bdbdbd', '#616161', '#212121', '#004d40', '#4527a0');
-    $highlight_= array('#ffcdd2', '#ff1744', '#d81b60 ', '#880e4f ', '#e1bee7',   '#6a1b9a', '#aa00ff', '#651fff', '#9575cd', '#ede7f6',  '#8c9eff ','#1565c0', '#29b6f6' , '#80d8ff ', '#00acc1',   '#84ffff', '#b2dfdb', '#009688', '#64ffda', '#c8e6c9',  '#00e676', '#76ff03', '#dce775 ', '#f4ff81 ', '#ffeb3b',   '#f57f17', '#ffecb3', '#ffa000', '#e65100', '#fbe9e7', '#ff6e40', '#d7ccc8', '#8d6e63 ', '#4e342e ', '#f5f5f5',   '#bdbdbd', '#616161', '#212121', '#004d40', '#4527a0');
+    $color_ = array('#8c9eff',  '#00e676', '#ffcdd2', '#ff1744', '#ffeb3b', '#d81b60 ', '#880e4f ', '#e1bee7',   '#6a1b9a', '#aa00ff', '#651fff', '#9575cd', '#ede7f6'   ,'#1565c0', '#29b6f6' , '#80d8ff ', '#00acc1',   '#84ffff', '#b2dfdb', '#009688', '#64ffda', '#c8e6c9', '#76ff03', '#dce775 ', '#f4ff81 ',   '#f57f17', '#ffecb3', '#ffa000', '#e65100', '#fbe9e7', '#ff6e40', '#d7ccc8', '#8d6e63 ', '#4e342e ', '#f5f5f5',   '#bdbdbd', '#616161', '#212121', '#004d40', '#4527a0');
+    $highlight_= array('#c5cae9 ','#69f0ae ','#ffebee', '#ff5252', '#fff59d','#e91e63','#ad1457 ', '#f3e5f5',   '#8e24aa', '#d500f9', '#7c4dff', '#b39ddb ', '#f3e5f5'  ,'#1565c0', '#29b6f6' , '#80d8ff ', '#00acc1',   '#84ffff', '#b2dfdb', '#009688', '#64ffda', '#c8e6c9', '#76ff03', '#dce775 ', '#f4ff81 ',   '#f57f17', '#ffecb3', '#ffa000', '#e65100', '#fbe9e7', '#ff6e40', '#d7ccc8', '#8d6e63 ', '#4e342e ', '#f5f5f5',   '#bdbdbd', '#616161', '#212121', '#004d40', '#4527a0');
 
     echo "<style>";
     for ($x = 0; $x < 40; $x++) {
@@ -109,14 +109,33 @@
 
     <!-- START CONTENT -->
     <section id="content">
+    <div class="container">
+            
+        <!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">Statistics</h5>
+                <ol class="breadcrumb">
+                  <li><a href="">Dashboard</a>
+                  </li>
+                  <li><a href="">Statistics</a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->  
+        
         <div class="divider"></div>
         <!--start container-->
-        <div class="container">
             <!--card widgets start-->
             <div id="card-widgets" class="seaction">
                 <div class="row">
                     <!-- right-->
-                    <div class="col s6 m6 l12">
+                    <div class="col s12 m12 l12">
                         <div id="task-card" class="collection with-header">
                             <div class="collection-header cyan">
                                 <h5 class="task-card-title center">Statistic History {{$title}}</h5>
@@ -124,19 +143,21 @@
                             <br>
                             <div class="col s12 m12 l12" id="diagram">
                                 <div class="sample-chart-wrapper">
-                                    <div class="col s12 m3 l8">
+                                    <div class="col s12 m12 l7">
                                         <div id="doughnut-chart-wrapper">
                                             <canvas id="doughnut-chart" height="200"></canvas>
+<!--
                                             <div class="doughnut-chart-status">4500
                                                 <p class="ultra-small center-align">Sold</p>
                                             </div>
+-->
                                         </div>
                                     </div>
-                                    <div class="col s12 m2 l4">
+                                    <div class="col s12 m12 l5">
                                         <ul class="doughnut-chart-legend">
                                             <?php if($result!=NULL){ $x=0 ?>
                                             @foreach($result as $list)
-                                                <li class="color{{$x}} ultra-small"><span class="legend-color"></span>{{$list->description}}</li>
+                                                <li class="color{{$x}}  small"><span class="legend-color"></span>{{$list->description}}</li>
                                             <?php $x++?>
                                             @endforeach
                                             <?php } ?>
@@ -146,7 +167,7 @@
                                 </div>
                             </div>
                             <div class="col s12 m12 l12" id="nodata">
-                                <h2 class="center"><b>NO DATA</b></h2>
+                                <h3 class="center">Sorry no data displayed...</h3>
                             </div>
                             <!-- Form with validation -->
                             <div class="col s12 m12 l12">
