@@ -56,7 +56,7 @@
         </div>
         <!--breadcrumbs end-->     
      
-       <!--work collections start-->
+          <!--work collections start-->
         <div id="work-collections">
             <div class="row">
                 
@@ -73,11 +73,11 @@
                             </div>
                             <ul class="expList">
                                 @foreach($provinsi as $list)
-                                <li> <span class="folder" style="white-space: nowrap;"><a href="{{url("history/".$list->id)}}">{{$list->name}}</a></span>
+                                <li> <span class="folder" style="white-space: nowrap;"><a  onclick="location.href='{{url("history/".$list->id)}}'" >{{$list->id}} {{$list->name}}</a></span>
                                         <?php if(!empty($kabupaten[$list->id])){?>
                                         <ul class="tree hoverable">
                                             @foreach($kabupaten[$list->id] as $rows)
-                                                <li><span class="folder"> {{$rows->id}} <a href="{{url("history/".$rows->id)}}">{{$rows->name}}</a> </span>
+                                                <li><span class="folder"> <a onclick="location.href='{{url("history/".$rows->id)}}'"> {{$rows->id}} {{$rows->name}}</a> </span>
                                                 </li>
 
                                             @endforeach
@@ -159,6 +159,6 @@
 
 
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
 
 @endsection

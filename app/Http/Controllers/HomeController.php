@@ -330,6 +330,10 @@ class HomeController extends Controller
     {
         return view('statistic');
     }
+   public function statistic2()
+    {
+        return view('pagecoba2');
+    }
 
     public function search_statistic(Request $request){
         $input = $request->all();

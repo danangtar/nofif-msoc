@@ -886,15 +886,7 @@ h5.breadcrumbs-header {
   margin-top: 6px;
   margin-right: 4px;
 }
-li.mobile:before {
-  background: #F7464A;
-}
-li.kitchen:before {
-  background: #46BFBD;
-}
-li.home:before {
-  background: #FDB45C;
-}
+
 a.button-collapse.top-nav {
   position: absolute;
   left: 7.5%;
