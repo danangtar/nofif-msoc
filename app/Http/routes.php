@@ -28,6 +28,7 @@ Route::get('/pic', 'HomeController@pic');
 Route::get('/delete_user/{id}', 'HomeController@delete_user');
 Route::post('/update_user', 'HomeController@update_user');
 Route::post('/create_user', 'HomeController@create_user');
+Route::post('/update_region', 'HomeController@update_region');
 
 //REPORT
 Route::get('/report', 'HomeController@reports');

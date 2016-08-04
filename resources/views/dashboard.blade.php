@@ -63,12 +63,12 @@
                                             <li><img src="materialize/images/<?php 
                                                 if($rows->status == 1) echo "Small-Down.gif";
                                                 else echo "Small-Up.gif";
-                                            ?>"alt="materialize logo"><span class="folder"> {{$rows->id}} <a href="{{url("history/".$rows->id)}}">{{$rows->name}}</a> <span<?php if($rows->response==1) {?>
+                                            ?>"alt="materialize logo"><span class="folder"> {{$rows->id}} <a href="{{url("history/".$rows->id)}}">{{$rows->name}}</a><a href="{{url('alert/'.$rows->id)}}"><span<?php if($rows->response==1) {?>
                                                         class="btn btn-small waves-effect waves-light green new badge green"> confirmed
                                                 <?php }else {?>
                                                         class="btn btn-small waves-effect waves-light red new badge red"> alert
                                                 <?php }?>
-                                            </span></span>
+                                            </span></a></span>
                                             </li>
                                                          
                                         @endforeach
