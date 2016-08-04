@@ -250,6 +250,19 @@ class HomeController extends Controller
         return view('statistic');
     }
 
+    public function search_statistic(Request $request){
+        $input = $request->all();
+
+        var_dump($input);
+//        $id = $input['id'];
+//        $Reports  = Reports::find($id);
+//        $Reports->detail =$input['detail'];
+//
+//        $Reports->save();
+//
+//        return redirect('report');
+    }
+
     public function alertRegion($id){
         $User  = Users::where('id_region','=',$id)
             ->select('remember_token')

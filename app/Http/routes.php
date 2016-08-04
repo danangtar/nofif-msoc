@@ -41,6 +41,7 @@ Route::get('/history/{id}', 'HomeController@history');
 
 //STATISTIC
 Route::get('/statistic', 'HomeController@statistic');
+Route::post('/search_statistic', 'HomeController@search_statistic');
 
 
 Route::get('/key', function() {

@@ -6,28 +6,50 @@
 <!--    <script type="text/javascript" src="{{asset("materialize/js/plugins/material-datetime-picker-master/dist/js/datepicker.js")}}"></script>    -->
 <!--    <script type="text/javascript" src="{{asset("materialize/js/plugins/pickadate.js-3.5.6/lib/picker.date.js")}}"></script>    -->
 
+
 <script type="text/javascript">
     $( document ).ready(function() {
         $('select').material_select();
- 
+
+        $('#day').hide();
+        $('#month').hide();
+        $('#year').hide();
+
+        $('input[type=radio][name=dayselect]').change(function() {
+            if (this.value == '0') {
+                $('#day').show();
+                $('#month').hide();
+                $('#year').hide();
+            }
+            else if (this.value == '1') {
+                $('#day').hide();
+                $('#month').show();
+                $('#year').hide();
+            }else if (this.value == '2') {
+                $('#day').hide();
+                $('#month').hide();
+                $('#year').show();
+            }
+
+        });
+
         $('.datepicker').pickadate({
- 
+
             labelMonthNext: 'Go to the next month',
             labelMonthPrev: 'Go to the previous month',
             labelMonthSelect: 'Pick a month from the dropdown',
             labelYearSelect: 'Pick a year from the dropdown',
             selectYears: true,
-            selectMonths: false,
+            selectMonths: true,
+            format: 'dd/mm/yyyy'
             //DISABLE MONTH
-    
-            //DISABLE DAY            
-            disable: [
-                1,2,3,4,5,6
-            ]        
-        })        
+            //DISABLE DAY
+//            disable: [
+//                0,1,2,3,4,5,6
+//            ]
+        })
         $('#datepicker').find('.ui-picker__nav--prev').remove();
-
-    });   
+    });
     </script>
  <script type="text/javascript">
         $( document ).ready(function() {
@@ -166,7 +188,7 @@ window.onload = function(){
                                     <div class="col s12 m12 l12">
                                         <div class="card-panel">
                                           <div class="row">
-                                            <form class="col s12" action="{{url('create_user')}}" method="post">
+                                            <form class="col s12" action="{{url('search_statistic')}}" method="post">
                                               <div class="row">
                                                 <div class="input-field col s12">
                                                   <i class="mdi-image-timer  prefix"></i>
@@ -174,16 +196,74 @@ window.onload = function(){
                                                     <label for="disabled">Select time statistic preview</label>
                                                     <br>
                                                     <div> 
-                                                        <input class="with-gap" name="previledge" value="Day" type="radio" id="test1" />
+                                                        <input class="with-gap" name="dayselect" value="0" type="radio" id="test1" />
                                                         <label  style=" display: inline-block;"for="test1">Day</label>
-                                                        <input class="with-gap" name="previledge" value="Month" type="radio" id="test2" />
+                                                        <input class="with-gap" name="dayselect" value="1" type="radio" id="test2" />
                                                         <label  style=" display: inline-block;" for="test2">Month</label>
-                                                        <input class="with-gap" name="previledge" value="Year" type="radio" id="test3" />
+                                                        <input class="with-gap" name="dayselect" value="2" type="radio" id="test3" />
                                                         <label  style=" display: inline-block;" for="test3">Year</label>
-                                                    </div><br>                            
-                                                    <input type="date" class="datepicker">
+                                                    </div><br>
+                                                    <div id="day">
+                                                        <input name="date0" type="date" class="datepicker">
+                                                    </div>
+                                                    <div id="month">
+                                                        <div class="input-field col s6 m6 l6">
+                                                        <select name="month1">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                            <option>6</option>
+                                                            <option>7</option>
+                                                            <option>8</option>
+                                                            <option>9</option>
+                                                            <option>10</option>
+                                                            <option>11</option>
+                                                            <option>12</option>
+                                                        </select>
+                                                            <label>Month</label>
+                                                            </div>
+                                                        <div class="input-field col s6 m6 l6">
+                                                            <select name="year1">
+                                                            <option>2010</option>
+                                                            <option>2011</option>
+                                                            <option>2012</option>
+                                                            <option>2013</option>
+                                                            <option>2014</option>
+                                                            <option>2015</option>
+                                                            <option>2016</option>
+                                                            <option>2017</option>
+                                                            <option>2018</option>
+                                                            <option>2019</option>
+                                                        </select>
+                                                        <label>Year</label>
+                                                        </div>
+                                                    </div>
+
+                                                    </div>
+                                                    <div id="year">
+                                                        <div class="input-field col s12 m12 l12">
+                                                            <select name="year2">
+                                                                <option>2010</option>
+                                                                <option>2011</option>
+                                                                <option>2012</option>
+                                                                <option>2013</option>
+                                                                <option>2014</option>
+                                                                <option>2015</option>
+                                                                <option>2016</option>
+                                                                <option>2017</option>
+                                                                <option>2018</option>
+                                                                <option>2019</option>
+                                                            </select>
+                                                            <label>Year</label>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
-                                              </div>
+                                                <button class="btn cyan waves-effect waves-light center" type="submit" name="action">Search
+                                                    <i class="mdi-content-send right"></i>
+                                                </button>
                                             </form>
                                           </div>
                                         </div>
