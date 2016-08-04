@@ -119,11 +119,11 @@
                     </li>
                     <li class="bold"><a href="{{ url('/pic') }}" class="waves-effect waves-cyan"><i class="mdi-social-person-outline"></i> PIC </a>
                     </li>
-                    <li class="bold"><a href="{{ url('/report') }}" class="waves-effect waves-cyan"><i class="mdi-editor-insert-drive-file"></i> Report <span class="new badge">4</span></a>
+                    <li class="bold"><a href="{{ url('/report') }}" class="waves-effect waves-cyan"><i class="mdi-editor-insert-drive-file"></i> Report </a>
                     </li>
-                    <li class="bold"><a href="{{ url('/statistic') }}" class="waves-effect waves-cyan"><i class="mdi-editor-insert-chart"></i> Statistic <span class="new badge">4</span></a>
+                    <li class="bold"><a href="{{ url('/statistic') }}" class="waves-effect waves-cyan"><i class="mdi-editor-insert-chart"></i> Statistic </a>
                     </li>
-                    <li class="bold"><a href="{{ url('/history') }}" class="waves-effect waves-cyan"><i class="mdi-action-history"></i> History</a>
+                    <li class="bold"><a href="{{ url('/history_home') }}" class="waves-effect waves-cyan"><i class="mdi-action-history"></i> History</a>
                     </li>
                 
                 </ul>

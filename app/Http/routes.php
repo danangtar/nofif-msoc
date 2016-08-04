@@ -38,6 +38,7 @@ Route::get('/confirm_report/{id}', 'HomeController@confirm_reports');
 
 //HISTORY
 Route::get('/history/{id}', 'HomeController@history');
+Route::get('/history_home', 'HomeController@history_home');
 
 //STATISTIC
 Route::get('/statistic', 'HomeController@statistic');
