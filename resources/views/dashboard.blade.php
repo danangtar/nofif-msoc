@@ -13,7 +13,7 @@
             <div class="row">
               <div class="col s12 m12 l12">
                 <h5 class="breadcrumbs-title">Dashboard</h5>
-                    <a class="modal-trigger waves-effect waves-light btn right" href="#modal3">Alert All Region</a>
+                    <a class="modal-trigger waves-effect waves-light btn right" href="{{url('alert')}}">Alert All Region</a>
                         <!-- Modal Alert -->
                         <div id="modal3" class="modal">
                             <div class="modal-content">
