@@ -72,6 +72,9 @@
             <label for="password">Password</label>
           </div>
         </div>
+        <div id="error" class="row center" style="color: red">Login failure.</br>
+          User name and/or password incorrect.
+        </div>
         <div class="row">
           <div class="input-field col s12">
             <button type="submit" class="btn waves-effect waves-light col s12">Login</button>
@@ -100,5 +103,14 @@
   <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
 
 </body>
+
+<script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+    <?php if($status!=NULL) echo "$('#error').show();"; else echo "$('#error').hide();";?>
+
+  });
+</script>
 
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use Auth;
 use DB;
@@ -14,7 +15,14 @@ class FrontController extends Controller
 
     public function login()
     {
-        return view('login');
+        $status= Input::get('status', false);
+
+        if($status!="error")
+        $data['status']=NULL;
+        else
+        $data['status']=$status;
+
+        return view('login',$data);
     }
 
     public function logout()
@@ -40,7 +48,7 @@ class FrontController extends Controller
         } else {
 
             // validation not successful, send back to form
-            return redirect('login');
+            return redirect('login?status=error');
         }
 
     }

@@ -73,11 +73,7 @@
                         @foreach ($result  as $list)
                         <li class="collection-item">
                             <div class="row">
-<<<<<<< HEAD
-                                <div class="col s4">
-=======
                                 <div class="col s3">
->>>>>>> b528b12f38a40456b90782d85033d7165dea4918
                                     <p class="collections-title"> {{ $list->created_at}}</p>
                                 </div>
                                 <div class="col s1">
