@@ -20,6 +20,7 @@ Route::get('/logout', 'FrontController@logout');
 Route::get('/', 'HomeController@index');
 Route::get('/dashboard', 'HomeController@index');
 Route::get('alert/{id}', 'HomeController@alertRegion');
+Route::get('alert', 'HomeController@alertAll');
 
 
 //PIC
@@ -96,4 +97,4 @@ Route::group(['prefix' => 'api/v1'], function()
 
     Route::post('register', 'APIController@register');
 
-    Route::get('klik/{id}', 'ProcessController@alertRegion');
+//    Route::get('klik/{id}', 'ProcessController@alertRegion');
