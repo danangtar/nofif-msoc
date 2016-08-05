@@ -1,6 +1,69 @@
-@extends('layouts.home')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<!--================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 1.0
+	Author: GeeksLabs
+	Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================ -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+    <title>Materialize - Material Design Admin Template</title>
+
+    <!-- Favicons-->
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <!-- For Windows Phone -->
+
+    
+   <!-- CORE CSS-->
+    <link href="{{asset("materialize/css/materialize.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="{{asset("materialize/css/style.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->    
+    <link href="{{asset("materialize/css/prism.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="{{asset("materialize/js/plugins/chartist-js/chartist.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="{{asset("materialize/js/plugins/data-tables/css/jquery.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="{{asset("materialize/js/plugins/jvectormap/jquery-jvectormap.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
+  
+
+</head>
+
+<body>
+    <!-- Start Page Loading -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>        
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!-- End Page Loading -->
+
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/scripts.js")}}"></script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        $('select').material_select();
+
+    });
+    </script>
+            
     <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <script type="text/javascript">
         $( document ).ready(function() {
@@ -37,30 +100,16 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">History</h5>
-                <ol class="breadcrumb">
+                
+                  <h5 class="breadcrumbs-title">History</h5>
+                
+                  <ol class="breadcrumb">
                   <li><a href="">Dashboard</a>
                   </li>
                   <li><a href="">History</a>
                   </li>
-                  <li class="active">{{$region}} {{$status}}</li>
-                  <div class="switch right tooltipped" data-position="top" data-delay="10" 
-                    <?php   if($status==1) {?>
-                            data-tooltip="Status on">
-                    <?php } else {?>   
-                            data-tooltip="Status off">
-                    <?php } ?> 
-                     <label>
-                          Off
-                    <?php   if($status==1) {?>
-                        <input  type="checkbox" checked="checked" >
-                    <?php } else {?>   
-                        <input disabled type="checkbox" checked="checked">
-                    <?php } ?> 
-                        <span class="lever"></span>
-                          On
-                      </label>
-                
+                  <li class="active">{{$region}}</li>
+                  
                   </ol>
               </div>
             </div>
@@ -167,10 +216,10 @@
                         @foreach ($result->slice(0, 25)  as $list)
                         <li class="collection-item">
                             <div class="row">
-                                <div class="col s2">
+                                <div class="col s4 m2 l2">
                                     <p class="collections-title"> {{ $list->created_at}}</p>
                                 </div>
-                                <div class="col s1">
+                                <div class="col s2 m2 l1">
                                     <span> <img
                                                 <?php if($list->id_reports!=NULL){ ?>
                                                 src="{{asset("materialize/images/Event-5000.gif")}}"
@@ -181,7 +230,7 @@
                                                 <?php } ?>
                                         ></span>
                                 </div>
-                                <div class="col s7">
+                                <div class="col s6 m8 l7">
                                     <p class="collections-content">
                                         <?php if($list->id_reports!=NULL){?>
                                             {{$list->id_region}} {{$list->name}} report is "{{$reports[$list->id_reports]}}"
@@ -207,6 +256,10 @@
 
 
 
+ 
+
+
+
     <!-- ================================================
     Scripts
     ================================================ -->
@@ -227,6 +280,21 @@
 
 
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
 
-@endsection
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- START FOOTER -->
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                Copyright © 2015 <a class="grey-text text-lighten-4" href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.
+                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://geekslabs.com/">GeeksLabs</a></span>
+            </div>
+        </div>
+    </footer>
+    <!-- END FOOTER -->
+
+        </body>
+
+</html>
