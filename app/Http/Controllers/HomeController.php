@@ -443,7 +443,7 @@ class HomeController extends Controller
         $json=array(
             'data' 	=> $data,
             'notification' 	=> $notification,
-            'to' 	=> 'appkey',
+            'to' 	=> 'app-key',
             'priority' => 'high'
         );
 
@@ -463,7 +463,7 @@ class HomeController extends Controller
         curl_close($ch);
         echo $output;
 
-        return redirect('dashboard');
+//        return redirect('dashboard');
     }
 
         /**

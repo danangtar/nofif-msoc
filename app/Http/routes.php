@@ -65,6 +65,7 @@ Route::group(['prefix' => 'api/v1'], function()
         Route::post('get_user', 'APIController@get_user');
         Route::post('update_user', 'APIController@update_user');
         Route::post('send_report', 'APIController@send_report');
+        Route::post('dashboardAPI', 'APIController@indexpic');
 
         Route::post('get_user_details', 'APIController@get_user_details');
     });

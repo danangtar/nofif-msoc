@@ -25,7 +25,16 @@ class ProcessController extends Controller{
 
     public function indexpic()
     {
-        $Regions  = Region::all();
+        $id_user=1;
+
+        $Users= Users::where('id','=',$id_user)
+            ->select('id_region')
+            ->get();
+        $id=$Users[0]['id_region'];
+
+        $Regions  = Region::whereBetween('id', [$id*100, ($id+1)*100])
+            ->orWhere('id','=',$id)
+            ->get();
         $provinsi=array();
         $kabupaten=array();
         $statreal= array_fill(0, 100, 0);
