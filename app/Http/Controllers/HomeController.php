@@ -245,6 +245,60 @@ class HomeController extends Controller
         return view('history',$data);
 
     }
+    
+    //History Apps
+    public function history_apps($id)
+    {
+        $count = array_fill(0, 3, 0);
+
+        $dt = Carbon::now();
+        $newtime=$dt->subYear();
+
+        $tes = Region::where('id','=',$id)
+            ->select('name','status')
+            ->get();
+        $data['region']=$tes[0]["name"];
+        $data['status']=$tes[0]["status"];
+
+        $result = Log
+            ::join('region', 'log.id_region', '=', 'region.id')
+            ->where('log.id_region','=',$id)
+            ->whereDate('log.created_at', '>', $newtime->toDateString())
+            ->orderBy('log.created_at','DESC')
+            ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
+            ->get();
+        $data['result']= $result;
+
+        $reports=array();
+        foreach($result as $row){
+            if($row->id_reports!=NULL){
+                $count[2]++;
+                $id_report= $row->id_reports;
+                $report = Reports
+                    ::join('answers', 'reports.id_answer', '=', 'answers.id')
+                    ->where('reports.id','=',$id_report)
+                    ->select('answers.description')
+                    ->get();
+                $reports[$id_report]= $report[0]["description"];
+            }elseif ($row["on/off"]==1){
+                $count[1]++;
+            }else{
+                $count[0]++;
+            }
+        }
+
+        $data['count']= $count;
+        $data['result']= $result;
+        $data['reports']= $reports;
+
+//        $data['region']= json_encode($regions, true);
+//        var_dump($data['region']);
+//        return response()->json($result);
+//        return response()->json($reports);
+        return view('history_apps',$data);
+
+    }
+    
     //home_history
     public function history_home()
     {
