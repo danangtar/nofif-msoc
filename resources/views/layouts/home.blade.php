@@ -58,7 +58,7 @@
         <div class="navbar-fixed">
             <nav class="cyan">
                 <div class="nav-wrapper">
-                    <h1 class="logo-wrapper"><a href="{{ url('/dashboard') }}"  class="brand-logo darken-1"><img src="{{asset("materialize/images/Untitled-2.png")}}" alt="materialize logo" style="height:34px; width:auto"></a> <span class="logo-text">Materialize</span></h1>
+                    <h1 class="logo-wrapper"><a href="{{ url('/dashboard') }}"  class="brand-logo darken-1"><img src="{{asset("materialize/images/Untitled-2.png")}}" alt="materialize logo" style="height:38px; width:auto"></a> <span class="logo-text">Materialize</span></h1>
                     <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">

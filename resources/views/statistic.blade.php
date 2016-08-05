@@ -193,9 +193,9 @@
                                                     </div>
                                                     <div id="month">
                                                         <div class="input-field col s6 m6 l6">
-                                                            <select name="month1">
-                                                                {{--<option>1</option>--}}
-                                                                {{--<option>2</option>--}}
+                                                            <select name="month1"  class='dropdown-content'>
+                                                                <option>1</option>
+                                                                <option>2</option>
                                                                 <option>3</option>
                                                                 <option>4</option>
                                                                 <option>5</option>
@@ -210,13 +210,11 @@
                                                             <label>Month</label>
                                                         </div>
                                                         <div class="input-field col s6 m6 l6">
-                                                            <select name="year1">
-                                                                {{--<option>2010</option>--}}
-                                                                {{--<option>2011</option>--}}
-                                                                {{--<option>2012</option>--}}
-                                                                {{--<option>2013</option>--}}
-                                                                {{--<option>2014</option>--}}
-                                                                {{--<option>2015</option>--}}
+                                                            <select name="year1"  class='dropdown-content'>
+                                                                <option>2012</option>
+                                                                <option>2013</option>
+                                                                <option>2014</option>
+                                                                <option>2015</option>
                                                                 <option>2016</option>
                                                                 <option>2017</option>
                                                                 <option>2018</option>
@@ -229,17 +227,15 @@
                                                 </div>
                                                 <div id="year">
                                                     <div class="input-field col s12 m12 l12">
-                                                        <select name="year2">
-                                                            {{--<option>2010</option>--}}
-                                                            {{--<option>2011</option>--}}
-                                                            {{--<option>2012</option>--}}
-                                                            {{--<option>2013</option>--}}
-                                                            {{--<option>2014</option>--}}
-                                                            {{--<option>2015</option>--}}
-                                                            <option>2016</option>
-                                                            <option>2017</option>
-                                                            <option>2018</option>
-                                                            <option>2019</option>
+                                                        <select name="year2"  class='dropdown-content'>
+                                                                <option>2012</option>
+                                                                <option>2013</option>
+                                                                <option>2014</option>
+                                                                <option>2015</option>
+                                                                <option>2016</option>
+                                                                <option>2017</option>
+                                                                <option>2018</option>
+                                                                <option>2019</option>
                                                         </select>
                                                         <label>Year</label>
                                                     </div>

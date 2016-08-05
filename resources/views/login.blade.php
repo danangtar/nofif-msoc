@@ -55,7 +55,7 @@
         <div class="row">
           <div class="input-field col s12 center">
             <img src="{{asset("materialize/images/login-logo.png")}}" alt="" class="circle responsive-img valign profile-image-login">
-            <p class="center login-form-text">Material Design Admin Template</p>
+            <p class="center login-form-text">Helpdesk DUKCAPIL</p>
           </div>
         </div>
         <div class="row margin">
