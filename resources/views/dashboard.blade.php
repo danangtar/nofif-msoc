@@ -4,11 +4,36 @@
 <!-- jQuery Library -->
 <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>   
 <script type="text/javascript" src="materialize/js/scripts.js"></script>
-<div>
+    <!-- START CONTENT -->
+      <section id="content">
+
+        <!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">Dashboard</h5>
+                    <a class="modal-trigger waves-effect waves-light btn right" href="#modal3">Alert All Region</a>
+                        <!-- Modal Alert -->
+                        <div id="modal3" class="modal">
+                            <div class="modal-content">
+                                <p>Are you sure to alert all region?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>
+                                <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
+                            </div>
+                        </div><br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->     
+        
+            
     <!--card widgets start-->
     <div id="card-widgets">
-        <div class="row">
-
+        <div class="row">            
             <div class="col s12 m6 l5">
                 <ul id="task-card" class="collection with-header">
                     <li class="collection-header cyan">
@@ -39,6 +64,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="col s12 m6 l6">
                 <ul id="task-card" class="collection with-header">
                     <li class="collection-header cyan">
@@ -95,7 +121,7 @@
 //            echo $data
     ?>
 
-</div>
+</section>
 
 
 @endsection

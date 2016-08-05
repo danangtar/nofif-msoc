@@ -202,9 +202,10 @@ class HomeController extends Controller
         $newtime=$dt->subYear();
 
         $tes = Region::where('id','=',$id)
-            ->select('name')
+            ->select('name','status')
             ->get();
         $data['region']=$tes[0]["name"];
+        $data['status']=$tes[0]["status"];
 
         $result = Log
             ::join('region', 'log.id_region', '=', 'region.id')

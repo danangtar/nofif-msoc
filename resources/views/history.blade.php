@@ -43,7 +43,15 @@
                   </li>
                   <li><a href="">History</a>
                   </li>
-                  <li class="active">{{$region}}</li>
+                  <li class="active">{{$region}} {{$status}}</li>
+                    <div class="switch right tooltipped" data-position="top" data-delay="10" data-tooltip="Status on">
+                      <label>
+                          Off
+                        <input disabled type="checkbox" >
+                        <span class="lever"></span>
+                          On
+                      </label>
+                    </div>
                 </ol>
               </div>
             </div>

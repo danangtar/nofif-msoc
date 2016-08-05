@@ -189,11 +189,12 @@
                                                         <label  style=" display: inline-block;" for="test3">Year</label>
                                                     </div><br>
                                                     <div id="day">
-                                                        <input name="date0" type="date" class="datepicker">
+                                                      <input name="date0" type="date" class="datepicker">
                                                     </div>
                                                     <div id="month">
                                                         <div class="input-field col s6 m6 l6">
-                                                            <select name="month1"  class='dropdown-content'>
+<!--                                                            <label>Month</label>-->
+                                                            <select name="month1" class="browser-default">
                                                                 <option>1</option>
                                                                 <option>2</option>
                                                                 <option>3</option>
@@ -207,10 +208,10 @@
                                                                 <option>11</option>
                                                                 <option>12</option>
                                                             </select>
-                                                            <label>Month</label>
                                                         </div>
                                                         <div class="input-field col s6 m6 l6">
-                                                            <select name="year1"  class='dropdown-content'>
+<!--                                                            <label>Year</label>-->
+                                                            <select name="year1" class="browser-default">
                                                                 <option>2012</option>
                                                                 <option>2013</option>
                                                                 <option>2014</option>
@@ -220,14 +221,14 @@
                                                                 <option>2018</option>
                                                                 <option>2019</option>
                                                             </select>
-                                                            <label>Year</label>
                                                         </div>
                                                     </div>
 
                                                 </div>
                                                 <div id="year">
                                                     <div class="input-field col s12 m12 l12">
-                                                        <select name="year2"  class='dropdown-content'>
+<!--                                                        <label>Year</label>-->
+                                                        <select name="year2" class="browser-default">
                                                                 <option>2012</option>
                                                                 <option>2013</option>
                                                                 <option>2014</option>
@@ -237,7 +238,6 @@
                                                                 <option>2018</option>
                                                                 <option>2019</option>
                                                         </select>
-                                                        <label>Year</label>
                                                     </div>
                                                 </div>
 

@@ -1,12 +1,31 @@
 @extends('layouts.home')
 
 @section('content')
+    <link href="{{asset("materialize/js/plugins/data-tables/css/buttons.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
     <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript">
+    
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/buttons.flash.min.js")}}" ></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/buttons.html5.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/buttons.print.min.js")}}"></script>
+    
+
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/dataTables.buttons.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jszip.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/pdfmake.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/vfs_fonts.js")}}"></script>
+<script type="text/javascript">
         $( document ).ready(function() {
             $('select').material_select();
+             $('#data-table-simple').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            } );
         });
     </script>
+
 
     <!--start container-->
     <div class="container">
