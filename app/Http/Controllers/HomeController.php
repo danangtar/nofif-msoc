@@ -390,8 +390,8 @@ class HomeController extends Controller
 
         $notification= array
         (
-            'title' 	=> 'ALERT!!! Server Down',
-            'body' 	=> 'Check & Replay',
+            'title' 	=> "ALERT!!! $region Server Down",
+            'body' 	=> 'Check & Reply',
             'sound' 	=> 'default',
             'click_action' 	=> 'FCM_PLUGIN_ACTIVITY',
             'icon' 	=> 'icon_name'

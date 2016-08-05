@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Users;
+use App\Reports;
+use App\Log;
+use App\Answers;
 
 use Hash;
 use JWTAuth;
@@ -75,11 +78,21 @@ class APIController extends Controller
     public function send_report(Request $request)
     {
         $input = $request->all();
-        $inputyes['id_answer']=$input['id_answer'];
-        $inputyes['id_user']=$input['id_user'];
-        $inputyes['response']=$input['response'];
-        $inputyes['detail']=$input['detail'];
-        Reports::create($inputyes);
+        $input_report['id_answer']=$input['id_answer'];
+        $input_report['id_user']=$input['id_user'];
+        $input_report['response']=$input['response'];
+        $input_report['detail']=$input['detail'];
+
+        $region = Users::find($input_report['id_user'])
+                ->select('id_region')
+                ->get();
+
+        $id = Reports::create($input_report)->id;
+        $input_log['id_region']=$region[0]['id_region'];
+        $input_log['id_reports']=$id;
+        $input_log['on/off']=0;
+
+        Log::create($input_log)->id;
 
         return response()->json(['status' => '200']);
     }
