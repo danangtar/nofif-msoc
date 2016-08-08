@@ -147,21 +147,21 @@ $(function() {
 
 
   // Floating-Fixed table of contents (Materialize pushpin)
-  if ($('nav').length) {
-    $('.toc-wrapper').pushpin({
-      top: $('nav').height()
-    });
-  }
-  else if ($('#index-banner').length) {
+//  if ($('nav').length) {
+//    $('.toc-wrapper').pushpin({
+//      top: $('nav').height()
+//    });
+//  }
+  if ($('#index-banner').length) {
     $('.toc-wrapper').pushpin({
       top: $('#index-banner').height()
     });
   }
-  else {
-    $('.toc-wrapper').pushpin({
-      top: 0
-    });
-  }
+//  else {
+//    $('.toc-wrapper').pushpin({
+//      top: 0
+//    });
+//  }
 
   // Toggle Flow Text
   var toggleFlowTextButton = $('#flow-toggle')

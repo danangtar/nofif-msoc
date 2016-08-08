@@ -77,11 +77,11 @@
                         </div>
                         <ul class="expList">
                             @foreach($provinsi as $list)
-                            <li> <span class="folder" style="white-space: nowrap;"><img src='asset{{('materialize/images/<?php 
+                            <li> <span class="folder" style="white-space: nowrap;"><img src="materialize/images/<?php 
                                         if($kabstat[$list->id] == 1) echo "Small-Up.gif";
-                                        else if ($kabstat[$list->id] == 2) echo "Small-Down.gif'";
+                                        else if ($kabstat[$list->id] == 2) echo "Small-Down.gif";
                                         else echo "Small-Warning.gif";
-                                ?>')}}' alt="materialize logo">{{$list->name}}</span>
+                                ?>" alt="materialize logo">{{$list->name}}</span>
                                     <?php if(!empty($kabupaten[$list->id])){?>
                                     <ul class="tree hoverable">
                                         @foreach($kabupaten[$list->id] as $rows)
@@ -119,6 +119,7 @@
 //            $data = file_get_contents($url, true, $context);
 //            echo $data
     ?>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
 
 </section>
 

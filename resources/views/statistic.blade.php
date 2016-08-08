@@ -273,14 +273,11 @@
 
     <!-- chartjs -->
     <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chart.min.js")}}"></script>
-    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chart-script.js")}}"></script>
+<!--    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chart-script.js")}}"></script>-->
 
     <!-- sparkline -->
     <script type="text/javascript" src="{{asset("materialize/js/plugins/sparkline/jquery.sparkline.min.js")}}"></script>
     <script type="text/javascript" src="{{asset("materialize/js/plugins/sparkline/sparkline-script.js")}}"></script>
-
-    <!-- chartist -->
-    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartist-js/chartist.min.js")}}"></script>
 
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>

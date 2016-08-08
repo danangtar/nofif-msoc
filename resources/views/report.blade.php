@@ -179,5 +179,7 @@
             </div>
         </div>
  <!--end container-->
+  <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
+
 
 @endsection
