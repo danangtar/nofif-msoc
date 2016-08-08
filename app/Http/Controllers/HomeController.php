@@ -249,6 +249,7 @@ class HomeController extends Controller
     //History Apps
     public function history_apps($id)
     {
+
         $count = array_fill(0, 3, 0);
 
         $dt = Carbon::now();
