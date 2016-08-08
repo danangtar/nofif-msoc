@@ -93,30 +93,32 @@
                                             </li>
                                                          
                                         @endforeach
-                                            </ul><?php }?>
-                                            </li>
-                                            @endforeach
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                                    //            $username = 'helpdesk';
-                                    //            $password = 'adminduk';
-                                    //
-                                    //            $context = stream_context_create(array(
-                                    //                'http' => array(
-                                    //                    'header'  => "Authorization: Basic " . base64_encode("$username:$password")
-                                    //                )
-                                    //            ));
-                                    //            $url = 'http://118.97.77.78/Orion/Login.aspx?';
-                                    //            $data = file_get_contents($url, true, $context);
-                                    //            echo $data
-                                    ?>
 
-                                            </section>
+                                    </ul><?php }?>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <?php
+//            $username = 'helpdesk';
+//            $password = 'adminduk';
+//
+//            $context = stream_context_create(array(
+//                'http' => array(
+//                    'header'  => "Authorization: Basic " . base64_encode("$username:$password")
+//                )
+//            ));
+//            $url = 'http://118.97.77.78/Orion/Login.aspx?';
+//            $data = file_get_contents($url, true, $context);
+//            echo $data
+    ?>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
+
+</section>
 
 
-                                            @endsection
+@endsection

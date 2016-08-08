@@ -320,7 +320,7 @@
    
     
         <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
+<!--    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>-->
         </body>
 
 </html>
