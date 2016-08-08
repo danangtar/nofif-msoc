@@ -43,7 +43,6 @@
 </head>
 
 <body>
-    <!-- Start Page Loading -->
     <div id="loader-wrapper">
         <div id="loader"></div>        
         <div class="loader-section section-left"></div>
@@ -255,7 +254,9 @@
       <!-- END CONTENT -->
 
 
-
+        </div>     
+        <!-- END CONTENT -->
+    </div>
  
 
 
@@ -295,6 +296,7 @@
     </footer>
     <!-- END FOOTER -->
 
-        </body>
+       </body>   <!-- Start Page Loading -->
+  
 
 </html>

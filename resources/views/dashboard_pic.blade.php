@@ -139,29 +139,31 @@
     Scripts
     ================================================ -->
     
+   
     <!-- jQuery Library -->
-    <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <!--materialize js-->
-    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/materialize.min.js")}}"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}}"></script>
 
     <!-- data-tables -->
-    <script type="text/javascript" src="materialize/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/data-tables/data-tables-script.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
 
     <!-- sparkline -->
-    <script type="text/javascript" src="materialize/js/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/sparkline/sparkline-script.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/sparkline/jquery.sparkline.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/sparkline/sparkline-script.js")}}"></script>
     
     <!--jvectormap-->
-    <script type="text/javascript" src="materialize/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script type="text/javascript" src="materialize/js/plugins/jvectormap/vectormap-script.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/jvectormap/vectormap-script.js")}}"></script>
     
    
+   
         <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="materialize/js/plugins.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
         </body>
 
 </html>
