@@ -64,10 +64,11 @@
                 <!--start container-->
                 <div class="container">
                    <!-- jQuery Library -->
-                    <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>   
-                    <script type="text/javascript" src="materialize/js/scripts.js"></script>
+                    
+                    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
+                    <script type="text/javascript" src="{{asset("materialize/js/scripts.js")}}"></script>
                     <div>
-                        <!--card widgets start-->
+                    <!--card widgets start-->
                         <div id="card-widgets">
                             <div class="row">
                                 <div class="col s12 m6 l6">
@@ -134,7 +135,6 @@
     </footer>
     <!-- END FOOTER -->
 
- <script type="text/javascript" src="materialize/js/plugins.js"></script>
     <!-- ================================================
     Scripts
     ================================================ -->

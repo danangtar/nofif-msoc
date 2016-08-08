@@ -293,8 +293,6 @@
     </footer>
     <!-- END FOOTER -->
 
-    <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
-    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <!-- ================================================
         Scripts
     ================================================ -->
@@ -320,6 +318,7 @@
     <script type="text/javascript" src="{{asset("materialize/js/plugins/jvectormap/vectormap-script.js")}}"></script>
     
    
+    
         <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>
         </body>

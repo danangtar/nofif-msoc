@@ -2,8 +2,8 @@
 
 @section('content')
 <!-- jQuery Library -->
-<script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>   
-<script type="text/javascript" src="materialize/js/scripts.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/scripts.js")}}"></script>
     <!-- START CONTENT -->
       <section id="content">
 
@@ -44,11 +44,10 @@
                         <div class="treeview">
                             <ul class="tree hoverable"> 
                                 @foreach ($provinsi as $list)
-                                
-                                <li><img src="materialize/images/<?php 
+                                    <li><img src="materialize/images/<?php 
                                         if($list->status == 1) echo "Small-Down.gif";
                                         else echo "Small-up-unknown-noblink.gif";
-                                    ?>"alt="materialize logo"><span class="folder"> <a href="{{url("history/".$list->id)}}"> {{$list->id}} {{$list->name}}</a><a href="{{url('alert/'.$list->id)}}"><span <?php if($list->response==1) {?>
+                                    ?>" alt="materialize logo"><span class="folder"> <a href="{{url("history/".$list->id)}}"> {{$list->id}} {{$list->name}}</a><a href="{{url('alert/'.$list->id)}}"><span <?php if($list->response==1) {?>
                                                         class="btn btn-small waves-effect waves-light green new badge green"> confirmed
                                                 <?php }else {?>
                                                         class="btn btn-small waves-effect waves-light red new badge red"> alert
@@ -56,8 +55,8 @@
                                     </span></a></span></li>
                                 @endforeach
 <!--
-                                <li><img src="materialize/images/Small-Down.gif"alt="materialize logo"><span class="folder"> Clientes</span></li>
-                                <li><img src="materialize/images/Small-Warning.gif"alt="materialize logo"><span class="folder"> Clientes</span></li>
+                                <li><img src="{{asset("materialize/images/Small-Down.gif"alt="materialize logo"><span class="folder"> Clientes</span></li>
+                                <li><img src="{{asset("materialize/images/Small-Warning.gif"alt="materialize logo"><span class="folder"> Clientes</span></li>
 -->
                             </ul>
                         </div>
@@ -78,18 +77,18 @@
                         </div>
                         <ul class="expList">
                             @foreach($provinsi as $list)
-                            <li> <span class="folder" style="white-space: nowrap;"><img src="materialize/images/<?php 
+                            <li> <span class="folder" style="white-space: nowrap;"><img src='asset{{('materialize/images/<?php 
                                         if($kabstat[$list->id] == 1) echo "Small-Up.gif";
-                                        else if ($kabstat[$list->id] == 2) echo "Small-Down.gif";
+                                        else if ($kabstat[$list->id] == 2) echo "Small-Down.gif'";
                                         else echo "Small-Warning.gif";
-                                ?>" alt="materialize logo">{{$list->name}}</span>
+                                ?>')}}' alt="materialize logo">{{$list->name}}</span>
                                     <?php if(!empty($kabupaten[$list->id])){?>
                                     <ul class="tree hoverable">
                                         @foreach($kabupaten[$list->id] as $rows)
                                             <li><img src="materialize/images/<?php 
                                                 if($rows->status == 1) echo "Small-Down.gif";
                                                 else echo "Small-Up.gif";
-                                            ?>"alt="materialize logo"><span class="folder">  <a onclick="location.href='{{url("history/".$rows->id)}}'">{{$rows->id}} {{$rows->name}}</a><a onclick="location.href='{{url('alert/'.$rows->id)}}'"><span<?php if($rows->response==1) {?>
+                                            ?>" alt="materialize logo"><span class="folder">  <a onclick="location.href='{{url("history/".$rows->id)}}'">{{$rows->id}} {{$rows->name}}</a><a onclick="location.href='{{url('alert/'.$rows->id)}}'"><span<?php if($rows->response==1) {?>
                                                         class="btn btn-small waves-effect waves-light green new badge green"> confirmed
                                                 <?php }else {?>
                                                         class="btn btn-small waves-effect waves-light red new badge red"> alert
