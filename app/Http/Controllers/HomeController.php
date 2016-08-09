@@ -167,6 +167,9 @@ class HomeController extends Controller
 
         $input->delete();
 
+        Log::where('id_reports','=', $id)
+            ->update(['detail' => 'report deleted by admin']);
+
         return redirect('report');
     }
 
@@ -176,6 +179,17 @@ class HomeController extends Controller
         $Reports->verifikasi=1;
 
         $Reports->save();
+
+        $region = Log::where('id_reports','=',$id)
+            ->select('id_region')
+            ->get();
+
+        $input_log['id_region']=$region[0]['id_region'];
+        $input_log['id_reports']=$id;
+        $input_log['detail']='report from admin';
+        $input_log['on/off']=0;
+
+        Log::create($input_log);
 
         return redirect('report');
     }
@@ -209,6 +223,7 @@ class HomeController extends Controller
 
         $result = Log
             ::join('region', 'log.id_region', '=', 'region.id')
+            ->where('log.detail','LIKE','report from admin')
             ->where('log.id_region','=',$id)
             ->whereDate('log.created_at', '>', $newtime->toDateString())
             ->orderBy('log.created_at','DESC')
@@ -264,6 +279,7 @@ class HomeController extends Controller
         $result = Log
             ::join('region', 'log.id_region', '=', 'region.id')
             ->where('log.id_region','=',$id)
+            ->where('log.detail','LIKE','report from admin')
             ->whereDate('log.created_at', '>', $newtime->toDateString())
             ->orderBy('log.created_at','DESC')
             ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
@@ -340,6 +356,7 @@ class HomeController extends Controller
             ::join('region', 'log.id_region', '=', 'region.id')
             ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
             ->orderBy('log.created_at','DESC')
+            ->where('log.detail','LIKE','report from admin')
             ->take('25')
             ->get();
         $data['result']= $result;
@@ -387,6 +404,7 @@ class HomeController extends Controller
             $result = Log
                 ::join('reports', 'log.id_reports', '=', 'reports.id')
                 ->join('answers', 'reports.id_answer' ,'=','answers.id')
+                ->where('log.detail','LIKE','report from admin')
                 ->whereYear('log.created_at', '=',$input['year2'])
                 ->select('reports.id_answer','answers.description',DB::raw('count(*) as total'))
                 ->groupBy('reports.id_answer')
@@ -399,6 +417,7 @@ class HomeController extends Controller
                 ->join('answers', 'reports.id_answer' ,'=','answers.id')
                 ->whereYear('log.created_at', '=',$input['year1'])
                 ->whereMonth('log.created_at', '=',$input['month1'])
+                ->where('log.detail','LIKE','report from admin')
                 ->select('reports.id_answer','answers.description',DB::raw('count(*) as total'))
                 ->groupBy('reports.id_answer')
                 ->get();
@@ -410,6 +429,7 @@ class HomeController extends Controller
                 ::join('reports', 'log.id_reports', '=', 'reports.id')
                 ->join('answers', 'reports.id_answer' ,'=','answers.id')
                 ->whereDate('log.created_at', '=', $date->toDateString())
+                ->where('log.detail','LIKE','report from admin')
                 ->select('reports.id_answer','answers.description',DB::raw('count(*) as total'))
                 ->groupBy('reports.id_answer')
                 ->get();

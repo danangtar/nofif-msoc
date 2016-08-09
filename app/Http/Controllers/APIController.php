@@ -91,6 +91,7 @@ class APIController extends Controller
         $id = Reports::create($input_report)->id;
         $input_log['id_region']=$region[0]['id_region'];
         $input_log['id_reports']=$id;
+        $input_log['detail']='report from user';
         $input_log['on/off']=0;
 
         Log::create($input_log)->id;
