@@ -84,7 +84,7 @@ class APIController extends Controller
         $input_report['response']=$input['response'];
         $input_report['detail']=$input['detail'];
 
-        $region = Users::find($input_report['id_user'])
+        $region = Users::where('id', '=', $input_report['id_user'])
                 ->select('id_region')
                 ->get();
 
