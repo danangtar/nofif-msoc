@@ -56,6 +56,10 @@ Route::get('/tes', 'Controller@show');
 
 Route::get('/picdashboard', 'ProcessController@indexpic');
 
+Route::get('/pickabdashboard', 'ProcessController@indexviewkab');
+
+Route::get('/viewdashboard', 'ProcessController@indexview');
+
 Route::group(['prefix' => 'api/v1'], function()
 {
     //AUTH
