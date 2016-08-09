@@ -84,18 +84,18 @@
                                             </div>
                                             <ul class="expList">
                                                 @foreach($provinsi as $list)
-                                                <li> <span class="folder" style="white-space: nowrap;"><img src="materialize/images/<?php 
-                                                            if($kabstat[$list->id] == 1) echo "Small-Up.gif";
-                                                            else if ($kabstat[$list->id] == 2) echo "Small-Down.gif";
-                                                            else echo "Small-Warning.gif";
-                                                    ?>" alt="materialize logo">{{$list->name}}</span>
+                                                    <li> <span class="folder" style="white-space: nowrap;"><img src="<?php
+                                                            if($kabstat[$list->id] == 1) echo asset('materialize/images/Small-Up.gif');
+                                                            else if ($kabstat[$list->id] == 2) echo asset('materialize/images/Small-Down.gif');
+                                                            else echo asset('materialize/images/Small-Warning.gif');
+                                                            ?>" alt="materialize logo">{{$list->name}}</span>
                                                         <?php if(!empty($kabupaten[$list->id])){?>
                                                         <ul class="tree hoverable">
                                                             @foreach($kabupaten[$list->id] as $rows)
-                                                                <li><img src="materialize/images/<?php 
-                                                                    if($rows->status == 1) echo "Small-Down.gif";
-                                                                    else echo "Small-Up.gif";
-                                                                ?>"alt="materialize logo">{{$rows->id.' '.$rows->name }}
+                                                                <li><img src="<?php
+                                                                    if($rows->status == 1) echo asset('materialize/images/Small-Down.gif');
+                                                                    else echo asset('materialize/images/Small-Up.gif');
+                                                                    ?>" alt="materialize logo">{{$rows->id.' '.$rows->name }}
                                                                 </li>
                                                             @endforeach
                                                         </ul><?php }?>

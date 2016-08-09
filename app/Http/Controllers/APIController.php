@@ -176,6 +176,7 @@ class APIController extends Controller
         $result = Log
             ::join('region', 'log.id_region', '=', 'region.id')
             ->where('log.id_region','=',$id)
+            ->where('log.detail','LIKE','report from admin')
             ->whereDate('log.created_at', '>', $newtime->toDateString())
             ->orderBy('log.created_at','DESC')
             ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
