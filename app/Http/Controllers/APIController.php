@@ -6,6 +6,7 @@ use App\Users;
 use App\Reports;
 use App\Log;
 use App\Region;
+use Carbon\Carbon;
 
 use Hash;
 use JWTAuth;
@@ -83,13 +84,14 @@ class APIController extends Controller
         $input_report['response']=$input['response'];
         $input_report['detail']=$input['detail'];
 
-        $region = Users::find($input_report['id_user'])
+        $region = Users::where('id', '=', $input_report['id_user'])
                 ->select('id_region')
                 ->get();
 
         $id = Reports::create($input_report)->id;
         $input_log['id_region']=$region[0]['id_region'];
         $input_log['id_reports']=$id;
+        $input_log['detail']='report from user';
         $input_log['on/off']=0;
 
         Log::create($input_log)->id;
@@ -147,6 +149,68 @@ class APIController extends Controller
         $data['kabupaten']= $kabupaten;
 
         return view('dashboard_pic',$data);
+    }
+
+    public function history_apps(Request $request)
+    {
+
+        $input = $request->all();
+
+        $id_user=$input['id_user'];
+        $Users= Users::where('id','=',$id_user)
+            ->select('id_region')
+            ->get();
+        $id=$Users[0]['id_region'];
+
+        $count = array_fill(0, 3, 0);
+
+        $dt = Carbon::now();
+        $newtime=$dt->subYear();
+
+        $tes = Region::where('id','=',$id)
+            ->select('name','status')
+            ->get();
+        $data['region']=$tes[0]["name"];
+        $data['status']=$tes[0]["status"];
+
+        $result = Log
+            ::join('region', 'log.id_region', '=', 'region.id')
+            ->where('log.id_region','=',$id)
+            ->where('log.detail','LIKE','report from admin')
+            ->whereDate('log.created_at', '>', $newtime->toDateString())
+            ->orderBy('log.created_at','DESC')
+            ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
+            ->get();
+        $data['result']= $result;
+
+        $reports=array();
+        foreach($result as $row){
+            if($row->id_reports!=NULL){
+                $count[2]++;
+                $id_report= $row->id_reports;
+                $report = Reports
+                    ::join('answers', 'reports.id_answer', '=', 'answers.id')
+                    ->where('reports.id','=',$id_report)
+                    ->select('answers.description')
+                    ->get();
+                $reports[$id_report]= $report[0]["description"];
+            }elseif ($row["on/off"]==1){
+                $count[1]++;
+            }else{
+                $count[0]++;
+            }
+        }
+
+        $data['count']= $count;
+        $data['result']= $result;
+        $data['reports']= $reports;
+
+//        $data['region']= json_encode($regions, true);
+//        var_dump($data['region']);
+//        return response()->json($result);
+//        return response()->json($reports);
+        return view('history_apps',$data);
+
     }
 
 }
