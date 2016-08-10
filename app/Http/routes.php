@@ -69,6 +69,7 @@ Route::group(['prefix' => 'api/v1'], function()
         Route::post('send_token', 'APIController@send_token');
         Route::post('get_user', 'APIController@get_user');
         Route::post('update_user', 'APIController@update_user');
+        Route::post('changepass_user', 'APIController@changepass_user');
         Route::post('send_report', 'APIController@send_report');
         Route::post('dashboardAPI', 'APIController@indexpic');
         Route::post('historyAPI', 'APIController@history_apps');

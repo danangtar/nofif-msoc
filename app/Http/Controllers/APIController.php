@@ -57,7 +57,7 @@ class APIController extends Controller
     {
         $input = $request->all();
         $id = $input['id_user'];
-        $User  = Users::where('id','=',$id)
+        $User  = Users::where('users.id','=',$id)
             ->join('region', 'users.id_region', '=', 'region.id')
             ->select('users.username','users.fullname','users.previledge','users.number','users.email','region.name')
             ->get();
@@ -73,6 +73,18 @@ class APIController extends Controller
         $User->fullname = $input['fullname'];
         $User->email =$input['email'];
         $User->number = $input['number'];
+
+        $User->save();
+
+        return response()->json(['status' => '200']);
+    }
+
+    public function changepass_user(Request $request)
+    {
+        $input = $request->all();
+        $id = $input['id_user'];
+        $User  = Users::find($id);
+        $User->password = Hash::make($input['password']);
 
         $User->save();
 
