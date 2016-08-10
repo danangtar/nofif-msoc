@@ -62,7 +62,16 @@ class APIController extends Controller
             ->select('users.username','users.fullname','users.previledge','users.number','users.email','region.name')
             ->get();
 
-        return response()->json(['status' => '200','result' => $User[0]]);
+
+
+        return response()->json(['status' => '200',
+            'username' => $User[0]['username'],
+            'fullname' => $User[0]['fullname'],
+            'previledge' => $User[0]['previledge'],
+            'number' => $User[0]['number'],
+            'email' => $User[0]['email'],
+            'name' => $User[0]['name'],
+        ]);
     }
 
     public function update_User(Request $request)
