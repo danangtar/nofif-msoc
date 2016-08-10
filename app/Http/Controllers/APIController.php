@@ -28,9 +28,9 @@ class APIController extends Controller
         return response()->json(['status' => '404']);
         }else{
             $User = Users::where('username','=',$input['username'])
-                ->select('id')
+                ->select('id','previledge')
                 ->get();
-            return response()->json(['status' => '200', 'id_user' => $User[0]['id'],'result' => $token]);
+            return response()->json(['status' => '200', 'id_user' => $User[0]['id'],'previledge' => $User[0]['previledge'],'result' => $token]);
         }
     }
 
@@ -57,9 +57,12 @@ class APIController extends Controller
     {
         $input = $request->all();
         $id = $input['id_user'];
-        $User  = Users::find($id);
+        $User  = Users::where('id','=',$id)
+            ->join('region', 'users.id_region', '=', 'region.id')
+            ->select('users.username','users.fullname','users.previledge','users.number','users.email','region.name')
+            ->get();
 
-        return response()->json(['status' => '200','result' => $User]);
+        return response()->json(['status' => '200','result' => $User[0]]);
     }
 
     public function update_User(Request $request)
