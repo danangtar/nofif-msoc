@@ -70,6 +70,7 @@
                               <div class="row">
                                   <div class="input-field col s12">
                                       <select name="id_region">
+                                          <option value="0"?>[Pusat]</option>
                                           @foreach ($region as $row)
                                               <option value="{{$row->id}}"?>{{$row->name}}</option>
                                           @endforeach
@@ -77,19 +78,6 @@
                                       <label>Region</label>
                                   </div>
                                 </div>
-                                  <div class="row">
-                            <div class="input-field col s12">
-                              <i class="mdi-maps-place  prefix"></i>
-                                <input disabled id="disabled" type="text" class="validate">
-                                <label for="disabled">PIC tingkat</label>
-                                <br><input class="with-gap" name="previledge" value="0" type="radio" id="test1" />
-                                <label for="test1">Pusat</label>
-                                <input class="with-gap" name="previledge" value="1" type="radio" id="test2" />
-                                <label for="test2">Provinsi</label>
-                                <input class="with-gap" name="previledge" value="2" type="radio" id="test3" />
-                                <label for="test3">Kabupaten</label>
-                            </div>
-                          </div>
                            <div>
                               <div class="input-field col s12">
                                 <div class="modal-footer">
@@ -145,13 +133,13 @@
                                     <input name="id" type="hidden" value="{{$list->id}} ">
 
                                     <select name="id_region" id="select{{$list->id}}" onchange="this.form.submit()">
+                                        <option value="0" <?php if($list->id_region==0) echo "selected";?>>[Pusat]</option>
                                          @foreach ($region as $row)
                                              <option value="{{$row->id}}" <?php if($list->id_region==$row->id) echo "selected";?>>{{$row->name}}</option>
                                          @endforeach
                                      </select>
                                 </form>
                             </td>
-                            {{--<td>{{$list->name}}</td>--}}
                              <td>
                                 <div>
                                     <a class="btn-floating2 btn-small waves-effect waves-light teal accent-3 medium material-icons modal-trigger tooltipped edit" data-position="top" data-delay="10" data-tooltip="edit PIC"  href="#edit{{$list->id}}">
@@ -203,6 +191,7 @@
                                                             <label for="first_name">Email</label>
                                                         </div>
                                                     </div>
+
                                                     <div>
                                                         <div class="input-field col s12">
                                                             <div class="modal-footer">

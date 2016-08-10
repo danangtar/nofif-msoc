@@ -78,9 +78,7 @@ class HomeController extends Controller
         $regions  = Region::select('region.id','region.name')->orderBy('id', 'ASC')->get();
 
 //        $User = Users::all();
-        $result = Users
-            ::join('region', 'users.id_region', '=', 'region.id')
-            ->select('users.id','users.id_region','users.username','users.fullname','users.number', 'users.email','region.name')
+        $result = Users::select('id','id_region','username','fullname','number', 'email')
             ->get();
         $data['result']= $result;
 //        $data['region']= json_encode($regions, true);
@@ -96,9 +94,19 @@ class HomeController extends Controller
         $input = $request->all();
 
         $id = $input['id'];
+
+        if($input['id_region']==0 || $input['id_region']==""){
+            $input['previledge']=0;
+            $input['id_region']==0;
+        }elseif($input['id_region']>0 && $input['id_region']<100){
+            $input['previledge']=1;
+        }else{
+            $input['previledge']=2;
+        }
         $User  = Users::find($id);
         $User->id_region = $input['id_region'];
-        var_dump($input);
+        $User->previledge = $input['previledge'];
+
         $User->save();
 
         return redirect('pic');
@@ -124,8 +132,15 @@ class HomeController extends Controller
     public function create_user (Request $request)
     {
         $input = $request->all();
-        if($input['id_region']=="")
-            $input['id_region']=11;
+        if($input['id_region']==0 || $input['id_region']==""){
+            $input['previledge']=0;
+            $input['id_region']==0;
+        }elseif($input['id_region']>0 && $input['id_region']<100){
+            $input['previledge']=1;
+        }else{
+            $input['previledge']=2;
+        }
+
         $input['password'] = Hash::make($input['password']);
 
         Users::create($input);
