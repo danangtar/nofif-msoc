@@ -93,28 +93,7 @@
 
       <!-- START CONTENT -->
       <section id="content">
-
-        <!--breadcrumbs start-->
-        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
-          <div class="container">
-            <div class="row">
-              <div class="col s12 m12 l12">
-                
-                  <h5 class="breadcrumbs-title">History</h5>
-                
-                  <ol class="breadcrumb">
-                  <li><a href="">Dashboard</a>
-                  </li>
-                  <li><a href="">History</a>
-                  </li>
-                  <li class="active">{{$region}}</li>
-                  
-                  </ol>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--breadcrumbs end-->     
+  
           
         <!--start container-->
         <div class="container">
@@ -286,7 +265,7 @@
     <!-- //////////////////////////////////////////////////////////////////////////// -->
 
     <!-- START FOOTER -->
-    <footer class="page-footer">
+    <footer class="page-footer red lighten-1">
         <div class="footer-copyright">
             <div class="container">
                 Copyright © 2015 <a class="grey-text text-lighten-4" href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.

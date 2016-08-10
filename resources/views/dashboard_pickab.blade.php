@@ -82,7 +82,7 @@
         <div class="row">            
             <div class="col s12 m6 l6">
                 <ul id="task-card" class="collection with-header">
-                    <li class="collection-header cyan">
+                    <li class="collection-header red lighten-1">
                         <h4 class="task-card-title">Provinsi {{$provinsi->name}}</h4>
                         <p class="task-card-date">Kabupaten {{$kabupaten->name}}</p>
                     </li>
@@ -124,7 +124,7 @@
     <!-- //////////////////////////////////////////////////////////////////////////// -->
 
     <!-- START FOOTER -->
-    <footer class="page-footer">
+    <footer class="page-footer red lighten-1">
         <div class="footer-copyright">
             <div class="container">
                 Copyright © 2015 <a class="grey-text text-lighten-4" href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.
