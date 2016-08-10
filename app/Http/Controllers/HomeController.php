@@ -518,7 +518,7 @@ class HomeController extends Controller
         $json=array(
             'data' 	=> $data,
             'notification' 	=> $notification,
-            'to' 	=> 'app-key',
+            'to' 	=> 'AIzaSyB8A-zll_nZ6eq4HIl0U0RxFqMCgRYVUwI',
             'priority' => 'high'
         );
 

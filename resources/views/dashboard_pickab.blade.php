@@ -83,17 +83,18 @@
             <div class="col s12 m6 l6">
                 <ul id="task-card" class="collection with-header">
                     <li class="collection-header cyan">
-                        <h4 class="task-card-title">Provinsi {{$provinsi[0]->name}}</h4>
-                        <p class="task-card-date">Kabupaten {{$provinsi[0]->name}}</p>
+                        <h4 class="task-card-title">Provinsi {{$provinsi->name}}</h4>
+                        <p class="task-card-date">Kabupaten {{$kabupaten->name}}</p>
                     </li>
                      <li class="collection-item dismissable">
                         <div class="treeview">
                             <ul class="tree hoverable">
                         
-                                    <li><img src="materialize/images/<?php 
-                                        if($provinsi[0]->status == 1) echo "Small-Down.gif";
-                                        else echo "Small-up-unknown-noblink.gif";
-                                    ?>" alt="materialize logo"><span class="folder"> <a href="{{url("history/".$provinsi[0]->id)}}"> {{$provinsi[0]->id}} {{$provinsi[0]->name}}</a><span <?php if($provinsi[0]->status == 0) {?>
+                                    <li><img src="<?php
+                                        if($kabupaten->status == 1) echo asset('materialize/images/Small-Down.gif');
+                                        else echo asset('materialize/images/Small-up-unknown-noblink.gif');
+                                        ?>" alt="materialize logo">
+                                        <span class="folder"> <a href="{{url("history/".$kabupaten->id)}}"> {{$kabupaten->id}} {{$kabupaten->name}}</a><span <?php if($kabupaten->status == 0) {?>
                                                         class="btn btn-small waves-effect waves-light green new badge green"> ON
                                                 <?php }else {?>
                                                         class="btn btn-small waves-effect waves-light red new badge red"> OFF

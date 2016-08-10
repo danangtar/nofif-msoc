@@ -106,9 +106,12 @@ class APIController extends Controller
         $id_user=$input['id_user'];
 
         $Users= Users::where('id','=',$id_user)
-            ->select('id_region')
+            ->select('id_region','previledge')
             ->get();
         $id=$Users[0]['id_region'];
+        $previledge=$Users[0]['previledge'];
+
+        if($previledge==1){
 
         $Regions  = Region::whereBetween('id', [$id*100, ($id+1)*100])
             ->orWhere('id','=',$id)
@@ -149,6 +152,65 @@ class APIController extends Controller
         $data['kabupaten']= $kabupaten;
 
         return view('dashboard_pic',$data);
+        }
+
+        if($previledge==2) {
+            $id_prov=floor($id/100);
+
+            $Region  = Region::where('id','=',$id)
+                ->get();
+
+            $Region_prov  = Region::where('id','=',$id_prov)
+                ->get();
+
+            $data['provinsi']= $Region_prov[0];
+            $data['kabupaten']= $Region[0];
+
+            return view('dashboard_pickab',$data);
+
+            }
+
+        if($previledge==0) {
+            $Regions  = Region::all();
+            $provinsi=array();
+            $kabupaten=array();
+            $statreal= array_fill(0, 100, 0);
+            $sum = array_fill(0, 100, 0);
+            $kabstat = array_fill(0, 100, 0);
+            foreach($Regions as $row){
+                if($row->id<99){
+                    $provinsi[]= $row;
+
+                }
+                else {
+                    $kabupaten[floor($row->id/100)][]=$row;
+                    $sum[floor($row->id/100)]++;
+                    if($row->status == 1)
+                        $kabstat[floor($row->id/100)]++;
+                }
+            }
+
+            for($i=0;$i<100;$i++){
+                if($sum[$i]!=0){
+                    $cek =$sum[$i]- $kabstat[$i];
+                    if($cek==$sum[$i])
+                        $statreal[$i]=1;//nyala
+                    else if ($cek==0)
+                        $statreal[$i]=2;//mati
+                    else
+                        $statreal[$i]=3;//bimbang
+                }
+            }
+
+//        var_dump($statreal);
+            $data['kabstat']= $statreal;
+            $data['provinsi']= $provinsi;
+            $data['kabupaten']= $kabupaten;
+
+            return view('viewdashboard',$data);
+
+        }
+
     }
 
     public function history_apps(Request $request)

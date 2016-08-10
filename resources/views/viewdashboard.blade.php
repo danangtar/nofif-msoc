@@ -18,9 +18,9 @@
     <title>Materialize - Material Design Admin Template</title>
 
     <!-- Favicons-->
-    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="{{asset("images/favicon/favicon-32x32.png")}}" sizes="32x32">
     <!-- Favicons-->
-    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon-precomposed" href="{{asset("images/favicon/apple-touch-icon-152x152.png")}}">
     <!-- For iPhone -->
     <meta name="msapplication-TileColor" content="#00bcd4">
     <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
@@ -90,15 +90,12 @@
                         <div class="treeview">
                             <ul class="tree hoverable"> 
                                 @foreach ($provinsi as $list)
-                                    <li><img src="materialize/images/<?php 
-                                        if($list->status == 1) echo "Small-Down.gif";
-                                        else echo "Small-up-unknown-noblink.gif";
-                                    ?>" alt="materialize logo"><span class="folder"> <a href="{{url("history/".$list->id)}}"> {{$list->id}} {{$list->name}}</a></span></li>
+                                    <li><img src="<?php
+                                        if($list->status == 1) echo asset('materialize/images/Small-Down.gif');
+                                        else echo asset('materialize/images/Small-Up.gif');
+                                        ?>" alt="materialize logo">
+                                            <span class="folder"> <a href="{{url("history/".$list->id)}}"> {{$list->id}} {{$list->name}}</a></span></li>
                                 @endforeach
-<!--
-                                <li><img src="{{asset("materialize/images/Small-Down.gif"alt="materialize logo"><span class="folder"> Clientes</span></li>
-                                <li><img src="{{asset("materialize/images/Small-Warning.gif"alt="materialize logo"><span class="folder"> Clientes</span></li>
--->
                             </ul>
                         </div>
                     </li>
@@ -118,18 +115,18 @@
                         </div>
                         <ul class="expList">
                             @foreach($provinsi as $list)
-                            <li> <span class="folder" style="white-space: nowrap;"><img src="materialize/images/<?php 
-                                        if($kabstat[$list->id] == 1) echo "Small-Up.gif";
-                                        else if ($kabstat[$list->id] == 2) echo "Small-Down.gif";
-                                        else echo "Small-Warning.gif";
-                                ?>" alt="materialize logo">{{$list->name}}</span>
+                            <li> <span class="folder" style="white-space: nowrap;"><img src="<?php
+                                    if($kabstat[$list->id] == 1) echo asset('materialize/images/Small-Up.gif');
+                                    else if ($kabstat[$list->id] == 2) echo asset('materialize/images/Small-Down.gif');
+                                    else echo asset('materialize/images/Small-Warning.gif');
+                                    ?>" alt="materialize logo">{{$list->name}}</span>
                                     <?php if(!empty($kabupaten[$list->id])){?>
                                     <ul class="tree hoverable">
                                         @foreach($kabupaten[$list->id] as $rows)
-                                            <li><img src="materialize/images/<?php 
-                                                if($rows->status == 1) echo "Small-Down.gif";
-                                                else echo "Small-Up.gif";
-                                            ?>" alt="materialize logo"><span class="folder">  <a onclick="location.href='{{url("history/".$rows->id)}}'">{{$rows->id}} {{$rows->name}}</span>
+                                            <li><img src="<?php
+                                                if($rows->status == 1) echo asset('materialize/images/Small-Down.gif');
+                                                else echo asset('materialize/images/Small-Up.gif');
+                                                ?>" alt="materialize logo"><span class="folder">  <a onclick="location.href='{{url("history/".$rows->id)}}'">{{$rows->id}} {{$rows->name}}</span>
                                             </li>
                                                          
                                         @endforeach
