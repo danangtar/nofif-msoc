@@ -58,7 +58,7 @@
         <div class="navbar-fixed">
             <nav class="cyan">
                 <div class="nav-wrapper">
-                    <h1 class="logo-wrapper"><a href="{{ url('/dashboard') }}"  class="brand-logo darken-1"><img src="{{asset("materialize/images/Untitled-2.png")}}" alt="materialize logo" style="height:38px; width:auto"></a> <span class="logo-text">Materialize</span></h1>
+                    <h1 class="logo-wrapper"><a href="{{ url('/dashboard') }}"  class="brand-logo darken-1"><img src="{{asset("materialize/images/Untitled-1.png")}}" alt="materialize logo" style="height:34px; width:auto"> <span style="font-size:24pt"><b>elpdesk</b></span></a> <span class="logo-text">Materialize</span></h1>
                     <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">
@@ -93,7 +93,7 @@
                     <li class="user-details cyan darken-2">
                         <div class="row">
                             <div class="col col s4 m4 l4">
-                                <img src="{{asset("materialize/images/avatar.jpg")}}" alt="" class="circle responsive-img valign profile-image">
+                                <img src="{{asset("materialize/images/admin-avatar.jpg")}}" alt="" class="circle responsive-img valign profile-image">
                             </div>
                             <div class="col col s8 m8 l8">
                                 <ul id="profile-dropdown" class="dropdown-content">
