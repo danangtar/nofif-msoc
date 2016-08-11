@@ -18,9 +18,9 @@
   <title>Login Page | Materialize - Material Design Admin Template</title>
 
   <!-- Favicons-->
-  <link rel="icon" href="{{asset("images/favicon/favicon-32x32.png")}}" sizes="32x32">
+  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
   <!-- Favicons-->
-  <link rel="apple-touch-icon-precomposed" href="{{asset("images/favicon/apple-touch-icon-152x152.png")}}">
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
   <!-- For iPhone -->
   <meta name="msapplication-TileColor" content="#00bcd4">
   <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
@@ -54,7 +54,7 @@
         {!! csrf_field() !!}
         <div class="row">
           <div class="input-field col s12 center">
-            <img src="{{asset("materialize/images/login-logo.png")}}" alt="" class="circle responsive-img valign profile-image-login">
+            <img src="{{asset("materialize/images/Untitled-3.png")}}" alt="" class="circle responsive-img valign profile-image-login">
             <p class="center login-form-text">Helpdesk DUKCAPIL</p>
           </div>
         </div>
@@ -104,7 +104,7 @@
 
 </body>
 
-<script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
+<script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>
 
 <script type="text/javascript">
   $( document ).ready(function() {
