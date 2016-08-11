@@ -92,12 +92,19 @@ class APIController extends Controller
     {
         $input = $request->all();
         $id = $input['id_user'];
-        $User  = Users::find($id);
-        $User->password = Hash::make($input['password']);
+        $input1['password'] = $input['passwordlama'];
+        $input1['username'] = $input['username'];
 
-        $User->save();
+        if (!$token = JWTAuth::attempt($input1)){
+            return response()->json(['status' => '404']);
+        }else{
+            $User  = Users::find($id);
+            $User->password = Hash::make($input['password']);
 
-        return response()->json(['status' => '200']);
+            $User->save();
+
+            return response()->json(['status' => '200']);
+        }
     }
 
     public function send_report(Request $request)
