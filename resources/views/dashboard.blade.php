@@ -47,11 +47,11 @@
                                     <li><img src="materialize/images/<?php
                                         if($list->status == 1) echo "Small-Down.gif";
                                         else echo "Small-up-unknown-noblink.gif";
-                                        ?>" alt="materialize logo"><span class="folder"> <a href="{{url("history/".$list->id)}}"> {{$list->id}} {{$list->name}}</a><a href="{{url('alert/'.$list->id)}}"><span <?php if($list->response==1) {?>
-                                                                                                                                                                                                               class="btn btn-small waves-effect waves-light green new badge green"> confirmed
-                                                    <?php }else {?>
-                                                    class="btn btn-small waves-effect waves-light red new badge red"> alert
-                                                    <?php }?>
+                                        ?>" alt="materialize logo"><span class="folder">
+                                            <a href="{{url("history/".$list->id)}}"> {{$list->id}} {{$list->name}}</a>
+                                            <a <?php if($list->status==1) {?> href="{{url('alert/'.$list->id)}} <?php }?>"><span
+                                             <?php if($list->status==0) {?> class="btn btn-small waves-effect waves-light green new badge green"> confirmed
+                                             <?php }else {?> class="btn btn-small waves-effect waves-light red new badge red"> alert <?php }?>
                                     </span></a></span></li>
                                     @endforeach
                             </ul>
@@ -86,12 +86,12 @@
                                     if($rows->status == 1) echo asset('materialize/images/Small-Down.gif');
                                     else echo asset('materialize/images/Small-Up.gif');
                                     ?>" alt="materialize logo">
-                                    <span class="folder">  <a onclick="location.href='{{url("history/".$rows->id)}}'">{{$rows->id}} {{$rows->name}}</a><a onclick="location.href='{{url('alert/'.$rows->id)}}'"><span<?php if($rows->response==1) {?>
-                                            class="btn btn-small waves-effect waves-light green new badge green"> confirmed
-                                    <?php }else {?>
-                                            class="btn btn-small waves-effect waves-light red new badge red"> alert
+                                    <span class="folder">  <a onclick="location.href='{{url("history/".$rows->id)}}'">{{$rows->id}} {{$rows->name}}</a>
+                                        <a <?php if($rows->status==1) {?>  onclick="location.href='{{url('alert/'.$rows->id)}}' <?php }?>"><span
+                                    <?php if($rows->status==0) {?> class="btn btn-small waves-effect waves-light green new badge green"> confirmed
+                                    <?php }else {?> class="btn btn-small waves-effect waves-light red new badge red"> alert
                                     <?php }?>
-                                            </a></span></span>
+                                            </span></a></span>
                                             </li>
                                                          
                                         @endforeach

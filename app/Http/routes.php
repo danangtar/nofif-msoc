@@ -47,7 +47,9 @@ Route::get('/pagecoba2', 'HomeController@statistic2');
 Route::get('/statistic', 'HomeController@statistic');
 Route::post('/search_statistic', 'HomeController@search_statistic');
 
-Route::get('/cron', 'HomeController@cron');
+//CRON
+Route::get('/cron_minus', 'ProcessController@cron_minus');
+Route::get('/cron_alert', 'ProcessController@cron_alert');
 
 
 Route::get('/key', function() {

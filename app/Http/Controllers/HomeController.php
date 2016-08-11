@@ -26,10 +26,6 @@ class HomeController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function cron(){
-        DB::table('reports')->where('response','>',5)->decrement('response', 5);
-    }
-
 
     public function index()
     {
@@ -200,14 +196,23 @@ class HomeController extends Controller
 
         $Reports->save();
 
+        $Reports  = Reports::find($id)->select('response')->get();
+        $time = $Reports[0]['response'];
+
         $region = Log::where('id_reports','=',$id)
             ->select('id_region')
             ->get();
 
-        $input_log['id_region']=$region[0]['id_region'];
+        $id_region=$region[0]['id_region'];
+        $input_log['id_region']=$id_region;
         $input_log['id_reports']=$id;
         $input_log['detail']='report from admin';
         $input_log['on/off']=0;
+
+        $Region = Region::find($id_region);
+        $Region->response = (int)$time;
+
+        $Region->save();
 
         Log::create($input_log);
 
