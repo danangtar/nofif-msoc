@@ -85,10 +85,10 @@
                                             <ul class="expList">
                                                 @foreach($provinsi as $list)
                                                     <li> <span class="folder" style="white-space: nowrap;"><img src="<?php
-                                                            if($kabstat[$list->id] == 1) echo asset('materialize/images/Small-Up.gif');
-                                                            else if ($kabstat[$list->id] == 2) echo asset('materialize/images/Small-Down.gif');
-                                                            else echo asset('materialize/images/Small-Warning.gif');
-                                                            ?>" alt="materialize logo">{{$list->name}}</span>
+                                                            if($list->status == 1) echo asset('materialize/images/Small-Down.gif');
+                                                            else echo asset('materialize/images/Small-Up.gif');
+                                                            ?>" alt="materialize logo">{{$list->id.' '.$rows->name }}
+                                                        </span>
                                                         <?php if(!empty($kabupaten[$list->id])){?>
                                                         <ul class="tree hoverable">
                                                             @foreach($kabupaten[$list->id] as $rows)
