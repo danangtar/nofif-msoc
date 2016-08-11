@@ -47,6 +47,8 @@ Route::get('/pagecoba2', 'HomeController@statistic2');
 Route::get('/statistic', 'HomeController@statistic');
 Route::post('/search_statistic', 'HomeController@search_statistic');
 
+Route::get('/cron', 'HomeController@cron');
+
 
 Route::get('/key', function() {
     return str_random(32);

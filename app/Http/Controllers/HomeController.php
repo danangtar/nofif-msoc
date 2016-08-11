@@ -26,6 +26,11 @@ class HomeController extends Controller
         $this->middleware('auth:admin');
     }
 
+    public function cron(){
+        DB::table('reports')->where('response','>',5)->decrement('response', 5);
+    }
+
+
     public function index()
     {
         $Regions  = Region::all();
