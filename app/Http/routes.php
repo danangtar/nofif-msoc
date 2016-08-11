@@ -51,11 +51,12 @@ Route::post('/search_statistic', 'HomeController@search_statistic');
 Route::get('/cron_minus', 'ProcessController@cron_minus');
 Route::get('/cron_alert', 'ProcessController@cron_alert');
 
+Route::get('/import/{name}', 'HomeController@import');
+
 
 Route::get('/key', function() {
     return str_random(32);
 });
-Route::get('/tes', 'Controller@show');
 
 
 Route::get('/picdashboard', 'ProcessController@indexpic');
