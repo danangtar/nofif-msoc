@@ -87,7 +87,7 @@
                                                     <li> <span class="folder" style="white-space: nowrap;"><img src="<?php
                                                             if($list->status == 1) echo asset('materialize/images/Small-Down.gif');
                                                             else echo asset('materialize/images/Small-Up.gif');
-                                                            ?>" alt="materialize logo">{{$list->id.' '.$rows->name }}
+                                                            ?>" alt="materialize logo">{{$list->id.' '.$list->name }}
                                                         </span>
                                                         <?php if(!empty($kabupaten[$list->id])){?>
                                                         <ul class="tree hoverable">
