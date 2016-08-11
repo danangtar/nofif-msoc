@@ -31,51 +31,55 @@ class ProcessController extends Controller{
     public function cron_alert(){
         $regions = Users::join('region','region.id','=','users.id_region')
             ->where('region.status','=','1')
-            ->where('region.response','=','0')
+            ->where('region.response','>','0')
             ->select('region.id','region.name','users.id','users.remember_token')
             ->get();
 
-        foreach ($regions as $row){
+        foreach ($regions as $row) {
 
-            $token=$row->remember_token;
-            $region = $row->name;
-            $data = array
-            (
-                'id_user' 	=> $row->id,
-                'region' 	=> $region,
-            );
+            $token = $row->remember_token;
+            if ($token != NULL) {
+                $region = $row->name;
+                $data = array
+                (
+                    'id_user' => $row->id,
+                    'region' => $region,
+                );
 
-            $notification= array
-            (
-                'title' 	=> "ALERT!!! $region Server Down",
-                'body' 	=> 'Check & Reply',
-                'sound' 	=> 'default',
-                'click_action' 	=> 'FCM_PLUGIN_ACTIVITY',
-                'icon' 	=> 'icon_name'
-            );
+                $notification = array
+                (
+                    'title' => "ALERT!!! $region Server Down",
+                    'body' => 'Check & Reply',
+                    'sound' => 'default',
+                    'click_action' => 'FCM_PLUGIN_ACTIVITY',
+                    'icon' => 'icon_name'
+                );
 
-            $json=array(
-                'data' 	=> $data,
-                'notification' 	=> $notification,
-                'to' 	=> $token,
-                'priority' => 'high'
-            );
+                $json = array(
+                    'data' => $data,
+                    'notification' => $notification,
+                    'to' => $token,
+                    'priority' => 'high'
+                );
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'Content-Length: '.strlen(json_encode($json)),
-                'Authorization:key=AIzaSyB8A-zll_nZ6eq4HIl0U0RxFqMCgRYVUwI'
-            ));
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json));
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json',
+                    'Content-Length: ' . strlen(json_encode($json)),
+                    'Authorization:key=AIzaSyB8A-zll_nZ6eq4HIl0U0RxFqMCgRYVUwI'
+                ));
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json));
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-            $output = curl_exec($ch);
-            curl_close($ch);
-            echo $output;
+                $output = curl_exec($ch);
+                curl_close($ch);
+                echo $output;
+
+            } else
+                echo 'TOKEN IS NULL';
         }
     }
 
