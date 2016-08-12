@@ -255,7 +255,7 @@ class APIController extends Controller
             ->get();
         $id=$Users[0]['id_region'];
         
-        if(id!=0){
+        if($id!=0){
             
         $count = array_fill(0, 3, 0);
 
