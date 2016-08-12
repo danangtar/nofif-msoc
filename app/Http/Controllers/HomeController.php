@@ -344,7 +344,6 @@ class HomeController extends Controller
     //home_history
     public function history_home()
     {
-        $id =11;
         $Regions  = Region::all();
         $provinsi=array();
         $kabupaten=array();
