@@ -242,9 +242,9 @@ class HomeController extends Controller
 
         $tes = Region::where('id','=',$id)
             ->select('name','status')
-            ->get();
-        $data['region']=$tes[0]["name"];
-        $data['status']=$tes[0]["status"];
+            ->first();
+        $data['region']=$tes->name;
+        $data['status']=$tes->status;
 
         $result = Log
             ::join('region', 'log.id_region', '=', 'region.id')
@@ -651,7 +651,51 @@ class HomeController extends Controller
 
     }
 
-        /**
+    public function import($name)
+    {
+        $fileName = "https://drive.google.com/uc?export=download&id=$name";
+        $csvData = file_get_contents($fileName);
+        $lines = explode(PHP_EOL, $csvData);
+        $i=0;
+        foreach ($lines as $line) {
+            if($i<count($lines)-1){
+                $row =str_getcsv($line);
+                $index=(int)$row[0];
+                $ave=((double)substr($row[1],0,-1));
+                if($ave<30 && $index<9999) {
+                    $status = Region::where('id', '=', $index)->select('status')->first();
+                    if ($status->status == 0) {
+                        $input_log['id_region'] = $index;
+                        $input_log['detail'] = "report from admin";
+                        $input_log['on/off'] = 0;
+
+                        Log::create($input_log);
+
+                        Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
+
+                    }
+                }
+                    if($ave>=30 && $index<9999){
+                        $status = Region::where('id', '=', $index)->select('status')->first();
+                        if($status->status==1){
+                            $input_log['id_region']=$index;
+                            $input_log['detail']="report from admin";
+                            $input_log['on/off']=1;
+
+                            Log::create($input_log);
+
+                            Region::where('id', '=', $index)->update(['status' => 0,'response' => 0]);
+                        }
+
+                }
+            }
+            $i++;
+        }
+//        return redirect('');
+    }
+
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
