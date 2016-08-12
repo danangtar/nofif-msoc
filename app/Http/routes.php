@@ -41,6 +41,7 @@ Route::get('/confirm_report/{id}', 'HomeController@confirm_reports');
 Route::get('/history/{id}', 'HomeController@history');
 Route::get('/history_apps/{id}', 'HomeController@history_apps');
 Route::get('/history_home', 'HomeController@history_home');
+Route::get('/history_home2', 'HomeController@history_home2');
 
 //STATISTIC
 Route::get('/pagecoba2', 'HomeController@statistic2');

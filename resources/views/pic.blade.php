@@ -4,13 +4,56 @@
     <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript">
         $( document ).ready(function() {
-            $('select').material_select();
+//            $('select').material_select();
+            
+//            var table =$('#data-table-simple').dataTable();
+//            var tableTools = new $.fn.dataTable.TableTools(table);
+//            $(tableTools.fnContainer()).insertBefore('#data-table-simple_wrapper');
+            
+            
+            
+            
+            $('#data-table-simple').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyhtml5', 'csvhtml5', 'excelhtml5', 'pdfhtml5', 'printhtml5'
+            ]
+    } );
 
         });
     </script>
 
+    <link href="{{asset("materialize/js/plugins/data-tables/css/jquery.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="{{asset("materialize/js/plugins/data-tables/css/buttons.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
     
- <!--start container-->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery-1.12.3.js")}}"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/tabletools/2.2.4/js/dataTables.tableTools.min.js"></script>
+    
+
+<!--    <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">-->
+<!--    <link href="//cdn.datatables.net/tabletools/2.2.4/css/dataTables.tableTools.css" type="text/css" rel="stylesheet" media="screen,projection">-->
+
+<!--    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">-->
+    
+    
+
+    
+<!--
+    
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+-->
+
+    
+    <!--start container-->
         <div class="container">
           <div class="section">
 
