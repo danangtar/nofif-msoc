@@ -610,7 +610,8 @@ class HomeController extends Controller
             $data = array
             (
                 'id_user' 	=> $id,
-                'region' 	=> $Region[0]['status'],
+                'region' 	=> $Region[0]['name'],
+                'status' 	=> $Region[0]['status'],
             );
 
             $notification= array
@@ -665,7 +666,7 @@ class HomeController extends Controller
                 (
                     'id_user' => $row->id,
                     'region' => $region,
-                    'status' => $row->status
+                    'status' => $row->status,
                 );
 
                 $notification = array
