@@ -594,6 +594,60 @@ class HomeController extends Controller
 
     }
 
+    public function alert($id){
+        $User  = Users::where('id_region','=',$id)
+            ->select('remember_token')
+            ->get();
+
+        $Region  = Region::where('id','=',$id)
+            ->select('name','status')
+            ->get();
+
+        $token=$User[0]['remember_token'];
+        if($token!=NULL){
+            $region = $Region[0]['name'];
+            if($Region[0]['status']==1) $status='down'; else $status = 'up';
+            $data = array
+            (
+                'id_user' 	=> $id,
+                'region' 	=> $Region[0]['status'],
+            );
+
+            $notification= array
+            (
+                'title' 	=> "ALERT!!! $region Server $status",
+                'body' 	=> 'Check & Reply',
+                'sound' 	=> 'default',
+                'click_action' 	=> 'FCM_PLUGIN_ACTIVITY',
+                'icon' 	=> 'icon_name'
+            );
+
+            $json=array(
+                'data' 	=> $data,
+                'notification' 	=> $notification,
+                'to' 	=> $token,
+                'priority' => 'high'
+            );
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: '.strlen(json_encode($json)),
+                'Authorization:key=AIzaSyB8A-zll_nZ6eq4HIl0U0RxFqMCgRYVUwI'
+            ));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json));
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            $output = curl_exec($ch);
+            curl_close($ch);
+            echo $output;
+        }else
+            echo 'TOKEN IS NULL';
+    }
+
     public function alertAll(){
         $regions = Users::join('region','region.id','=','users.id_region')
             ->where('region.status','=','1')
@@ -674,7 +728,7 @@ class HomeController extends Controller
                         Log::create($input_log);
 
                         Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
-                        $this->alertRegion($index);
+                        $this->alert($index);
 
                     }
                 }
@@ -688,7 +742,7 @@ class HomeController extends Controller
                             Log::create($input_log);
 
                             Region::where('id', '=', $index)->update(['status' => 0,'response' => 0]);
-                            $this->alertRegion($index);
+                            $this->alert($index);
                         }
 
                 }
