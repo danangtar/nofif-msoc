@@ -76,7 +76,7 @@ class HomeController extends Controller
      */
     public function pic()
     {
-        $regions  = Region::select('region.id','region.name')->orderBy('id', 'ASC')->get();
+        $regions  = Region::select('region.id','region.name')->orderBy('name', 'ASC')->get();
 
 //        $User = Users::all();
         $result = Users::select('id','id_region','username','fullname','number', 'email')
