@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="047f6ad4-97a1-44ba-81b9-ebbf02cd04c4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/APIController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/APIController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
     </list>
     <ignored path="notif-msoc.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="APIController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="APIController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/APIController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.1730769">
-              <caret line="62" column="104" selection-start-line="62" selection-start-column="104" selection-end-line="62" selection-end-column="104" />
+            <state vertical-scroll-proportion="0.23679061">
+              <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
               <folding>
                 <element signature="e#39#67#0#PHP" expanded="true" />
               </folding>
@@ -89,10 +88,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39138943">
+            <state vertical-scroll-proportion="-3.8461537">
               <caret line="78" column="76" selection-start-line="78" selection-start-column="76" selection-end-line="78" selection-end-column="76" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
@@ -180,8 +179,8 @@
         <option value="$PROJECT_DIR$/config/jwt.php" />
         <option value="$PROJECT_DIR$/resources/views/history_appshome.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/history_apps.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/APIController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/APIController.php" />
       </list>
     </option>
   </component>
@@ -943,22 +942,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/APIController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.1730769">
-          <caret line="62" column="104" selection-start-line="62" selection-start-column="104" selection-end-line="62" selection-end-column="104" />
+        <state vertical-scroll-proportion="-3.8461537">
+          <caret line="78" column="76" selection-start-line="78" selection-start-column="76" selection-end-line="78" selection-end-column="76" />
           <folding>
-            <element signature="e#39#67#0#PHP" expanded="true" />
+            <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/APIController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39138943">
-          <caret line="78" column="76" selection-start-line="78" selection-start-column="76" selection-end-line="78" selection-end-column="76" />
+        <state vertical-scroll-proportion="0.23679061">
+          <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
           <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
+            <element signature="e#39#67#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

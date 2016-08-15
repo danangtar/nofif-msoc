@@ -60,7 +60,7 @@ class APIController extends Controller
         $User = Users::where('users.id','=',$id)->select('id_region')->get();
         if($User[0]['id_region']==0)
         {
-            $User  = Users::find($id)->select('username','fullname','previledge','number','email')->get();
+            $User  = Users::where('id','=',$id)->select('username','fullname','previledge','number','email')->get();
             return response()->json(['status' => '200',
                 'username' => $User[0]['username'],
                 'fullname' => $User[0]['fullname'],
