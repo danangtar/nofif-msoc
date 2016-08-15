@@ -542,7 +542,7 @@ class HomeController extends Controller
             ->get();
 
         $Region  = Region::where('id','=',$id)
-            ->select('name',status)
+            ->select('name','status')
             ->get();
 
         $token=$User[0]['remember_token'];
