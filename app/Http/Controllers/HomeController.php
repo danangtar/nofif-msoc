@@ -542,21 +542,22 @@ class HomeController extends Controller
             ->get();
 
         $Region  = Region::where('id','=',$id)
-            ->select('name')
+            ->select('name',status)
             ->get();
 
         $token=$User[0]['remember_token'];
         if($token!=NULL){
             $region = $Region[0]['name'];
+            if($Region[0]['status']==1) $status='down'; else $status = 'up';
             $data = array
             (
                 'id_user' 	=> $id,
-                'region' 	=> $region,
+                'region' 	=> $Region[0]['status'],
             );
 
             $notification= array
             (
-                'title' 	=> "ALERT!!! $region Server Down",
+                'title' 	=> "ALERT!!! $region Server $status",
                 'body' 	=> 'Check & Reply',
                 'sound' 	=> 'default',
                 'click_action' 	=> 'FCM_PLUGIN_ACTIVITY',
@@ -597,7 +598,7 @@ class HomeController extends Controller
         $regions = Users::join('region','region.id','=','users.id_region')
             ->where('region.status','=','1')
             ->where('region.response','>','0')
-            ->select('region.id','region.name','users.id','users.remember_token')
+            ->select('region.id','region.name','region.status','users.id','users.remember_token')
             ->get();
 
         foreach ($regions as $row){
@@ -605,15 +606,17 @@ class HomeController extends Controller
             $token=$row->remember_token;
             if($token!=NULL) {
                 $region = $row->name;
+                if($row->status==1) $status='down'; else $status = 'up';
                 $data = array
                 (
                     'id_user' => $row->id,
                     'region' => $region,
+                    'status' => $row->status
                 );
 
                 $notification = array
                 (
-                    'title' => "ALERT!!! $region Server Down",
+                    'title' => "ALERT!!! $region Server $status",
                     'body' => 'Check & Reply',
                     'sound' => 'default',
                     'click_action' => 'FCM_PLUGIN_ACTIVITY',
@@ -671,6 +674,7 @@ class HomeController extends Controller
                         Log::create($input_log);
 
                         Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
+                        $this->alertRegion($index);
 
                     }
                 }
@@ -684,6 +688,7 @@ class HomeController extends Controller
                             Log::create($input_log);
 
                             Region::where('id', '=', $index)->update(['status' => 0,'response' => 0]);
+                            $this->alertRegion($index);
                         }
 
                 }
