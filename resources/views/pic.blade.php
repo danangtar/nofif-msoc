@@ -253,7 +253,7 @@
                         <!-- Modal Delete -->
                         <div id="delete{{$list->id}}" class="modal">
                             <div class="modal-content">
-                                <p>Are you sure to delete  <span  style="text-transform: uppercase;"><b>{{$list->fullname}}</b></span> account ?</p>
+                                <p>Are you sure to delete "<span  style="text-transform: uppercase;"><b>{{$list->fullname}}</b></span>" account ?</p>
                             </div>
                             <div class="modal-footer">
                                 <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>

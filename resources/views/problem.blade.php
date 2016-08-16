@@ -14,11 +14,11 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Regions</h5>
+                <h5 class="breadcrumbs-title">Problem</h5>
                 <ol class="breadcrumb">
                   <li><a href="">Dashboard</a>
                   </li>
-                  <li><a href="">Regions</a>
+                  <li><a href="">Problem</a>
                   </li>
                 </ol>
               </div>
@@ -33,28 +33,21 @@
             <div id="table-datatables">
               <div class="row"><br>
                 <!-- Modal Trigger -->
-                  <a class="modal-trigger waves-effect waves-light btn" href="#modal3">Add new Region</a>
-                  <!-- Modal Add New Region -->
+                  <a class="modal-trigger waves-effect waves-light btn" href="#modal3">Add new Problem</a>
+                  <!-- Modal Add New Problem -->
                   <div id="modal3" class="modal">
                     <div class="modal-content">
                         <!-- Form with validation -->
                           <div class="col s12 m12 l12">
                             <div class="card-panel">
-                              <h4 class="header2" style="text-align:center">Add Region Form</h4>
+                              <h4 class="header2" style="text-align:center">Add Problem Category</h4>
                               <div class="row">
-                                  <form class="col s12" action="{{url('create_regions')}}" method="post">
+                                  <form class="col s12" action="{{url('create_answers')}}" method="post">
                                   <div class="row">
                                     <div class="input-field col s12">
-                                      <i class="mdi-action-label prefix"></i>
-                                      <input name="id" id="name4" type="number" class="validate">
-                                      <label for="id_region">ID Region</label>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="input-field col s12">
-                                      <i class="mdi-action-language prefix"></i>
-                                      <input name="name" id="name" type="text" class="validate">
-                                      <label for="region_name">Region Name</label>
+                                      <i class="mdi-action-question-answer prefix"></i>
+                                      <textarea id="message4" class="materialize-textarea validate" length="120"></textarea>
+                                      <label for="problem_name">Problem Description </label>
                                     </div>
                                   </div>
                                   <div>
@@ -78,37 +71,31 @@
                    <table id="data-table-simple" class="responsive-table display" cellspacing="0"  width="100%">
                     <thead>
                         <tr>
-                            <th>ID Region</th>
-                            <th>Region Name</th>
-                            <th>Status</th>
-                            <th>Response Again</th>
+                            <th>ID Problem</th>
+                            <th>Problem Description</th>
                             <th>Edit / Delete</th>
                         </tr>
                     </thead>
                  
                     <tfoot>
                         <tr>
-                            <th>ID Region</th>
-                            <th>Region Name</th>
-                            <th>Status</th>
-                            <th>Response Again</th>
+                            <th>ID Problem</th>
+                            <th>Problem Description</th>
                             <th>Edit / Delete</th>
                         </tr>
                     </tfoot>
 
                     <tbody>
-                         @foreach ($region as $list)
+                         @foreach ($answer as $list)
                              <tr>
                             <td>{{$list->id}}</td>
-                            <td>{{$list->name}}</td>
-                            <td><?php if($list->status==1)echo "DOWN"; else echo "UP"; ?></td>
-                            <td>{{$list->response}} Hours</td>
-                             <td>
+                            <td>{{$list->description}}</td>
+                            <td>
                                 <div>
-                                    <a class="btn-floating2 btn-small waves-effect waves-light teal accent-3 medium material-icons modal-trigger tooltipped edit" data-position="top" data-delay="10" data-tooltip="edit region"  href="#edit{{$list->id}}">
+                                    <a class="btn-floating2 btn-small waves-effect waves-light teal accent-3 medium material-icons modal-trigger tooltipped edit" data-position="top" data-delay="10" data-tooltip="edit problem"  href="#edit{{$list->id}}">
                                         <i class="large mdi-editor-mode-edit"></i>
                                     </a>
-                                    <a class="btn-floating2 btn-small waves-effect waves-light medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="delete region"  href="#delete{{$list->id}}">
+                                    <a class="btn-floating2 btn-small waves-effect waves-light medium material-icons modal-trigger tooltipped" data-position="top" data-delay="10" data-tooltip="delete problem"  href="#delete{{$list->id}}">
                                         <i class="mdi-action-delete"></i>
                                     </a>
                                 </div>
@@ -121,22 +108,14 @@
                                     <!-- Form with validation -->
                                     <div class="col s12 m12 l12">
                                         <div class="card-panel">
-                                            <h4 class="header2" style="text-align:center">Region Edit Form</h4>
+                                            <h4 class="header2" style="text-align:center">Problem Edit Form</h4>
                                             <div class="row">
-                                                <form class="col s12" action="{{url('update_regions')}}" method="post">
+                                                <form class="col s12" action="{{url('update_answers')}}" method="post">
                                                   <div class="row">
                                                     <div class="input-field col s12">
-                                                      <i class="mdi-action-label  prefix"></i>
-                                                      <input name="id" type="hidden" class="validate" value="{{$list->id}}">
-                                                      <input id="name4" type="number" class="validate" value="{{$list->id}}" disabled>
-                                                      <label for="id_region">ID Region</label>
-                                                    </div>
-                                                  </div>
-                                                  <div class="row">
-                                                    <div class="input-field col s12">
-                                                      <i class="mdi-action-language prefix"></i>
-                                                      <input name="name" id="name" type="text" class="validate" value="{{$list->name}}">
-                                                      <label for="region_name">Region Name</label>
+                                                      <i class="mdi-action-question-answer prefix"></i>
+                                                      <input name="name" id="name" type="text" class="validate" value="{{$list->description}}">
+                                                      <label for="problem_name">Problem Description</label>
                                                     </div>
                                                   </div>
                                                   <div>
@@ -160,11 +139,11 @@
                         <!-- Modal Delete -->
                         <div id="delete{{$list->id}}" class="modal">
                             <div class="modal-content">
-                                <p>Are you sure to delete "<span  style="text-transform: uppercase;"><b>{{$list->name}}</b></span>" region ?</p>
+                                <p>Are you sure to delete "<span  style="text-transform: uppercase;"><b>{{$list->description}}</b></span>" problem category ?</p>
                             </div>
                             <div class="modal-footer">
                                 <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>
-                                <a href="{{url("delete_regions/$list->id")}}" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
+                                <a href="{{url("delete_answers/$list->id")}}" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
                             </div>
                         </div>
                              <script type="text/javascript">

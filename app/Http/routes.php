@@ -36,7 +36,7 @@ Route::post('/update_regions', 'HomeController@update_regions');
 Route::get('/delete_regions/{id}', 'HomeController@delete_regions');
 
 //ANSWER
-Route::get('/answers', 'HomeController@answers');
+Route::get('/problem', 'HomeController@problem');
 Route::post('/create_answers', 'HomeController@create_answers');
 Route::post('/update_answers', 'HomeController@update_answers');
 Route::get('/delete_answers/{id}', 'HomeController@delete_answers');
