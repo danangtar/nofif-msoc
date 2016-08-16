@@ -57,21 +57,35 @@ class APIController extends Controller
     {
         $input = $request->all();
         $id = $input['id_user'];
-        $User  = Users::where('users.id','=',$id)
-            ->join('region', 'users.id_region', '=', 'region.id')
-            ->select('users.username','users.fullname','users.previledge','users.number','users.email','region.name')
-            ->get();
+        $User = Users::where('users.id','=',$id)->select('id_region')->get();
+        if($User[0]['id_region']==0)
+        {
+            $User  = Users::where('id','=',$id)->select('username','fullname','previledge','number','email')->get();
+            return response()->json(['status' => '200',
+                'username' => $User[0]['username'],
+                'fullname' => $User[0]['fullname'],
+                'previledge' => $User[0]['previledge'],
+                'number' => $User[0]['number'],
+                'email' => $User[0]['email'],
+                'name' => 'pusat',
+            ]);
 
+        }else{
+            $User  = Users::where('users.id','=',$id)
+                ->join('region', 'users.id_region', '=', 'region.id')
+                ->select('users.username','users.fullname','users.previledge','users.number','users.email','region.name')
+                ->get();
+            return response()->json(['status' => '200',
+                'username' => $User[0]['username'],
+                'fullname' => $User[0]['fullname'],
+                'previledge' => $User[0]['previledge'],
+                'number' => $User[0]['number'],
+                'email' => $User[0]['email'],
+                'name' => $User[0]['name'],
+            ]);
 
+        }
 
-        return response()->json(['status' => '200',
-            'username' => $User[0]['username'],
-            'fullname' => $User[0]['fullname'],
-            'previledge' => $User[0]['previledge'],
-            'number' => $User[0]['number'],
-            'email' => $User[0]['email'],
-            'name' => $User[0]['name'],
-        ]);
     }
 
     public function update_User(Request $request)

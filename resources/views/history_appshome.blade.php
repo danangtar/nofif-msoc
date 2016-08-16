@@ -33,15 +33,27 @@
     <link href="{{asset("materialize/css/style.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
 
 
+<<<<<<< HEAD
 </head>
 <body>
     <div id="loader-wrapper">
+=======
+
+
+</head>
+<body>
+ <div id="loader-wrapper">
+>>>>>>> f631a62a00026acb80ca23d645cd85b47e75e896
         <div id="loader"></div>        
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
     </div>
     <!-- End Page Loading -->
 
+<<<<<<< HEAD
+=======
+            
+>>>>>>> f631a62a00026acb80ca23d645cd85b47e75e896
     <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <script type="text/javascript">
         $( document ).ready(function() {
@@ -120,16 +132,6 @@
     <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <!--materialize js-->
     <script type="text/javascript" src="{{asset("materialize/js/materialize.min.js")}}"></script>
-    <!--scrollbar-->
-    <script type="text/javascript" src="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}}"></script>
-
-    <!-- chartist -->
-    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartist-js/chartist.min.js")}}"></script>
-
-    <!-- chartjs -->
-    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chart.min.js")}}"></script>
-    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chartjs-sample-chart.js")}}"></script>
-
 
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>

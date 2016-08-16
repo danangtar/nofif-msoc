@@ -32,13 +32,13 @@
     <link href="{{asset("materialize/css/style.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
 
 
-    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->    
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
     <link href="{{asset("materialize/css/prism.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="{{asset("materialize/js/plugins/chartist-js/chartist.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="{{asset("materialize/js/plugins/data-tables/css/jquery.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="{{asset("materialize/js/plugins/jvectormap/jquery-jvectormap.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-  
+
 
 </head>
 
