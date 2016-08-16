@@ -110,6 +110,8 @@
                     </li>
                     <li class="bold"><a href="{{ url('/pic') }}" class="waves-effect waves-cyan"><i class="mdi-social-person-outline"></i> PIC </a>
                     </li>
+                    <li class="bold"><a href="{{ url('/regions') }}" class="waves-effect waves-cyan"><i class="mdi-action-language"></i> Regions </a>
+                    </li>
                     <li class="bold"><a href="{{ url('/report') }}" class="waves-effect waves-cyan"><i class="mdi-editor-insert-drive-file"></i> Report </a>
                     </li>
                     <li class="bold"><a href="{{ url('/statistic') }}" class="waves-effect waves-cyan"><i class="mdi-editor-insert-chart"></i> Statistic </a>
@@ -306,7 +308,7 @@
     <!--scrollbar-->
     <script type="text/javascript" src="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}}"></script>
 
-    <!-- data-tables -->
+     data-tables 
     <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
     <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
 

@@ -31,6 +31,9 @@ Route::post('/update_user', 'HomeController@update_user');
 Route::post('/create_user', 'HomeController@create_user');
 Route::post('/update_region', 'HomeController@update_region');
 
+//REGIONS
+Route::get('/regions', 'HomeController@regions');
+
 //REPORT
 Route::get('/report', 'HomeController@reports');
 Route::get('/delete_report/{id}', 'HomeController@delete_reports');

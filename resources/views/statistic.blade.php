@@ -106,12 +106,7 @@
 
         });
     </script>
-
-    <!-- START CONTENT -->
-    <section id="content">
-    <div class="container">
-            
-        <!--breadcrumbs start-->
+<!--breadcrumbs start-->
         <div id="breadcrumbs-wrapper" class=" grey lighten-3">
           <div class="container">
             <div class="row">
@@ -128,8 +123,12 @@
           </div>
         </div>
         <!--breadcrumbs end-->  
+    <!-- START CONTENT -->
+    <section id="content">
         
-        <div class="divider"></div>
+    <div class="container">
+            
+        <br> <div class="divider"></div>
         <!--start container-->
             <!--card widgets start-->
             <div id="card-widgets" class="seaction">
@@ -167,7 +166,7 @@
                                 </div>
                             </div>
                             <div class="col s12 m12 l12" id="nodata">
-                                <h3 class="center">Sorry no data displayed...</h3>
+                                <h5 class="center">Sorry no data displayed...</h5>
                             </div>
                             <!-- Form with validation -->
                             <div class="col s12 m12 l12">

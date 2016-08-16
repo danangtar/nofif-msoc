@@ -1,15 +1,32 @@
 @extends('layouts.home')
 
 @section('content')
-    <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>
-
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
     <!--start container-->
-    <div class="container">
+        <!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">Report</h5>
+                <ol class="breadcrumb">
+                  <li><a href="">Dashboard</a>
+                  </li>
+                  <li><a href="">Report</a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+    
+    <div class="container">          
         <div class="section">
-
-            <p class="caption">Report</p>
             <div class="divider"></div>
-
             <!--DataTables example-->
             <div id="table-datatables">
 
@@ -52,6 +69,7 @@
                         <table id="data-table-simple" class="responsive-table display" cellspacing="0"  width="100%">
                             <thead>
                             <tr>
+                                <th>Timestamp</th>
                                 <th>Name</th>
                                 <th>Region</th>
                                 <th>Response</th>
@@ -64,6 +82,7 @@
 
                             <tfoot>
                             <tr>
+                                <th>Timestamp</th>
                                 <th>Name</th>
                                 <th>Region</th>
                                 <th>Response</th>
@@ -77,6 +96,7 @@
                             <tbody>
                             @foreach ($result as $list)
                                 <tr>
+                                <td>2016-08-12 07:09:04</td>
                                 <td>{{$list->fullname}}</td>
                                 <td>{{$list->name}}</td>
                                 <td style="white-space: nowrap;">{{$list->description}}</td>

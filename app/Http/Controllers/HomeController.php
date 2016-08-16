@@ -91,6 +91,19 @@ class HomeController extends Controller
         //
     }
 
+    public function regions()
+    {
+       $regions  = Region::select('id', 'name')->get();
+
+        $data['region']= json_encode($regions, true);
+        $data['region']= $regions;
+
+//        var_dump($data['region']);
+//        return response()->json($result);
+        return view('regions',$data);
+    }
+
+    
     public function update_region(Request $request){
         $input = $request->all();
 
