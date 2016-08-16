@@ -52,6 +52,7 @@ Route::post('/search_statistic', 'HomeController@search_statistic');
 
 //UPLOAD
 Route::get('/upload', 'HomeController@upload');
+Route::post('/importfile', 'HomeController@importfile');
 
 //CRON
 Route::get('/cron_minus', 'ProcessController@cron_minus');
