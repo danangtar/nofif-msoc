@@ -6,7 +6,6 @@
             $('select').material_select();
     } );
 
-        });
     </script>
     <!-- jQuery Library -->
     <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>

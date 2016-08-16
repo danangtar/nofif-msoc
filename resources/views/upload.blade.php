@@ -73,32 +73,36 @@
  </style>
  
  <script>
+     function alert_green(message) {
+         swal({
+             type: "success",
+             title: "SUCCESS!!!",
+             text: message,
+             timer: 2000,
+             showConfirmButton: false
+         });
+     }
+     function alert_red(message) {
+         swal({
+             type: "error",
+             title: "ERROR!!!",
+             text: message,
+             timer: 2000,
+             showConfirmButton: false
+         });
+     }
+
+     $( document ).ready(function() {
+
+     } );
   $('button.green').click(function() {
-    alert_green();
+    alert_green('success');
   });
   $('button.red').click(function() {
-    alert_red();
+    alert_red('error');
   });
 
-  function alert_green() {
-    swal({        
-      type: "info",
-      type: "warning",
-      title: "Auto close alert!",
-      text: "I will close in 1.5 seconds.",
-      timer: 1500,
-      showConfirmButton: false
-    });
-  }
-  function alert_red() {
-    swal({        
-      type: "warning",
-      title: "Auto close alert!",
-      text: "I will close in 1.5 seconds.",
-      timer: 1500,
-      showConfirmButton: false
-    });
-  }
+
   </script>
     
 
