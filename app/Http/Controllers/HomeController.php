@@ -50,7 +50,8 @@ class HomeController extends Controller
             }
         }
         
-        for($i=0;$i<100;$i++){
+        for($i=0;$i<100;$i++){//        $User = Users::all();
+
             if($sum[$i]!=0){
                 $cek =$sum[$i]- $kabstat[$i];
                 if($cek==$sum[$i])
@@ -70,7 +71,7 @@ class HomeController extends Controller
         return view('dashboard',$data);
     }
     
-
+//PIC
     /**
      * Show the form for creating a new resource.
      *
@@ -80,32 +81,16 @@ class HomeController extends Controller
     {
         $regions  = Region::select('region.id','region.name')->orderBy('name', 'ASC')->get();
 
-//        $User = Users::all();
         $result = Users::select('id','id_region','username','fullname','number', 'email')
             ->get();
         $data['result']= $result;
-//        $data['region']= json_encode($regions, true);
         $data['region']= $regions;
 
-//        var_dump($data['region']);
-//        return response()->json($result);
         return view('pic',$data);
-        //
     }
 
-    public function regions()
-    {
-       $regions  = Region::select('id', 'name')->get();
 
-        $data['region']= json_encode($regions, true);
-        $data['region']= $regions;
 
-//        var_dump($data['region']);
-//        return response()->json($result);
-        return view('regions',$data);
-    }
-
-    
     public function update_region(Request $request){
         $input = $request->all();
 
@@ -141,7 +126,7 @@ class HomeController extends Controller
         $User->number = $input['number'];
 
         $User->save();
-//
+
         return redirect('pic');
     }
 
@@ -172,11 +157,89 @@ class HomeController extends Controller
         return redirect('pic');
     }
 
+//ANSWERS
+    public function answers()
+    {
+        $answers  = Answers::select('id', 'description')->get();
+
+        $data['answer']= $answers;
+
+        return view('answers',$data);
+    }
+
+    public function create_answers (Request $request)
+    {
+        $input = $request->all();
+
+        Answers::create($input);
+
+        return redirect('answers');
+    }
+
+    public function update_answers (Request $request){
+        $input = $request->all();
+        $id = $input['id'];
+        $Answer = Answers::find($id);
+
+        $Answer->description = $input['description'];
+
+        $Answer->save();
+
+        return redirect('answers');
+    }
+
+    public function delete_answers ($id)
+    {
+        $input = Answers::find($id);
+
+        $input->delete();
+
+        return redirect('answers');
+    }
+
+    //REGION
+    public function regions()
+    {
+        $regions  = Region::select('id', 'name', 'status', 'response')->get();
+
+        $data['region']= $regions;
+
+        return view('regions',$data);
+    }
+
+    public function create_regions (Request $request)
+    {
+        $input = $request->all();
+
+        Region::create($input);
+
+        return redirect('regions');
+    }
+
+    public function update_regions (Request $request){
+        $input = $request->all();
+        $id = $input['id'];
+        $Region = Region::find($id);
+
+        $Region->name = $input['name'];
+
+        $Region->save();
+
+        return redirect('regions');
+    }
+
+    public function delete_regions ($id)
+    {
+        $input = Region::find($id);
+
+        $input->delete();
+
+        return redirect('regions');
+    }
+
+//REPORTS
     public function reports()
     {
-
-//        $User = Users::all();
-        
         $result = Reports
             ::join('answers', 'reports.id_answer', '=', 'answers.id')
             ->join('users', 'reports.id_user', '=', 'users.id')
@@ -184,12 +247,9 @@ class HomeController extends Controller
             ->select('reports.id','reports.id_user','reports.verifikasi','users.id_region','reports.id_answer','reports.detail','reports.response','answers.description','users.fullname','region.name', 'reports.created_at')
             ->get();
         $data['result']= $result;
-//        $data['region']= json_encode($regions, true);
 
-//        var_dump($data['region']);
-//        return response()->json($result);
         return view('report',$data);
-        //
+
     }
 
 
@@ -247,7 +307,7 @@ class HomeController extends Controller
         return redirect('report');
     }
 
-
+//HISTORY
 
     public function history($id)
     {
@@ -299,61 +359,6 @@ class HomeController extends Controller
 //        return response()->json($result);
 //        return response()->json($reports);
         return view('history',$data);
-
-    }
-    
-    //History Apps
-    public function history_apps($id)
-    {
-
-        $count = array_fill(0, 3, 0);
-
-        $dt = Carbon::now();
-        $newtime=$dt->subYear();
-
-        $tes = Region::where('id','=',$id)
-            ->select('name','status')
-            ->get();
-        $data['region']=$tes[0]["name"];
-        $data['status']=$tes[0]["status"];
-
-        $result = Log
-            ::join('region', 'log.id_region', '=', 'region.id')
-            ->where('log.id_region','=',$id)
-            ->where('log.detail','LIKE','report from admin')
-            ->whereDate('log.created_at', '>', $newtime->toDateString())
-            ->orderBy('log.created_at','DESC')
-            ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
-            ->get();
-        $data['result']= $result;
-
-        $reports=array();
-        foreach($result as $row){
-            if($row->id_reports!=NULL){
-                $count[2]++;
-                $id_report= $row->id_reports;
-                $report = Reports
-                    ::join('answers', 'reports.id_answer', '=', 'answers.id')
-                    ->where('reports.id','=',$id_report)
-                    ->select('answers.description')
-                    ->get();
-                $reports[$id_report]= $report[0]["description"];
-            }elseif ($row["on/off"]==1){
-                $count[1]++;
-            }else{
-                $count[0]++;
-            }
-        }
-
-        $data['count']= $count;
-        $data['result']= $result;
-        $data['reports']= $reports;
-
-//        $data['region']= json_encode($regions, true);
-//        var_dump($data['region']);
-//        return response()->json($result);
-//        return response()->json($reports);
-        return view('history_apps',$data);
 
     }
     
@@ -423,81 +428,12 @@ class HomeController extends Controller
         return view('history_home',$data);
     }
 
-    public function history_home2()
-    {
-        $id =11;
-        $Regions  = Region::all();
-        $provinsi=array();
-        $kabupaten=array();
-        $statreal= array_fill(0, 100, 0);
-        $sum = array_fill(0, 100, 0);
-        $kabstat = array_fill(0, 100, 0);
-        foreach($Regions as $row){
-            if($row->id<99){
-                $provinsi[]= $row;
-                
-            }
-            else {
-                $kabupaten[floor($row->id/100)][]=$row;
-                    $sum[floor($row->id/100)]++;             
-                if($row->status == 1)
-                    $kabstat[floor($row->id/100)]++;             
-            }
-        }
-        
-        for($i=0;$i<100;$i++){
-            if($sum[$i]!=0){
-                $cek =$sum[$i]- $kabstat[$i];
-                if($cek==$sum[$i])
-                    $statreal[$i]=1;//nyala
-                else if ($cek==0)
-                    $statreal[$i]=2;//mati
-                else
-                    $statreal[$i]=3;//bimbang          
-            }
-        }
-        
-
-        $result = Log
-            ::join('region', 'log.id_region', '=', 'region.id')
-            ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
-            ->orderBy('log.created_at','DESC')
-            ->where('log.detail','LIKE','report from admin')
-            ->take('25')
-            ->get();
-        $data['result']= $result;
-
-        $reports=array();
-        foreach($result as $row){
-            if($row->id_reports!=NULL){
-                $id_report= $row->id_reports;
-                $report = Reports
-                    ::join('answers', 'reports.id_answer', '=', 'answers.id')
-                    ->where('reports.id','=',$id_report)
-                    ->select('answers.description')
-                    ->get();
-                $reports[$id_report]= $report[0]["description"];
-            }       }
-
-        $data['result']= $result;
-        $data['reports']= $reports;
-        
-        $data['kabstat']= $statreal;
-        $data['provinsi']= $provinsi;
-        $data['kabupaten']= $kabupaten;
-        
-        return view('history_appshome',$data);
-    }
-
+//STATISTIC
     public function statistic(){
         $data['result']=NULL;
         $data['title']= "";
 //        var_dump($data['result']);
         return view('statistic',$data);
-    }
-    
-    public function statistic2(){
-        return view('pagecoba2');
     }
 
     public function search_statistic(Request $request){
@@ -604,9 +540,6 @@ class HomeController extends Controller
             return redirect('dashboard');
         }else
             echo 'TOKEN IS NULL';
-
-
-
     }
 
     public function alert($id){
@@ -723,56 +656,13 @@ class HomeController extends Controller
 
     }
 
-    public function import($name)
-    {
-        $fileName = "https://drive.google.com/uc?export=download&id=$name";
-        $csvData = file_get_contents($fileName);
-        $lines = explode(PHP_EOL, $csvData);
-        $i=0;
-        foreach ($lines as $line) {
-            if($i<count($lines)-1){
-                $row =str_getcsv($line);
-                $index=(int)$row[0];
-                $ave=((double)substr($row[1],0,-1));
-                if($ave<30 && $index<9999) {
-                    $status = Region::where('id', '=', $index)->select('status')->first();
-                    if ($status->status == 0) {
-                        $input_log['id_region'] = $index;
-                        $input_log['detail'] = "report from admin";
-                        $input_log['on/off'] = 0;
-
-                        Log::create($input_log);
-
-                        Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
-                        $this->alert($index);
-
-                    }
-                }
-                    if($ave>=30 && $index<9999){
-                        $status = Region::where('id', '=', $index)->select('status')->first();
-                        if($status->status==1){
-                            $input_log['id_region']=$index;
-                            $input_log['detail']="report from admin";
-                            $input_log['on/off']=1;
-
-                            Log::create($input_log);
-
-                            Region::where('id', '=', $index)->update(['status' => 0,'response' => 0]);
-                            $this->alert($index);
-                        }
-
-                }
-            }
-            $i++;
-        }
-//        return redirect('');
-    }
-
     public function upload(){
         $status = NULL;
         $status= Input::get('status', false);
 
         $data['status']=$status;
+        $date = Log::where('detail','LIKE','upload file from admin')->select('created_at')->orderBy('id','DESC')->first();
+        $data['date']=$date['created_at'];
 
         return view('upload',$data);
     }
@@ -822,7 +712,7 @@ class HomeController extends Controller
                                     Log::create($input_log);
 
                                     Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
-                                    //                        $this->alert($index);
+                                    $this->alert($index);
 
                                 }
                             }
@@ -836,7 +726,7 @@ class HomeController extends Controller
                                     Log::create($input_log);
 
                                     Region::where('id', '=', $index)->update(['status' => 0, 'response' => 0]);
-                                    //                        $this->alert($index);
+                                    $this->alert($index);
                                 }
 
                             }
@@ -844,6 +734,9 @@ class HomeController extends Controller
                     }
                     $i++;
                 }
+
+                    $input_log['detail'] = "upload file from admin";
+                    Log::create($input_log);
 
                     Storage::disk('public')->delete($filename);
                     return redirect('upload?status=success');
@@ -912,4 +805,172 @@ class HomeController extends Controller
     {
         //
     }
+
+    //History Apps
+    public function history_apps($id)
+    {
+
+        $count = array_fill(0, 3, 0);
+
+        $dt = Carbon::now();
+        $newtime=$dt->subYear();
+
+        $tes = Region::where('id','=',$id)
+            ->select('name','status')
+            ->get();
+        $data['region']=$tes[0]["name"];
+        $data['status']=$tes[0]["status"];
+
+        $result = Log
+            ::join('region', 'log.id_region', '=', 'region.id')
+            ->where('log.id_region','=',$id)
+            ->where('log.detail','LIKE','report from admin')
+            ->whereDate('log.created_at', '>', $newtime->toDateString())
+            ->orderBy('log.created_at','DESC')
+            ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
+            ->get();
+        $data['result']= $result;
+
+        $reports=array();
+        foreach($result as $row){
+            if($row->id_reports!=NULL){
+                $count[2]++;
+                $id_report= $row->id_reports;
+                $report = Reports
+                    ::join('answers', 'reports.id_answer', '=', 'answers.id')
+                    ->where('reports.id','=',$id_report)
+                    ->select('answers.description')
+                    ->get();
+                $reports[$id_report]= $report[0]["description"];
+            }elseif ($row["on/off"]==1){
+                $count[1]++;
+            }else{
+                $count[0]++;
+            }
+        }
+
+        $data['count']= $count;
+        $data['result']= $result;
+        $data['reports']= $reports;
+
+//        $data['region']= json_encode($regions, true);
+//        var_dump($data['region']);
+//        return response()->json($result);
+//        return response()->json($reports);
+        return view('history_apps',$data);
+
+    }
+
+
+    public function import($name)
+    {
+        $fileName = "https://drive.google.com/uc?export=download&id=$name";
+        $csvData = file_get_contents($fileName);
+        $lines = explode(PHP_EOL, $csvData);
+        $i=0;
+        foreach ($lines as $line) {
+            if($i<count($lines)-1){
+                $row =str_getcsv($line);
+                $index=(int)$row[0];
+                $ave=((double)substr($row[1],0,-1));
+                if($ave<30 && $index<9999) {
+                    $status = Region::where('id', '=', $index)->select('status')->first();
+                    if ($status->status == 0) {
+                        $input_log['id_region'] = $index;
+                        $input_log['detail'] = "report from admin";
+                        $input_log['on/off'] = 0;
+
+                        Log::create($input_log);
+
+                        Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
+                        $this->alert($index);
+
+                    }
+                }
+                if($ave>=30 && $index<9999){
+                    $status = Region::where('id', '=', $index)->select('status')->first();
+                    if($status->status==1){
+                        $input_log['id_region']=$index;
+                        $input_log['detail']="report from admin";
+                        $input_log['on/off']=1;
+
+                        Log::create($input_log);
+
+                        Region::where('id', '=', $index)->update(['status' => 0,'response' => 0]);
+                        $this->alert($index);
+                    }
+
+                }
+            }
+            $i++;
+        }
+//        return redirect('');
+    }
+
+
+    public function history_home2()
+    {
+        $Regions  = Region::all();
+        $provinsi=array();
+        $kabupaten=array();
+        $statreal= array_fill(0, 100, 0);
+        $sum = array_fill(0, 100, 0);
+        $kabstat = array_fill(0, 100, 0);
+        foreach($Regions as $row){
+            if($row->id<99){
+                $provinsi[]= $row;
+
+            }
+            else {
+                $kabupaten[floor($row->id/100)][]=$row;
+                $sum[floor($row->id/100)]++;
+                if($row->status == 1)
+                    $kabstat[floor($row->id/100)]++;
+            }
+        }
+
+        for($i=0;$i<100;$i++){
+            if($sum[$i]!=0){
+                $cek =$sum[$i]- $kabstat[$i];
+                if($cek==$sum[$i])
+                    $statreal[$i]=1;//nyala
+                else if ($cek==0)
+                    $statreal[$i]=2;//mati
+                else
+                    $statreal[$i]=3;//bimbang
+            }
+        }
+
+
+        $result = Log
+            ::join('region', 'log.id_region', '=', 'region.id')
+            ->select('log.created_at','log.id','log.id_region','log.id_reports','log.detail','log.on/off','region.name')
+            ->orderBy('log.created_at','DESC')
+            ->where('log.detail','LIKE','report from admin')
+            ->take('25')
+            ->get();
+        $data['result']= $result;
+
+        $reports=array();
+        foreach($result as $row){
+            if($row->id_reports!=NULL){
+                $id_report= $row->id_reports;
+                $report = Reports
+                    ::join('answers', 'reports.id_answer', '=', 'answers.id')
+                    ->where('reports.id','=',$id_report)
+                    ->select('answers.description')
+                    ->get();
+                $reports[$id_report]= $report[0]["description"];
+            }       }
+
+        $data['result']= $result;
+        $data['reports']= $reports;
+
+        $data['kabstat']= $statreal;
+        $data['provinsi']= $provinsi;
+        $data['kabupaten']= $kabupaten;
+
+        return view('history_appshome',$data);
+    }
+
 }

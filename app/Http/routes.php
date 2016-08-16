@@ -11,17 +11,16 @@
 |
 */
 
-//Login
+//LOGIN
 Route::get('/login/', 'FrontController@login');
 Route::post('/login_process', 'FrontController@login_process');
 Route::get('/logout', 'FrontController@logout');
 
-
+//DASHBOARD
 Route::get('/', 'HomeController@index');
 Route::get('/dashboard', 'HomeController@index');
 Route::get('alert/{id}', 'HomeController@alertRegion');
 Route::get('alert', 'HomeController@alertAll');
-
 
 //PIC
 Route::get('/pic', 'HomeController@pic');
@@ -32,6 +31,15 @@ Route::post('/update_region', 'HomeController@update_region');
 
 //REGIONS
 Route::get('/regions', 'HomeController@regions');
+Route::post('/create_regions', 'HomeController@create_regions');
+Route::post('/update_regions', 'HomeController@update_regions');
+Route::get('/delete_regions/{id}', 'HomeController@delete_regions');
+
+//ANSWER
+Route::get('/answers', 'HomeController@answers');
+Route::post('/create_answers', 'HomeController@create_answers');
+Route::post('/update_answers', 'HomeController@update_answers');
+Route::get('/delete_answers/{id}', 'HomeController@delete_answers');
 
 //REPORT
 Route::get('/report', 'HomeController@reports');
@@ -58,20 +66,8 @@ Route::post('/importfile', 'HomeController@importfile');
 Route::get('/cron_minus', 'ProcessController@cron_minus');
 Route::get('/cron_alert', 'ProcessController@cron_alert');
 
-Route::get('/import/{name}', 'HomeController@import');
 
-
-Route::get('/key', function() {
-    return str_random(32);
-});
-
-
-Route::get('/picdashboard', 'ProcessController@indexpic');
-
-Route::get('/pickabdashboard', 'ProcessController@indexviewkab');
-
-Route::get('/viewdashboard', 'ProcessController@indexview');
-
+//API
 Route::group(['prefix' => 'api/v1'], function()
 {
     //AUTH
@@ -89,31 +85,22 @@ Route::group(['prefix' => 'api/v1'], function()
         Route::post('get_user_details', 'APIController@get_user_details');
     });
 
-
-
-    Route::get('user','UserController@index');
-
-    Route::get('user/{id}','UserController@getUser');
-
-    Route::post('user','UserController@createUser');
-
-    Route::put('user/{id}','UserController@updateUser');
-
-    Route::delete('user/{id}','UserController@deleteUser');
-
-
-    Route::get('region','RegionController@index');
-
-    Route::get('region/{id}','RegionController@getRegion');
-
-    Route::post('region','RegionController@createRegion');
-
-    Route::put('region/{id}','RegionController@updateRegion');
-
-    Route::delete('region/{id}','RegionController@deleteRegion');
-
 });
 
-    Route::post('register', 'APIController@register');
+//DUMMY
 
-//    Route::get('klik/{id}', 'ProcessController@alertRegion');
+Route::get('/import/{name}', 'HomeController@import');
+
+Route::post('register', 'APIController@register');
+
+Route::get('/key', function() {
+    return str_random(32);
+});
+
+
+Route::get('/picdashboard', 'ProcessController@indexpic');
+
+Route::get('/pickabdashboard', 'ProcessController@indexviewkab');
+
+Route::get('/viewdashboard', 'ProcessController@indexview');
+

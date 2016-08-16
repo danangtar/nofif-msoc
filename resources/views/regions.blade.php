@@ -42,18 +42,18 @@
                             <div class="card-panel">
                               <h4 class="header2" style="text-align:center">Add Region Form</h4>
                               <div class="row">
-                                  <form class="col s12" action="{{url('')}}" method="post">
+                                  <form class="col s12" action="{{url('create_regions')}}" method="post">
                                   <div class="row">
                                     <div class="input-field col s12">
                                       <i class="mdi-action-label prefix"></i>
-                                      <input name="id_region" id="name4" type="text" class="validate">
+                                      <input name="id" id="name4" type="number" class="validate">
                                       <label for="id_region">ID Region</label>
                                     </div>
                                   </div>
                                   <div class="row">
                                     <div class="input-field col s12">
                                       <i class="mdi-action-language prefix"></i>
-                                      <input name="region_name" id="name" type="text" class="validate">
+                                      <input name="name" id="name" type="text" class="validate">
                                       <label for="region_name">Region Name</label>
                                     </div>
                                   </div>
@@ -80,6 +80,8 @@
                         <tr>
                             <th>ID Region</th>
                             <th>Region Name</th>
+                            <th>Status</th>
+                            <th>Response Again</th>
                             <th>Edit / Delete</th>
                         </tr>
                     </thead>
@@ -88,6 +90,8 @@
                         <tr>
                             <th>ID Region</th>
                             <th>Region Name</th>
+                            <th>Status</th>
+                            <th>Response Again</th>
                             <th>Edit / Delete</th>
                         </tr>
                     </tfoot>
@@ -97,6 +101,8 @@
                              <tr>
                             <td>{{$list->id}}</td>
                             <td>{{$list->name}}</td>
+                            <td><?php if($list->status==1)echo "DOWN"; else echo "UP"; ?></td>
+                            <td>{{$list->response}} Hours</td>
                              <td>
                                 <div>
                                     <a class="btn-floating2 btn-small waves-effect waves-light teal accent-3 medium material-icons modal-trigger tooltipped edit" data-position="top" data-delay="10" data-tooltip="edit region"  href="#edit{{$list->id}}">
@@ -117,18 +123,19 @@
                                         <div class="card-panel">
                                             <h4 class="header2" style="text-align:center">Region Edit Form</h4>
                                             <div class="row">
-                                                <form class="col s12" action="{{url('')}}" method="post">
+                                                <form class="col s12" action="{{url('update_regions')}}" method="post">
                                                   <div class="row">
                                                     <div class="input-field col s12">
                                                       <i class="mdi-action-label  prefix"></i>
-                                                      <input name="id_region" id="name4" type="text" class="validate">
+                                                      <input name="id" type="hidden" class="validate" value="{{$list->id}}">
+                                                      <input id="name4" type="number" class="validate" value="{{$list->id}}" disabled>
                                                       <label for="id_region">ID Region</label>
                                                     </div>
                                                   </div>
                                                   <div class="row">
                                                     <div class="input-field col s12">
                                                       <i class="mdi-action-language prefix"></i>
-                                                      <input name="region_name" id="name" type="text" class="validate">
+                                                      <input name="name" id="name" type="text" class="validate" value="{{$list->name}}">
                                                       <label for="region_name">Region Name</label>
                                                     </div>
                                                   </div>
@@ -157,7 +164,7 @@
                             </div>
                             <div class="modal-footer">
                                 <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>
-                                <a href="{{url("delete_user/$list->id")}}" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
+                                <a href="{{url("delete_regions/$list->id")}}" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
                             </div>
                         </div>
                              <script type="text/javascript">
