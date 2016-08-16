@@ -10,12 +10,11 @@
               <div class="col s12 m12 l6">
                 <div class="card-panel">
                   <ul class="collection">
-<!--                     <div id="email-list" class="col s10 m4 l4 card-panel z-depth-1">-->
-                        <li class="collection-item avatar email-unread">
-                            <i class="mdi-file-cloud-upload icon blue-text"></i>
-                            <span class="email-title">Form Upload</span>
-                            <p class="truncate grey-text ultra-small"><i>Last update 15 Agustus 2015...</i></p>
-                        
+                    <li class="collection-item avatar email-unread">
+                        <i class="mdi-file-cloud-upload icon blue-text"></i>
+                        <span class="email-title">Form Upload</span>
+                        <p class="truncate grey-text ultra-small"><i>Last update 15 Agustus 2015...</i></p>
+
                       <div class="row"> 
                         <form class="col s12">
                           <div class="row">
@@ -28,13 +27,9 @@
                           </div>
                           </div>
                         </form>
-                       </li>
-                  
-                    
-                  </div>
-<!--                    </div>-->
-                </ul>
-                  
+                      </div>
+                    </li>
+                   </ul>
                 </div>
               </div>
 <!--end container-->
