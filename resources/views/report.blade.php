@@ -180,6 +180,13 @@
                                     <div id="confirm{{$list->id}}" class="modal">
                                         <div class="modal-content">
                                             <p>Are you sure to confirm this report?</p>
+                                            <div class="row">
+                                              <div class="input-field col s12">
+                                                <i class="mdi-action-question-answer prefix"></i>
+                                                <textarea id="message4" class="materialize-textarea validate" length="120"></textarea>
+                                                <label for="problem_name">Send message to PIC </label>
+                                              </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>
