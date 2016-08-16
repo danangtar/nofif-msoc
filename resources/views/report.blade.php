@@ -178,20 +178,25 @@
 
                                     <!-- Modal Confirm -->
                                     <div id="confirm{{$list->id}}" class="modal">
+                                        <form class="col s12" action="{{url('confirm_report')}}" method="post">
                                         <div class="modal-content">
                                             <p>Are you sure to confirm this report?</p>
-                                            <div class="row">
+                                                <input name="id" type="hidden" value="{{$list->id}} ">
+                                                <div class="row">
                                               <div class="input-field col s12">
                                                 <i class="mdi-action-question-answer prefix"></i>
-                                                <textarea id="message4" class="materialize-textarea validate" length="120"></textarea>
+                                                <textarea name="message" id="message4" class="materialize-textarea validate" length="120"></textarea>
                                                 <label for="problem_name">Send message to PIC </label>
                                               </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>
-                                            <a href="{{url("confirm_report/$list->id")}}" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
+                                            <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Cancel</a>
+                                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Send
+                                                <i class="mdi-content-send right"></i>
+                                            </button>
                                         </div>
+                                        </form>
                                     </div>
 
                                     <!-- Modal Delete -->

@@ -112,6 +112,7 @@
                                             <div class="row">
                                                 <form class="col s12" action="{{url('update_answers')}}" method="post">
                                                   <div class="row">
+                                                      <input name="id" id="name" type="hidden" class="validate" value="{{$list->id}}">
                                                     <div class="input-field col s12">
                                                       <i class="mdi-action-question-answer prefix"></i>
                                                       <input name="name" id="name" type="text" class="validate" value="{{$list->description}}">

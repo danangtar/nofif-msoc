@@ -45,7 +45,7 @@ Route::get('/delete_answers/{id}', 'HomeController@delete_answers');
 Route::get('/report', 'HomeController@reports');
 Route::get('/delete_report/{id}', 'HomeController@delete_reports');
 Route::post('/update_report', 'HomeController@update_reports');
-Route::get('/confirm_report/{id}', 'HomeController@confirm_reports');
+Route::post('/confirm_report', 'HomeController@confirm_reports');
 
 //HISTORY
 Route::get('/history/{id}', 'HomeController@history');

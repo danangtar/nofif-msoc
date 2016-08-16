@@ -265,8 +265,12 @@ class HomeController extends Controller
         return redirect('report');
     }
 
-    public function confirm_reports ($id)
+    public function confirm_reports(Request $request)
     {
+        $input = $request->all();
+
+        $id = $input['id'];
+
         $Reports  = Reports::find($id);
         $Reports->verifikasi=1;
 
