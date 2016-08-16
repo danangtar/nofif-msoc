@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use Hash;
 use Carbon\Carbon;
@@ -14,6 +14,7 @@ use App\Answers;
 use App\Reports;
 use App\Log;
 use Storage;
+use Validator;
 
 class HomeController extends Controller
 {
@@ -485,10 +486,6 @@ class HomeController extends Controller
         return view('pagecoba2');
     }
 
-    public function upload(){
-        return view('upload');
-    }
-
     public function search_statistic(Request $request){
         $input = $request->all();
 
@@ -757,57 +754,92 @@ class HomeController extends Controller
 //        return redirect('');
     }
 
-    public function importfile()
+    public function upload(){
+        $status = NULL;
+        $status= Input::get('status', false);
+
+        $data['status']=$status;
+
+        return view('upload',$data);
+    }
+
+    public function importfile(Request $request)
     {
-        $disk = Storage::disk('public');
-//        Storage::cleanDirectory('public');
+        $input = $request->all();
+        $validation = Validator::make($input,array(
+            'csv' => 'required|mimes:csv,txt'
+        ));
 
-        $files = Storage::disk('public')->files();
-        $contents = Storage::disk('public')->get($files[0]);
+        if($validation->fails()){
+            return redirect('upload?status=not_valid');
+        }else{
+            $file = $request->file('csv');
+            $upload = 'temp';
+            $filename = $file->getClientOriginalName();
+            $success = $file->move($upload, $filename);
 
-        $lines = explode(PHP_EOL, $contents);
-        $i=0;
-        foreach ($lines as $line) {
-            if($i<count($lines)-1 && $i>2){
-                $row =str_getcsv($line);
+            if (Storage::disk('public')->exists('$filename'))
+            {
+                Storage::delete($filename);
+            }else{
+                if($success){
+                $files = Storage::disk('public')->files();
 
-                $index=(int)explode(" ",$row[3])[0];
-                $ave=((double)substr($row[5],0,-1));
-                echo "$index $ave <br>";
+                $contents = Storage::disk('public')->get($files[0]);
 
-                if($ave==0 && $index<9999) {
-                    $status = Region::where('id', '=', $index)->select('status')->first();
-                    if ($status->status == 0) {
-                        $input_log['id_region'] = $index;
-                        $input_log['detail'] = "report from admin";
-                        $input_log['on/off'] = 0;
+                $lines = explode(PHP_EOL, $contents);
+                $i=0;
+                foreach ($lines as $line) {
+                    if($i<count($lines)-1 && $i>2){
+                        $row =str_getcsv($line);
 
-                        Log::create($input_log);
+                        $index=(int)explode(" ",$row[3])[0];
 
-                        Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
-//                        $this->alert($index);
+                        if(ctype_digit($index)) {
+                            $ave = ((double)substr($row[5], 0, -1));
 
+                            if ($ave == 0 && $index < 9999) {
+                                $status = Region::where('id', '=', $index)->select('status')->first();
+                                if ($status->status == 0) {
+                                    $input_log['id_region'] = $index;
+                                    $input_log['detail'] = "report from admin";
+                                    $input_log['on/off'] = 0;
+
+                                    Log::create($input_log);
+
+                                    Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
+                                    //                        $this->alert($index);
+
+                                }
+                            }
+                            if ($ave > 0 && $index < 9999) {
+                                $status = Region::where('id', '=', $index)->select('status')->first();
+                                if ($status->status == 1) {
+                                    $input_log['id_region'] = $index;
+                                    $input_log['detail'] = "report from admin";
+                                    $input_log['on/off'] = 1;
+
+                                    Log::create($input_log);
+
+                                    Region::where('id', '=', $index)->update(['status' => 0, 'response' => 0]);
+                                    //                        $this->alert($index);
+                                }
+
+                            }
+                        }
                     }
-                }
-                if($ave>=30 && $index<9999){
-                    $status = Region::where('id', '=', $index)->select('status')->first();
-                    if($status->status==1){
-                        $input_log['id_region']=$index;
-                        $input_log['detail']="report from admin";
-                        $input_log['on/off']=1;
-
-                        Log::create($input_log);
-
-                        Region::where('id', '=', $index)->update(['status' => 0,'response' => 0]);
-//                        $this->alert($index);
-                    }
-
+                    $i++;
                 }
 
+                    Storage::disk('public')->delete($filename);
+                    return redirect('upload?status=success');
+
+                }else{
+                    return redirect('upload?status=failed');
+                }
             }
-            $i++;
-        }
 
+        }
     }
 
 

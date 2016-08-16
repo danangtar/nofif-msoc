@@ -16,15 +16,19 @@
                         <p class="truncate grey-text ultra-small"><i>Last update 15 Agustus 2015...</i></p>
 
                       <div class="row"> 
-                        <form class="col s12">
+                        <form class="col s12" action="{{url('importfile')}}" method="POST" enctype="multipart/form-data">
                           <div class="row">
                             <div class="file-field input-field col s12">
                             <input placeholder="file extension.csv" class="file-path validate" type="text"/>
                             <div class="btn small waves-effect waves-light " style="width:100px">
                               <span style="font-size: smaller;">Browse file</span>
-                              <input type="file" />
+                              <input name="csv" type="file" />
                             </div>
                           </div>
+                              <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Upload
+                                  <i class="mdi-content-send right"></i>
+                              </button>
+
                           </div>
                         </form>
                       </div>
