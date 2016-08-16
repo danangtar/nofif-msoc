@@ -474,17 +474,19 @@ class HomeController extends Controller
         return view('history_appshome',$data);
     }
 
-    public function statistic()
-    {
-
+    public function statistic(){
         $data['result']=NULL;
         $data['title']= "";
 //        var_dump($data['result']);
         return view('statistic',$data);
     }
-   public function statistic2()
-    {
+    
+    public function statistic2(){
         return view('pagecoba2');
+    }
+
+    public function upload(){
+        return view('upload');
     }
 
     public function search_statistic(Request $request){

@@ -1,5 +1,5 @@
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <!--================================================================================
@@ -33,18 +33,27 @@
     <link href="{{asset("materialize/css/style.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
 
 
+<<<<<<< HEAD
+</head>
+<body>
+    <div id="loader-wrapper">
+=======
 
 
 </head>
 <body>
  <div id="loader-wrapper">
+>>>>>>> f631a62a00026acb80ca23d645cd85b47e75e896
         <div id="loader"></div>        
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
     </div>
     <!-- End Page Loading -->
 
+<<<<<<< HEAD
+=======
             
+>>>>>>> f631a62a00026acb80ca23d645cd85b47e75e896
     <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <script type="text/javascript">
         $( document ).ready(function() {
