@@ -158,13 +158,13 @@ class HomeController extends Controller
     }
 
 //ANSWERS
-    public function answers()
+    public function problem()
     {
         $answers  = Answers::select('id', 'description')->get();
 
         $data['answer']= $answers;
 
-        return view('answers',$data);
+        return view('problem',$data);
     }
 
     public function create_answers (Request $request)

@@ -116,6 +116,8 @@
                     </li>
                     <li class="bold"><a href="{{ url('/statistic') }}" class="waves-effect waves-cyan"><i class="mdi-editor-insert-chart"></i> Statistic </a>
                     </li>
+                    <li class="bold"><a href="{{ url('/problem') }}" class="waves-effect waves-cyan"><i class="mdi-alert-error"></i> Problem </a>
+                    </li>
                     <li class="bold"><a href="{{ url('/history_home') }}" class="waves-effect waves-cyan"><i class="mdi-action-history"></i> History</a>
                     </li>
                     <li class="bold"><a href="{{ url('/upload') }}" class="waves-effect waves-cyan"><i class="mdi-file-file-upload "></i> Upload</a>
