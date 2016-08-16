@@ -501,9 +501,7 @@ class HomeController extends Controller
             if($Region[0]['status']==1) $status='down'; else $status = 'up';
             $data = array
             (
-                'id_user' 	=> $id,
-                'region' 	=> $Region[0]['name'],
-                'status' 	=> $Region[0]['status'],
+                'status' 	=> $status,
             );
 
             $notification= array
@@ -557,9 +555,7 @@ class HomeController extends Controller
             if($Region[0]['status']==1) $status='down'; else $status = 'up';
             $data = array
             (
-                'id_user' 	=> $id,
-                'region' 	=> $Region[0]['name'],
-                'status' 	=> $Region[0]['status'],
+                'status' 	=> $status,
             );
 
             $notification= array
@@ -612,9 +608,7 @@ class HomeController extends Controller
                 if($row->status==1) $status='down'; else $status = 'up';
                 $data = array
                 (
-                    'id_user' => $row->id,
-                    'region' => $region,
-                    'status' => $row->status,
+                    'status' => $status,
                 );
 
                 $notification = array
