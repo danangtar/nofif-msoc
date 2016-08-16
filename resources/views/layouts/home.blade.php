@@ -116,6 +116,8 @@
                     </li>
                     <li class="bold"><a href="{{ url('/history_home') }}" class="waves-effect waves-cyan"><i class="mdi-action-history"></i> History</a>
                     </li>
+                    <li class="bold"><a href="{{ url('/upload') }}" class="waves-effect waves-cyan"><i class="mdi-file-file-upload "></i> Upload</a>
+                    </li>
                 
                 </ul>
                 <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>

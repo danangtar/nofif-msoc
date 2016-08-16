@@ -1,5 +1,5 @@
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <!--================================================================================
@@ -33,35 +33,15 @@
     <link href="{{asset("materialize/css/style.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
 
 
-    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->    
-    <link href="{{asset("materialize/css/prism.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{{asset("materialize/js/plugins/chartist-js/chartist.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{{asset("materialize/js/plugins/data-tables/css/jquery.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{{asset("materialize/js/plugins/jvectormap/jquery-jvectormap.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-  
-
 </head>
- <div id="loader-wrapper">
+<body>
+    <div id="loader-wrapper">
         <div id="loader"></div>        
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
     </div>
     <!-- End Page Loading -->
 
-    <!-- START MAIN -->
-    <div id="main">
-        <!-- START WRAPPER -->
-        <div class="wrapper">
-    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
-    <script type="text/javascript" src="{{asset("materialize/js/scripts.js")}}"></script>
-    <script type="text/javascript">
-        $( document ).ready(function() {
-        $('select').material_select();
-
-    });
-    </script>
-            
     <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <script type="text/javascript">
         $( document ).ready(function() {
