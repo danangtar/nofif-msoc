@@ -43,7 +43,7 @@
                   </li>
                   <li><a href="">History</a>
                   </li>
-                  <li class="active">{{$region}} {{$status}}</li>
+                  <li class="active">{{$region}}</li>
                   <div class="switch right tooltipped" data-position="top" data-delay="10" 
                     <?php   if($status==1) {?>
                             data-tooltip="Status on">

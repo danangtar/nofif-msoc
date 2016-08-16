@@ -1,48 +1,32 @@
 @extends('layouts.home')
 
 @section('content')
-    <script type="text/javascript" src="materialize/js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript">
         $( document ).ready(function() {
-//            $('select').material_select();
-            
-//            var table =$('#data-table-simple').dataTable();
-//            var tableTools = new $.fn.dataTable.TableTools(table);
-//            $(tableTools.fnContainer()).insertBefore('#data-table-simple_wrapper');
-            
-            
-            
-            
-            $('#data-table-simple').DataTable( {
-                dom: 'Bfrtip',
-                buttons: [
-                    'copyhtml5', 'csvhtml5', 'excelhtml5', 'pdfhtml5', 'printhtml5'
-            ]
+            $('select').material_select();
     } );
 
         });
     </script>
-
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
+   
+<!--
     <link href="{{asset("materialize/js/plugins/data-tables/css/jquery.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="{{asset("materialize/js/plugins/data-tables/css/buttons.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
-    
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
- 
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
     <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery-1.12.3.js")}}"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/tabletools/2.2.4/js/dataTables.tableTools.min.js"></script>
     
-
-<!--    <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">-->
-<!--    <link href="//cdn.datatables.net/tabletools/2.2.4/css/dataTables.tableTools.css" type="text/css" rel="stylesheet" media="screen,projection">-->
-
-<!--    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">-->
-    
-    
-
-    
+-->
 <!--
+    <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="//cdn.datatables.net/tabletools/2.2.4/css/dataTables.tableTools.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
     
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
@@ -54,12 +38,26 @@
 
     
     <!--start container-->
-        <div class="container">
-          <div class="section">
-
-            <p class="caption">PIC Regions</p>
-            <div class="divider"></div>
-            
+     <!--breadcrumbs start-->
+         <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">PIC</h5>
+                <ol class="breadcrumb">
+                  <li><a href="">Dashboard</a>
+                  </li>
+                  <li><a href="">PIC</a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->    
+        <div class="container">    
+        <div class="section">
+           <div class="divider"></div>    
             <!--DataTables example-->
             <div id="table-datatables">
               <div class="row"><br>
@@ -256,7 +254,7 @@
                         <!-- Modal Delete -->
                         <div id="delete{{$list->id}}" class="modal">
                             <div class="modal-content">
-                                <p>Are you sure to delete <b>{{$list->fullname}}</b> account?</p>
+                                <p>Are you sure to delete  <span  style="text-transform: uppercase;"><b>{{$list->fullname}}</b></span> account ?</p>
                             </div>
                             <div class="modal-footer">
                                 <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>
