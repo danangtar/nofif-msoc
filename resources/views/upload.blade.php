@@ -60,8 +60,6 @@
               </div>
 <!--end container-->
 <!-- COBA DISINI BUR    -->
- <button class="green" >COBA ALERT HIJAU</button>
- <button class="red" >COBA ALERT MERAH</button>
 
  <style>
      .sweet-alert {
@@ -93,15 +91,11 @@
      }
 
      $( document ).ready(function() {
-
+        <?php if($status=='success') echo "alert_green('Upload Success');";
+     elseif ($status=='failed') echo "alert_red('Upload Error');";
+     elseif ($status=='not_valid') echo "alert_red('Please Upload File CSV');";
+         ?>
      } );
-  $('button.green').click(function() {
-    alert_green('success');
-  });
-  $('button.red').click(function() {
-    alert_red('error');
-  });
-
 
   </script>
     
