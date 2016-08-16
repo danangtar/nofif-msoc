@@ -499,7 +499,10 @@ class HomeController extends Controller
         if($token!=NULL){
             $region = $Region[0]['name'];
             if($Region[0]['status']==1) $status='down'; else $status = 'up';
-            $data = $status;
+            $data = array
+            (
+                'status' 	=> $status,
+            );
 
             $notification= array
             (
@@ -550,7 +553,10 @@ class HomeController extends Controller
         if($token!=NULL){
             $region = $Region[0]['name'];
             if($Region[0]['status']==1) $status='down'; else $status = 'up';
-            $data = $status;
+            $data = array
+            (
+                'status' 	=> $status,
+            );
 
             $notification= array
             (
@@ -600,7 +606,11 @@ class HomeController extends Controller
             if($token!=NULL) {
                 $region = $row->name;
                 if($row->status==1) $status='down'; else $status = 'up';
-                $data = $status;
+                $data = array
+                (
+                    'status' => $status,
+                );
+
                 $notification = array
                 (
                     'title' => "ALERT!!! $region Server $status",
