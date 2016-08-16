@@ -14,7 +14,7 @@ class Reports extends Model
      */
     protected $table = 'reports';
     protected $fillable = [
-        'id_answer', 'id_user', 'detail', 'response', 'verifikasi'
+        'id_answer', 'id_user', 'detail', 'response', 'verifikasi','created_at'
     ];
 
     /**

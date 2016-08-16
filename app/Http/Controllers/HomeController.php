@@ -174,11 +174,12 @@ class HomeController extends Controller
     {
 
 //        $User = Users::all();
+        
         $result = Reports
             ::join('answers', 'reports.id_answer', '=', 'answers.id')
             ->join('users', 'reports.id_user', '=', 'users.id')
             ->join('region', 'users.id_region', '=', 'region.id')
-            ->select('reports.id','reports.id_user','reports.verifikasi','users.id_region','reports.id_answer','reports.detail','reports.response','answers.description','users.fullname','region.name')
+            ->select('reports.id','reports.id_user','reports.verifikasi','users.id_region','reports.id_answer','reports.detail','reports.response','answers.description','users.fullname','region.name', 'reports.created_at')
             ->get();
         $data['result']= $result;
 //        $data['region']= json_encode($regions, true);

@@ -5,7 +5,15 @@
     <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
     <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#data-table-simple2').DataTable( {
+                "order": [[ 0, "desc" ]]
+            } );
+        } );
+    </script>
     <!--start container-->
+
         <!--breadcrumbs start-->
         <div id="breadcrumbs-wrapper" class=" grey lighten-3">
           <div class="container">
@@ -66,7 +74,7 @@
                     </div>
 
                     <div class="col s12 m8 l9">
-                        <table id="data-table-simple" class="responsive-table display" cellspacing="0"  width="100%">
+                        <table id="data-table-simple2" class="responsive-table display" cellspacing="0"  width="100%">
                             <thead>
                             <tr>
                                 <th>Timestamp</th>
@@ -96,7 +104,7 @@
                             <tbody>
                             @foreach ($result as $list)
                                 <tr>
-                                <td>2016-08-12 07:09:04</td>
+                                <td>{{$list->created_at}}</td>
                                 <td>{{$list->fullname}}</td>
                                 <td>{{$list->name}}</td>
                                 <td style="white-space: nowrap;">{{$list->description}}</td>

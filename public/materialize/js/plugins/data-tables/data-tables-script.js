@@ -6,7 +6,7 @@ $(document).ready(function(){
         "columnDefs": [
             { "visible": false, "targets": 2 }
         ],
-        "order": [[ 2, 'asc' ]],
+        "order": [[ 2, 'desc' ]],
         "displayLength": 25,
         "drawCallback": function ( settings ) {
             var api = this.api();
