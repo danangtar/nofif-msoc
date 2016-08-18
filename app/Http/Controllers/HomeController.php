@@ -164,19 +164,19 @@ class HomeController extends Controller
 
         $data['answer']= $answers;
 
+
         return view('problem',$data);
     }
 
-    public function create_answers (Request $request)
+    public function create_problem (Request $request)
     {
         $input = $request->all();
-
         Answers::create($input);
 
-        return redirect('answers');
+        return redirect('problem');
     }
 
-    public function update_answers (Request $request){
+    public function update_problem (Request $request){
         $input = $request->all();
         $id = $input['id'];
         $Answer = Answers::find($id);
@@ -185,16 +185,16 @@ class HomeController extends Controller
 
         $Answer->save();
 
-        return redirect('answers');
+        return redirect('problem');
     }
 
-    public function delete_answers ($id)
+    public function delete_problem ($id)
     {
         $input = Answers::find($id);
 
         $input->delete();
 
-        return redirect('answers');
+        return redirect('problem');
     }
 
     //REGION
@@ -295,6 +295,7 @@ class HomeController extends Controller
         $Region->save();
 
         Log::create($input_log);
+        $this->alert($id_region,'request accepted. Message : '.$input['message']);
 
         return redirect('report');
     }
@@ -544,27 +545,27 @@ class HomeController extends Controller
             echo 'TOKEN IS NULL';
     }
 
-    public function alert($id){
+    public function alert($id,$message){
         $User  = Users::where('id_region','=',$id)
             ->select('remember_token')
             ->get();
 
-        $Region  = Region::where('id','=',$id)
+        $Regions  = Region::where('id','=',$id)
             ->select('name','status')
-            ->get();
+            ->first();
 
         $token=$User[0]['remember_token'];
         if($token!=NULL){
-            $region = $Region[0]['name'];
-            if($Region[0]['status']==1) $status='down'; else $status = 'up';
+            $region = $Regions['name'];
+
             $data = array
             (
-                'status' 	=> $status,
+                'status' 	=> $message,
             );
 
             $notification= array
             (
-                'title' 	=> "ALERT!!! $region Server $status",
+                'title' 	=> "ALERT!!! $region, $message",
                 'body' 	=> 'Check & Reply',
                 'sound' 	=> 'default',
                 'click_action' 	=> 'FCM_PLUGIN_ACTIVITY',
@@ -660,7 +661,7 @@ class HomeController extends Controller
 
         $data['status']=$status;
         $date = Log::where('detail','LIKE','upload file from admin')->select('created_at')->orderBy('id','DESC')->first();
-        $data['date']=$date['created_at'];
+        $data['last_date']=$date['created_at'];
 
         return view('upload',$data);
     }
@@ -710,7 +711,7 @@ class HomeController extends Controller
                                     Log::create($input_log);
 
                                     Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
-                                    $this->alert($index);
+                                    $this->alert($index,'Server DOWN');
 
                                 }
                             }
@@ -724,7 +725,7 @@ class HomeController extends Controller
                                     Log::create($input_log);
 
                                     Region::where('id', '=', $index)->update(['status' => 0, 'response' => 0]);
-                                    $this->alert($index);
+                                    $this->alert($index,'Server UP');
                                 }
 
                             }

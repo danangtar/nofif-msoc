@@ -42,11 +42,11 @@
                             <div class="card-panel">
                               <h4 class="header2" style="text-align:center">Add Problem Category</h4>
                               <div class="row">
-                                  <form class="col s12" action="{{url('create_answers')}}" method="post">
+                                  <form class="col s12" action="{{url('create_problem')}}" method="post">
                                   <div class="row">
                                     <div class="input-field col s12">
                                       <i class="mdi-action-question-answer prefix"></i>
-                                      <textarea id="message4" class="materialize-textarea validate" length="120"></textarea>
+                                      <textarea name="description" id="message4" class="materialize-textarea validate" length="120"></textarea>
                                       <label for="problem_name">Problem Description </label>
                                     </div>
                                   </div>
@@ -110,12 +110,12 @@
                                         <div class="card-panel">
                                             <h4 class="header2" style="text-align:center">Problem Edit Form</h4>
                                             <div class="row">
-                                                <form class="col s12" action="{{url('update_answers')}}" method="post">
+                                                <form class="col s12" action="{{url('update_problem')}}" method="post">
                                                   <div class="row">
                                                       <input name="id" id="name" type="hidden" class="validate" value="{{$list->id}}">
                                                     <div class="input-field col s12">
                                                       <i class="mdi-action-question-answer prefix"></i>
-                                                      <input name="name" id="name" type="text" class="validate" value="{{$list->description}}">
+                                                      <input name="description" id="name" type="text" class="validate" value="{{$list->description}}">
                                                       <label for="problem_name">Problem Description</label>
                                                     </div>
                                                   </div>
@@ -144,7 +144,7 @@
                             </div>
                             <div class="modal-footer">
                                 <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Disagree</a>
-                                <a href="{{url("delete_answers/$list->id")}}" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
+                                <a href="{{url("delete_problem/$list->id")}}" class="waves-effect waves-green btn-flat modal-action modal-close">Agree</a>
                             </div>
                         </div>
                              <script type="text/javascript">
