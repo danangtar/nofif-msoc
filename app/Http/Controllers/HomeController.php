@@ -507,7 +507,7 @@ class HomeController extends Controller
             (
                 'status' 	=> $status,
                 'title' 	=> "ALERT!!! $region Server $status",
-                'body' 	    => 'Check & Reply'
+                'body' 	    => 'Check & Reply',
             );
 
             // $notification= array
@@ -565,7 +565,7 @@ class HomeController extends Controller
             (
                 'status' 	=> $status,
                 'title' 	=> "ALERT!!! $region Server $status",
-                'body' 	    => 'Check & Reply'
+                'body' 	    => 'Check & Reply',
             );
 
             // $notification= array
@@ -622,7 +622,7 @@ class HomeController extends Controller
                 (
                     'status'    => $status,
                     'title' 	=> "ALERT!!! $region Server $status",
-                    'body' 	    => 'Check & Reply'
+                    'body' 	    => 'Check & Reply',
                 );
 
                 // $notification = array
