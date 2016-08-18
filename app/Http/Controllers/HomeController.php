@@ -164,19 +164,19 @@ class HomeController extends Controller
 
         $data['answer']= $answers;
 
+
         return view('problem',$data);
     }
 
-    public function create_answers (Request $request)
+    public function create_problem (Request $request)
     {
         $input = $request->all();
-
         Answers::create($input);
 
-        return redirect('answers');
+        return redirect('problem');
     }
 
-    public function update_answers (Request $request){
+    public function update_problem (Request $request){
         $input = $request->all();
         $id = $input['id'];
         $Answer = Answers::find($id);
@@ -185,16 +185,16 @@ class HomeController extends Controller
 
         $Answer->save();
 
-        return redirect('answers');
+        return redirect('problem');
     }
 
-    public function delete_answers ($id)
+    public function delete_problem ($id)
     {
         $input = Answers::find($id);
 
         $input->delete();
 
-        return redirect('answers');
+        return redirect('problem');
     }
 
     //REGION
@@ -295,6 +295,7 @@ class HomeController extends Controller
         $Region->save();
 
         Log::create($input_log);
+        $this->alert($id_region,'request accepted. Message : '.$input['message']);
 
         return redirect('report');
     }
@@ -491,99 +492,36 @@ class HomeController extends Controller
     }
 
     public function alertRegion($id){
-        $User  = Users::where('id_region','=',$id)
-            ->select('remember_token')
-            ->get();
-
-        $Region  = Region::where('id','=',$id)
-            ->select('name','status')
-            ->get();
-
-        $token=$User[0]['remember_token'];
-        if($token!=NULL){
-            $region = $Region[0]['name'];
-            if($Region[0]['status']==1) $status='down'; else $status = 'up';
-            $data = array
-            (
-                'status' 	=> $status,
-                'title' 	=> "ALERT!!! $region Server $status",
-                'body' 	    => 'Check & Reply',
-            );
-
-            // $notification= array
-            // (
-            //     'title' 	=> "ALERT!!! $region Server $status",
-            //     'body' 	=> 'Check & Reply',
-            //     'sound' 	=> 'default',
-            //     'click_action' 	=> 'FCM_PLUGIN_ACTIVITY',
-            //     'icon' 	=> 'icon_name'
-            // );
-            
-                // 'notification' 	=> $notification,
-
-            $json=array(
-                'data' 	=> $data,
-                'to' 	=> $token,
-                'priority' => 'high',
-                'time_to_live' => 86400
-            );
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'Content-Length: '.strlen(json_encode($json)),
-                'Authorization:key=AIzaSyB8A-zll_nZ6eq4HIl0U0RxFqMCgRYVUwI'
-            ));
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($json));
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-            $output = curl_exec($ch);
-            curl_close($ch);
-            echo $output;
-            return redirect('dashboard');
-        }else
-            echo 'TOKEN IS NULL';
+        $this->alert($id, 'Server DOWN');
+        return redirect('dashboard');
     }
 
-    public function alert($id){
+    public function alert($id,$message){
         $User  = Users::where('id_region','=',$id)
             ->select('remember_token')
             ->get();
 
-        $Region  = Region::where('id','=',$id)
+        $Regions  = Region::where('id','=',$id)
             ->select('name','status')
-            ->get();
+            ->first();
 
         $token=$User[0]['remember_token'];
         if($token!=NULL){
-            $region = $Region[0]['name'];
-            if($Region[0]['status']==1) $status='down'; else $status = 'up';
+            $region = $Regions['name'];
+
             $data = array
             (
-                'status' 	=> $status,
-                'title' 	=> "ALERT!!! $region Server $status",
-                'body' 	    => 'Check & Reply',
+                'status' 	=> $message,
+                'title' 	=> "ALERT!!! $region, $message",
+                'body' 	=> 'Check & Reply',
             );
 
-            // $notification= array
-            // (
-            //     'title' 	=> "ALERT!!! $region Server $status",
-            //     'body' 	=> 'Check & Reply',
-            //     'sound' 	=> 'default',
-            //     'click_action' 	=> 'FCM_PLUGIN_ACTIVITY',
-            //     'icon' 	=> 'icon_name'
-            // );
-            
-                // 'notification' 	=> $notification,
 
             $json=array(
                 'data' 	=> $data,
                 'to' 	=> $token,
                 'priority' => 'high',
-                'time_to_live' => 86400
+                'time_to_live' => 86400,
             );
 
             $ch = curl_init();
@@ -620,27 +558,17 @@ class HomeController extends Controller
                 if($row->status==1) $status='down'; else $status = 'up';
                 $data = array
                 (
-                    'status'    => $status,
-                    'title' 	=> "ALERT!!! $region Server $status",
-                    'body' 	    => 'Check & Reply',
+                    'status' => $status,
+                    'title' => "ALERT!!! $region Server $status",
+                    'body' => 'Check & Reply',
                 );
-
-                // $notification = array
-                // (
-                //     'title' => "ALERT!!! $region Server $status",
-                //     'body' => 'Check & Reply',
-                //     'sound' => 'default',
-                //     'click_action' => 'FCM_PLUGIN_ACTIVITY',
-                //     'icon' => 'icon_name'
-                // );
-                
-                    // 'notification' => $notification,
 
                 $json = array(
                     'data' => $data,
                     'to' => $token,
                     'priority' => 'high',
-                    'time_to_live' => 86400
+                    'time_to_live' => 86400,
+
                 );
 
                 $ch = curl_init();
@@ -672,7 +600,7 @@ class HomeController extends Controller
 
         $data['status']=$status;
         $date = Log::where('detail','LIKE','upload file from admin')->select('created_at')->orderBy('id','DESC')->first();
-        $data['date']=$date['created_at'];
+        $data['last_date']=$date['created_at'];
 
         return view('upload',$data);
     }
@@ -722,7 +650,7 @@ class HomeController extends Controller
                                     Log::create($input_log);
 
                                     Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
-                                    $this->alert($index);
+                                    $this->alert($index,'Server DOWN');
 
                                 }
                             }
@@ -736,7 +664,7 @@ class HomeController extends Controller
                                     Log::create($input_log);
 
                                     Region::where('id', '=', $index)->update(['status' => 0, 'response' => 0]);
-                                    $this->alert($index);
+                                    $this->alert($index,'Server UP');
                                 }
 
                             }
