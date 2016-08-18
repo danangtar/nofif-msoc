@@ -522,6 +522,7 @@ class HomeController extends Controller
                 'notification' 	=> $notification,
                 'to' 	=> $token,
                 'priority' => 'high'
+                'time_to_live' => '86400'
             );
 
             $ch = curl_init();
@@ -576,6 +577,7 @@ class HomeController extends Controller
                 'notification' 	=> $notification,
                 'to' 	=> $token,
                 'priority' => 'high'
+                'time_to_live' => '86400'
             );
 
             $ch = curl_init();
@@ -629,6 +631,7 @@ class HomeController extends Controller
                     'notification' => $notification,
                     'to' => $token,
                     'priority' => 'high'
+                    'time_to_live' => '86400'
                 );
 
                 $ch = curl_init();
