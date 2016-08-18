@@ -494,7 +494,6 @@ class HomeController extends Controller
     public function alertRegion($id){
         $this->alert($id, 'Server DOWN');
         return redirect('dashboard');
-
     }
 
     public function alert($id,$message){
@@ -513,15 +512,8 @@ class HomeController extends Controller
             $data = array
             (
                 'status' 	=> $message,
-            );
-
-            $notification= array
-            (
                 'title' 	=> "ALERT!!! $region, $message",
                 'body' 	=> 'Check & Reply',
-                'sound' 	=> 'default',
-                'click_action' 	=> 'FCM_PLUGIN_ACTIVITY',
-                'icon' 	=> 'icon_name'
             );
 
 
@@ -529,7 +521,7 @@ class HomeController extends Controller
                 'data' 	=> $data,
                 'to' 	=> $token,
                 'priority' => 'high',
-                'time_to_live' => '86400'
+                'time_to_live' => 86400,
             );
 
             $ch = curl_init();
@@ -566,27 +558,17 @@ class HomeController extends Controller
                 if($row->status==1) $status='down'; else $status = 'up';
                 $data = array
                 (
-                    'status'    => $status,
-                    'title' 	=> "ALERT!!! $region Server $status",
-                    'body' 	    => 'Check & Reply',
+                    'status' => $status,
+                    'title' => "ALERT!!! $region Server $status",
+                    'body' => 'Check & Reply',
                 );
-
-                // $notification = array
-                // (
-                //     'title' => "ALERT!!! $region Server $status",
-                //     'body' => 'Check & Reply',
-                //     'sound' => 'default',
-                //     'click_action' => 'FCM_PLUGIN_ACTIVITY',
-                //     'icon' => 'icon_name'
-                // );
-                
-                    // 'notification' => $notification,
 
                 $json = array(
                     'data' => $data,
                     'to' => $token,
                     'priority' => 'high',
-                    'time_to_live' => '86400'
+                    'time_to_live' => 86400,
+
                 );
 
                 $ch = curl_init();
