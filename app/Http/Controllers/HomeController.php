@@ -525,7 +525,7 @@ class HomeController extends Controller
                 'data' 	=> $data,
                 'to' 	=> $token,
                 'priority' => 'high',
-                'time_to_live' => '86400'
+                'time_to_live' => 86400
             );
 
             $ch = curl_init();
@@ -583,7 +583,7 @@ class HomeController extends Controller
                 'data' 	=> $data,
                 'to' 	=> $token,
                 'priority' => 'high',
-                'time_to_live' => '86400'
+                'time_to_live' => 86400
             );
 
             $ch = curl_init();
@@ -640,7 +640,7 @@ class HomeController extends Controller
                     'data' => $data,
                     'to' => $token,
                     'priority' => 'high',
-                    'time_to_live' => '86400'
+                    'time_to_live' => 86400
                 );
 
                 $ch = curl_init();
