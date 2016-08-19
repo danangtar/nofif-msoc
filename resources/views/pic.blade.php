@@ -1,16 +1,23 @@
 @extends('layouts.home')
 
 @section('content')
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            $('select').material_select();
-    } );
-
-    </script>
     <!-- jQuery Library -->
     <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
     <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
     <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('select').material_select();
+            $('.modal-trigger').leanModal();
+            $('#data-table-simple3').DataTable( {
+                 aLengthMenu: [
+                    [5, 10, 25, 100, -1],
+                    [5, 10, 25, 100, "All"]
+                ],
+                iDisplayLength: -1
+            } );
+        } );
+    </script>
    
 <!--
     <link href="{{asset("materialize/js/plugins/data-tables/css/jquery.dataTables.min.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
@@ -138,7 +145,7 @@
 
                   
                 <div class="col s12 m8 l12">
-                   <table id="data-table-simple" class="responsive-table display" cellspacing="0"  width="100%">
+                   <table id="data-table-simple3" class="responsive-table display" cellspacing="0"  width="100%">
                     <thead>
                         <tr>
                             <th>Username</th>

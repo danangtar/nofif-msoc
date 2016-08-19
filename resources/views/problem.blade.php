@@ -7,9 +7,15 @@
  <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
  <script type="text/javascript">
     $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal-trigger').leanModal();
-  });
+        $('.modal-trigger').leanModal();
+        $('#data-table-simple3').DataTable( {
+             aLengthMenu: [
+                [5, 10, 25, 100, -1],
+                [5, 10, 25, 100, "All"]
+            ],
+            iDisplayLength: -1
+        } );
+    });
  </script>
 
  <link href="{{asset("materialize/css/materialize.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
@@ -74,7 +80,7 @@
                   </div>
                   
                 <div class="col s12 m8 l12">
-                   <table id="data-table-simple" class="responsive-table display" cellspacing="0"  width="100%">
+                   <table id="data-table-simple3" class="responsive-table display" cellspacing="0"  width="100%">
                     <thead>
                         <tr>
                             <th>ID Problem</th>

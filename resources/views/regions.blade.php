@@ -5,31 +5,17 @@
  <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
  <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
  <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
- <script type="text/javascript">  
-     $(document).ready(function() {
-    $('#data-table-simple3').DataTable( {
-        responsive: {
-            details: {
-                display: $.fn.dataTable.Responsive.display.modal( {
-                    header: function ( row ) {
-                        var data = row.data();
-                        return 'Details for '+data[0]+' '+data[1];
-                    }
-                } ),
-                renderer: function ( api, rowIdx, columns ) {
-                    var data = $.map( columns, function ( col, i ) {
-                        return '<tr>'+
-                                '<td>'+col.title+':'+'</td> '+
-                                '<td>'+col.data+'</td>'+
-                            '</tr>';
-                    } ).join('');
- 
-                    return $('<table/>').append( data );
-                }
-            }
-        }
-    } );
-} );
+ <script type="text/javascript">
+    $(document).ready(function(){
+        $('.modal-trigger').leanModal();
+        $('#data-table-simple3').DataTable( {
+             aLengthMenu: [
+                [5, 10, 25, 100, -1],
+                [5, 10, 25, 100, "All"]
+            ],
+            iDisplayLength: -1
+        } );
+    });
  </script>
  <link href="{{asset("materialize/css/materialize.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
  <link href="{{asset("materialize/css/style.css")}}" type="text/css" rel="stylesheet" media="screen,projection">

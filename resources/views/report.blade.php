@@ -8,6 +8,11 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#data-table-simple2').DataTable( {
+                aLengthMenu: [
+                    [5, 10, 25, 100, -1],
+                    [5, 10, 25, 100, "All"]
+                ],
+                iDisplayLength: -1,
                 "order": [[ 0, "desc" ]]
             } );
         } );
