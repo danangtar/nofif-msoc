@@ -5,7 +5,32 @@
  <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
  <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
  <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
-
+ <script type="text/javascript">  
+     $(document).ready(function() {
+    $('#data-table-simple3').DataTable( {
+        responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.modal( {
+                    header: function ( row ) {
+                        var data = row.data();
+                        return 'Details for '+data[0]+' '+data[1];
+                    }
+                } ),
+                renderer: function ( api, rowIdx, columns ) {
+                    var data = $.map( columns, function ( col, i ) {
+                        return '<tr>'+
+                                '<td>'+col.title+':'+'</td> '+
+                                '<td>'+col.data+'</td>'+
+                            '</tr>';
+                    } ).join('');
+ 
+                    return $('<table/>').append( data );
+                }
+            }
+        }
+    } );
+} );
+ </script>
  <link href="{{asset("materialize/css/materialize.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
  <link href="{{asset("materialize/css/style.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
           
@@ -75,7 +100,7 @@
                   </div>
                   
                 <div class="col s12 m8 l12">
-                   <table id="data-table-simple" class="responsive-table display" cellspacing="0"  width="100%">
+                   <table id="data-table-simple3" class="responsive-table display" cellspacing="0"  width="100%">
                     <thead>
                         <tr>
                             <th>ID Region</th>

@@ -5,6 +5,12 @@
  <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
  <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/js/jquery.dataTables.min.js")}}"></script>
  <script type="text/javascript" src="{{asset("materialize/js/plugins/data-tables/data-tables-script.js")}}"></script>
+ <script type="text/javascript">
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+ </script>
 
  <link href="{{asset("materialize/css/materialize.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
  <link href="{{asset("materialize/css/style.css")}}" type="text/css" rel="stylesheet" media="screen,projection">
@@ -102,7 +108,7 @@
                             </td>
                         </tr>
                         <!-- Modal Edit -->
-                        <div id="edit{{$list->id}}" class="modal">
+                        <div id="edit{{$list->id}}" class=" modal lean-overlay" id="materialize-single-lean-overlay" data-overlay-counter="3">
                             <div class="model-email-content">
                                 <div class="row">
                                     <!-- Form with validation -->
