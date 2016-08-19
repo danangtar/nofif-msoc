@@ -13,14 +13,6 @@ use JWTAuth;
 class APIController extends Controller
 {
 
-    public function register(Request $request)
-    {
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-        Users::create($input);
-        return response()->json(['result'=>true]);
-    }
-
     public function login(Request $request)
     {
         $input = $request->all();
@@ -32,13 +24,6 @@ class APIController extends Controller
                 ->get();
             return response()->json(['status' => '200', 'id_user' => $User[0]['id'],'previledge' => $User[0]['previledge'],'result' => $token]);
         }
-    }
-
-    public function get_user_details(Request $request)
-    {
-    $input = $request->all();
-    $user = JWTAuth::toUser($input['token']);
-    return response()->json(['result' => $user]);
     }
 
 

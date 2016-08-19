@@ -49,12 +49,9 @@ Route::post('/confirm_report', 'HomeController@confirm_reports');
 
 //HISTORY
 Route::get('/history/{id}', 'HomeController@history');
-Route::get('/history_apps/{id}', 'HomeController@history_apps');
 Route::get('/history_home', 'HomeController@history_home');
-Route::get('/history_home2', 'HomeController@history_home2');
 
 //STATISTIC
-Route::get('/pagecoba2', 'HomeController@statistic2');
 Route::get('/statistic', 'HomeController@statistic');
 Route::post('/search_statistic', 'HomeController@search_statistic');
 
@@ -81,26 +78,9 @@ Route::group(['prefix' => 'api/v1'], function()
         Route::post('send_report', 'APIController@send_report');
         Route::post('dashboardAPI', 'APIController@indexpic');
         Route::post('historyAPI', 'APIController@history_apps');
-
-        Route::post('get_user_details', 'APIController@get_user_details');
     });
 
 });
 
-//DUMMY
 
-Route::get('/import/{name}', 'HomeController@import');
-
-Route::post('register', 'APIController@register');
-
-Route::get('/key', function() {
-    return str_random(32);
-});
-
-
-Route::get('/picdashboard', 'ProcessController@indexpic');
-
-Route::get('/pickabdashboard', 'ProcessController@indexviewkab');
-
-Route::get('/viewdashboard', 'ProcessController@indexview');
 
