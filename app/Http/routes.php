@@ -35,17 +35,17 @@ Route::post('/create_regions', 'HomeController@create_regions');
 Route::post('/update_regions', 'HomeController@update_regions');
 Route::get('/delete_regions/{id}', 'HomeController@delete_regions');
 
-//ANSWER
+//PROBLEM
 Route::get('/problem', 'HomeController@problem');
-Route::post('/create_answers', 'HomeController@create_answers');
-Route::post('/update_answers', 'HomeController@update_answers');
-Route::get('/delete_answers/{id}', 'HomeController@delete_answers');
+Route::post('/create_problem', 'HomeController@create_problem');
+Route::post('/update_problem', 'HomeController@update_problem');
+Route::get('/delete_problem/{id}', 'HomeController@delete_problem');
 
 //REPORT
 Route::get('/report', 'HomeController@reports');
 Route::get('/delete_report/{id}', 'HomeController@delete_reports');
 Route::post('/update_report', 'HomeController@update_reports');
-Route::get('/confirm_report/{id}', 'HomeController@confirm_reports');
+Route::post('/confirm_report', 'HomeController@confirm_reports');
 
 //HISTORY
 Route::get('/history/{id}', 'HomeController@history');

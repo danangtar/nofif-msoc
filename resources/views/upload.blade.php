@@ -35,7 +35,7 @@
                     <li class="collection-item avatar email-unread">
                         <i class="mdi-file-cloud-upload icon blue-text"></i>
                         <span class="email-title"> Upload Form</span>
-                        <p class="truncate grey-text ultra-small"><i>Last update 15 Agustus 2015...</i></p>
+                        <p class="truncate grey-text ultra-small"><i>Last update <?php $date = date_create($last_date); echo date_format($date,"d F Y H:i:s");?>...</i></p>
 
                       <div class="row"> 
                         <form class="col s12" action="{{url('importfile')}}" method="POST" enctype="multipart/form-data">
