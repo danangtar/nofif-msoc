@@ -555,9 +555,10 @@ class HomeController extends Controller
             $token = $row->remember_token;
             if ($token != NULL) {
                 $this->alert($row->id_region, 'Server DOWN');
-                return redirect('dashboard');
             }
         }
+        return redirect('dashboard');
+
     }
 
     public function upload(){
@@ -602,9 +603,9 @@ class HomeController extends Controller
                     if($i<count($lines)-1 && $i>2){
                         $row =str_getcsv($line);
 
-                        $index=(int)explode(" ",$row[3])[0];
+                        $index=explode(" ",$row[3])[0];
 
-                        if(ctype_digit($index)) {
+                        if(is_numeric($index)) {
                             $ave = ((double)substr($row[5], 0, -1));
 
                             if ($ave == 0 && $index < 9999) {
@@ -617,7 +618,7 @@ class HomeController extends Controller
                                     Log::create($input_log);
 
                                     Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
-//                                    $this->alert($index,'Server DOWN');
+//                                    $this->alert((int)$index,'Server DOWN');
 
                                 }
                             }
@@ -631,7 +632,7 @@ class HomeController extends Controller
                                     Log::create($input_log);
 
                                     Region::where('id', '=', $index)->update(['status' => 0, 'response' => 0]);
-//                                    $this->alert($index,'Server UP');
+//                                    $this->alert((int)$index,'Server UP');
                                 }
 
                             }
@@ -639,7 +640,7 @@ class HomeController extends Controller
                     }
                     $i++;
                 }
-
+                    $input_log['id_region'] = NULL;
                     $input_log['detail'] = "upload file from admin";
                     Log::create($input_log);
 
