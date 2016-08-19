@@ -618,12 +618,13 @@ class HomeController extends Controller
             $file = $request->file('csv');
             $upload = 'temp';
             $filename = $file->getClientOriginalName();
-            $success = $file->move($upload, $filename);
 
             if (Storage::disk('public')->exists('$filename'))
             {
                 Storage::delete($filename);
+                return redirect('upload?status=failed');
             }else{
+                $success = $file->move($upload, $filename);
                 if($success){
                 $files = Storage::disk('public')->files();
 
@@ -650,7 +651,7 @@ class HomeController extends Controller
                                     Log::create($input_log);
 
                                     Region::where('id', '=', $index)->update(['status' => 1, 'response' => 0]);
-                                    $this->alert($index,'Server DOWN');
+//                                    $this->alert($index,'Server DOWN');
 
                                 }
                             }
@@ -664,7 +665,7 @@ class HomeController extends Controller
                                     Log::create($input_log);
 
                                     Region::where('id', '=', $index)->update(['status' => 0, 'response' => 0]);
-                                    $this->alert($index,'Server UP');
+//                                    $this->alert($index,'Server UP');
                                 }
 
                             }
