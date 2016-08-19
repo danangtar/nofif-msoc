@@ -112,26 +112,15 @@
       </section>
       <!-- END CONTENT -->
 
-
-
     <!-- ================================================
     Scripts
     ================================================ -->
-
-    <!-- jQuery Library -->
-    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
-    <!--materialize js-->
-    <script type="text/javascript" src="{{asset("materialize/js/materialize.min.js")}}"></script>
-    <!--scrollbar-->
-    <script type="text/javascript" src="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}}"></script>
-
     <!-- chartist -->
     <script type="text/javascript" src="{{asset("materialize/js/plugins/chartist-js/chartist.min.js")}}"></script>
 
     <!-- chartjs -->
     <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chart.min.js")}}"></script>
-<!--    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chartjs-sample-chart.js")}}"></script>-->
-
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chartjs-sample-chart.js")}}"></script>
 
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="{{asset("materialize/js/plugins.js")}}"></script>

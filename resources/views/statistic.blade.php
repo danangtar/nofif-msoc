@@ -15,11 +15,7 @@
 
     ?>
     <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
-    <!--    <script type="text/javascript" src="{{asset("materialize/js/plugins/material-datetime-picker-master/dist/js/datepicker.js")}}"></script>    -->
-    <!--    <script type="text/javascript" src="{{asset("materialize/js/plugins/pickadate.js-3.5.6/lib/picker.date.js")}}"></script>    -->
-
-
-    <script type="text/javascript">
+       <script type="text/javascript">
 
         $( document ).ready(function() {
             $('select').material_select();
@@ -63,11 +59,7 @@
 //            ]
             })
             $('#datepicker').find('.ui-picker__nav--prev').remove();
-        });
-    </script>
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            $('select').material_select();
+        
             //Pie Doughnut Chart
             /*
              Polor Chart Widget
@@ -188,35 +180,37 @@
                                                         <label  style=" display: inline-block;" for="test3">Year</label>
                                                     </div><br>
                                                     <div id="day">
-                                                      <input name="date0" type="date" class="datepicker">
+                                                      <input placeholder="select the day here" name="date0" type="date" class="datepicker">
                                                     </div>
                                                     <div id="month">
-                                                        <div class="input-field col s6 m6 l6">
-<!--                                                            <label>Month</label>-->
-                                                            <select name="month1" class="browser-default">
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                                <option>4</option>
-                                                                <option>5</option>
-                                                                <option>6</option>
-                                                                <option>7</option>
-                                                                <option>8</option>
-                                                                <option>9</option>
-                                                                <option>10</option>
-                                                                <option>11</option>
-                                                                <option>12</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="input-field col s6 m6 l6">
-<!--                                                            <label>Year</label>-->
-                                                            <select name="year1" class="browser-default">
-                                                                <option>2015</option>
-                                                                <option>2016</option>
-                                                                <option>2017</option>
-                                                                <option>2018</option>
-                                                                <option>2019</option>
-                                                            </select>
+                                                        <div>
+                                                            <div class="input-field col s6 m6 l6">
+    <!--                                                            <label>Month</label>-->
+                                                                <select name="month1" class="browser-default">
+                                                                    <option>1</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                    <option>6</option>
+                                                                    <option>7</option>
+                                                                    <option>8</option>
+                                                                    <option>9</option>
+                                                                    <option>10</option>
+                                                                    <option>11</option>
+                                                                    <option>12</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="input-field col s6 m6 l6">
+    <!--                                                            <label>Year</label>-->
+                                                                <select name="year1" class="browser-default">
+                                                                    <option>2015</option>
+                                                                    <option>2016</option>
+                                                                    <option>2017</option>
+                                                                    <option>2018</option>
+                                                                    <option>2019</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -234,7 +228,7 @@
                                                     </div>
                                                 </div>
 
-                                            </div>
+                                            </div><br>
                                             <button class="btn cyan waves-effect waves-light center" type="submit" name="action">Search
                                                 <i class="mdi-content-send right"></i>
                                             </button>
@@ -256,17 +250,10 @@
     <!-- END CONTENT -->
 
     <!-- jQuery Library -->
-    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
-    <!--materialize js-->
-    <script type="text/javascript" src="{{asset("materialize/js/materialize.js")}}"></script>
-    <!--prism-->
-    <script type="text/javascript" src="{{asset("materialize/js/prism.js")}}"></script>
-    <!--scrollbar-->
-    <script type="text/javascript" src="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}}"></script>
 
     <!-- chartjs -->
     <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chart.min.js")}}"></script>
-<!--    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chart-script.js")}}"></script>-->
+    <script type="text/javascript" src="{{asset("materialize/js/plugins/chartjs/chart-script.js")}}"></script>
 
     <!-- sparkline -->
     <script type="text/javascript" src="{{asset("materialize/js/plugins/sparkline/jquery.sparkline.min.js")}}"></script>

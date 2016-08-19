@@ -44,24 +44,7 @@
                   <li><a href="">History</a>
                   </li>
                   <li class="active">{{$region}}</li>
-                  <div class="switch right tooltipped" data-position="top" data-delay="10" 
-                    <?php   if($status==1) {?>
-                            data-tooltip="Status on">
-                    <?php } else {?>   
-                            data-tooltip="Status off">
-                    <?php } ?> 
-                     <label>
-                          Off
-                    <?php   if($status==1) {?>
-                        <input  type="checkbox" checked="checked" >
-                    <?php } else {?>   
-                        <input disabled type="checkbox" checked="checked">
-                    <?php } ?> 
-                        <span class="lever"></span>
-                          On
-                      </label>
-                
-                  </ol>
+                </ol>
               </div>
             </div>
           </div>
@@ -213,13 +196,7 @@
     ================================================ -->
 
     <!-- jQuery Library -->
-    <script type="text/javascript" src="{{asset("materialize/js/jquery-1.11.2.min.js")}}"></script>
-    <!--materialize js-->
-    <script type="text/javascript" src="{{asset("materialize/js/materialize.min.js")}}"></script>
-    <!--scrollbar-->
-    <script type="text/javascript" src="{{asset("materialize/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")}}"></script>
-
-    <!-- chartist -->
+       <!-- chartist -->
     <script type="text/javascript" src="{{asset("materialize/js/plugins/chartist-js/chartist.min.js")}}"></script>
 
     <!-- chartjs -->
