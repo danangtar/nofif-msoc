@@ -211,9 +211,6 @@
                                                         <div class="input-field col s6 m6 l6">
 <!--                                                            <label>Year</label>-->
                                                             <select name="year1" class="browser-default">
-                                                                <option>2012</option>
-                                                                <option>2013</option>
-                                                                <option>2014</option>
                                                                 <option>2015</option>
                                                                 <option>2016</option>
                                                                 <option>2017</option>
@@ -228,9 +225,6 @@
                                                     <div class="input-field col s12 m12 l12">
 <!--                                                        <label>Year</label>-->
                                                         <select name="year2" class="browser-default">
-                                                                <option>2012</option>
-                                                                <option>2013</option>
-                                                                <option>2014</option>
                                                                 <option>2015</option>
                                                                 <option>2016</option>
                                                                 <option>2017</option>

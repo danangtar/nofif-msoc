@@ -112,7 +112,7 @@
                              <tr>
                             <td>{{$list->id}}</td>
                             <td>{{$list->name}}</td>
-                            <td><?php if($list->status==1)echo "DOWN"; else echo "UP"; ?></td>
+                            <td><?php if($list->status==1)echo  "<i class='mdi-file-file-download icon red-text'></i><span class='email-title'> DOWN</span>"; else echo "<i class='mdi-file-file-upload icon green-text'></i><span class='email-title'> UP</span>" ?></td>
                             <td>{{$list->response}} Hours</td>
                              <td>
                                 <div>
